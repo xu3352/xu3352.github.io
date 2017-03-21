@@ -14,7 +14,7 @@ categories: mac terminal
 
 # 简单步骤
 ### 安装iTerm2+solarized dark主题
-&emsp;&emsp;参下面的配置，作者把步骤以及写得很好了
+&emsp;&emsp;参下面的配置，作者把步骤已经写得很好了
 
 ### 注意事项
 &emsp;&emsp;如果`agnoster`分支图标乱码，请先安装[`Powerline修正过的字体`]，然后在 `iTerm2` 里选择安装好的补丁字体就可以了。
