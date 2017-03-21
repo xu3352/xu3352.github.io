@@ -10,7 +10,7 @@ categories: mac terminal
 - `zsh`：终端下的脚本语言，比 `bash` 功能多
 - `agnoster.zsh-theme`：`zsh`的一个非常受欢迎的主题
 
-![最终的效果图](http://om2mb5z83.bkt.clouddn.com/iterm2_zsh_agnoster.png "最终的效果图")
+![最终的效果图](http://on6gnkbff.bkt.clouddn.com/20170321194023_iterm2_zsh_agnoster.png "最终的效果图")
 
 # 简单步骤
 ### 安装iTerm2+solarized dark主题
