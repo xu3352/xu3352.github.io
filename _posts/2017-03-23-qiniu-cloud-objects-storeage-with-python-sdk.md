@@ -6,14 +6,16 @@ categories: python qiniu
 ---
 > 七牛云对象存储服务。BLOG图片、附件等资源存储还是很方便的
 
+# 如何使用
 直接QQ截图存桌面的`blog_uploads`目录下，然后调用命令：`qiniu_upload_blog.py`上传即可。
 ```shell
 # 脚本记得加入到可执行的path目录下，或者做个软连接即可直接调用了，比如：
 ln -s qiniu_upload_blog.py /usr/local/bin/qiniu_upload_blog.py
 ```
 
-直接上代码:`qiniu_upload_blog.py`
-加了简单的备份和日志功能，方便以后使用
+# 核心代码
+加了简单的备份和日志功能，方便以后使用  
+清单：`qiniu_upload_blog.py`
 ```python
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
@@ -56,11 +58,14 @@ def log(f, info):
     output.write(currtime + " - file:" + f + " - info:" + info + "\n")
     output.close()
 
+# postfix filter
+def filter(name):
+    return name.endswith('.png') or name.endswith(".jpg") or name.endswith(".zip")
+
 # main
 def upload_main():
     # jpg|png files in blog_uploads directory.
-    imgfiles = [name for name in os.listdir(blog_uploads)
-        if name.endswith('.png') or name.endswith(".jpg")]
+    imgfiles = [name for name in os.listdir(blog_uploads) if filter(name)]
 
     print("file count:"+ str(len(imgfiles)) )   # output console
 
