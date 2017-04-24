@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "如何切分 tomcat 的 catalina.out 日志"
-date: '2017-04-24 22:27:00 +80000'
+date: '2017-04-24 22:27:00 +0800'
 categories: linux
 tags: logrotate
 ---
