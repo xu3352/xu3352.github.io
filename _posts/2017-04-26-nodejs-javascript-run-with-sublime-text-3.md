@@ -53,7 +53,7 @@ for (var num = 0; num < 10; num++) {
 ```
 运行：```Cmd + B``` 直接运行就能看到效果了 或者 手动选择 ```Tools -> Build System -> node```
 
-![效果图](//on6gnkbff.bkt.clouddn.com/20170426083256_nodejs-run-javascript.png)
+![效果图](http://on6gnkbff.bkt.clouddn.com/20170426083256_nodejs-run-javascript.png)
 
 参考：
 - [Run JavaScript code SublimeText](http://stackoverflow.com/questions/38887342/run-javascript-code-sublimetext)
