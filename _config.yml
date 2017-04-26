@@ -3,18 +3,18 @@
 permalink: /:categories/:year/:month/:day/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+highlighter: rouge
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
-tagline: Site Tagline
+title : XU3352'S TECH BLOG
+tagline: Just for Fun ^_^
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
+  name : YINGLONG XU
+  email : xu3352@gmail.com
+  github : xu3352
+  twitter : xuyinglong
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
@@ -25,7 +25,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://username.github.io
+production_url : http://xu3352.github.io
 
 gems: ["jekyll-sitemap"]
 
@@ -133,4 +133,21 @@ JB :
   # and include your custom code. Your custom file must be defined at:
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
-  
+
+
+## jekyll default setting
+email: xu3352@gmail.com
+description: | # this means to ignore newlines until "baseurl:"
+  Just for Fun ^_^.
+  Code is Poetry
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: xuyinglong
+github_username:  xu3352
+
+# Build settings
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
+
