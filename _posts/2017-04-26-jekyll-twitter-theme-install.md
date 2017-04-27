@@ -127,5 +127,6 @@ gem install rouge
 参考：
 - [快速使用jekyll bootstrap主题](http://codecly259.github.io/hexo-blog/2016/05/17/2016-02-2016-02-20-use-jekyll-bootstrap/)
 - [Jekyll Bootstrap Theme](http://themes.jekyllbootstrap.com/preview/twitter/)
+- [Jekyll Themes](https://jekyllrb.com/docs/themes/)
 - [Error running 'jekyll serve': "Liquid Exception: Failed to get header."](https://teamtreehouse.com/community/error-running-jekyll-serve-liquid-exception-failed-to-get-header)
 
