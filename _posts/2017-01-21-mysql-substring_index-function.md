@@ -2,15 +2,15 @@
 layout: post
 title: "Mysql substring_index函数 lastIndexOf+substring"
 date: '2017-01-21 16:18:14'
-categories: mysql
+category: mysql
 tags: mysql
 ---
 
 > Mysql函数：SUBSTRING_INDEX的使用
 
-比如需要把IP提取前3段：SELECT SUBSTRING_INDEX('115.216.230.189', '.', 3);
+比如需要把IP提取前3段：`SELECT SUBSTRING_INDEX('115.216.230.189', '.', 3);`
 
-SUBSTRING_INDEX：一个强大的截取函数，汇总一下就是：substring + indexOf/lastIndexOf 的组合，指定标识符往前或者往后截取
+`SUBSTRING_INDEX`：一个强大的截取函数，汇总一下就是：`substring + indexOf/lastIndexOf` 的组合，指定标识符往前或者往后截取
 给个例子就懂了：
 
 ```sql

@@ -2,8 +2,8 @@
 layout: post
 title: "如何切分 tomcat 的 catalina.out 日志"
 date: '2017-04-24 22:27:00 +0800'
-categories: linux
-tags: logrotate
+category: linux
+tags: logrotate tomcat linux
 ---
 
 > Linux系统提供的一个按天切分日志文件的工具

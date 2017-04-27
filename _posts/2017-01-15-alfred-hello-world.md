@@ -2,8 +2,8 @@
 layout: post
 title: "Alfred开发入门：Hello World！"
 date: '2017-01-15 17:49:31'
-categories: tools alfred
-tags: alfred
+category: mac
+tags: mac alfred tools
 ---
 
 > Alfred Workflow入门：Hello World！
@@ -12,7 +12,7 @@ tags: alfred
 Alfred不用多说，神器一般的存在，谁用谁知道！
 
 # Demo开始
-先来个简单的 Demo 吧，比如“Hello World！”哈哈   
+先来个简单的 Demo 吧，比如 `Hello World！` 哈哈   
 ```
 进入 Alfred 设置 -> Workflows：
 0. 新加一个Workflow，左侧右下角的“+”号，有模板，例子，空白的选项，选空白吧
@@ -50,8 +50,8 @@ hello world! \ xu3352
 我的版本：v2.6(374)
 
 参考：  
-[Alfred workflow开发实例](http://manan.org/2014/12/alfred-workflow-tutorial/)   
-[一个方便计算透明度十六进制值的Alfred WorkFlow](https://ghui.me/post/2016/10/my-first-alfred-workflow/)      
-[Alfred workflow 开发指南](http://myg0u.com/python/2015/05/23/tutorial-alfred-workflow.html)
+- [Alfred workflow开发实例](http://manan.org/2014/12/alfred-workflow-tutorial/)   
+- [一个方便计算透明度十六进制值的Alfred WorkFlow](https://ghui.me/post/2016/10/my-first-alfred-workflow/)      
+- [Alfred workflow 开发指南](http://myg0u.com/python/2015/05/23/tutorial-alfred-workflow.html)
 
 

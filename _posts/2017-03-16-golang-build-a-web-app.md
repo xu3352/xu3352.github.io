@@ -2,14 +2,14 @@
 layout: post
 title: "golang搭建简单的web日志服务"
 date: '2017-03-19 01:25:38'
-categories: go
-tags: go
+category: go
+tags: go nginx web
 ---
 
 > GOOGLE开发的一门语言，精简，高效，资源消耗少
 
 # 一本入门书
-找到一个作者写的书：```build-web-application-with-golang``` 感谢人家的劳动成果🙏
+找到一个作者写的书：`build-web-application-with-golang` 感谢人家的劳动成果🙏
 ```
 1.安装go
 1.1安装 Go

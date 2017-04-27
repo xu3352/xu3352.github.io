@@ -2,11 +2,11 @@
 layout: post
 title: "如何kill 掉 tomcat 所有的进程"
 date: '2017-03-14 17:57:33'
-categories: tomcat
-tags: tomcat
+category: java
+tags: tomcat kill xargs java
 ---
 
-> 一条命令行 ```kill tomcat``` 进程
+> 一条命令行 `kill tomcat` 进程
 
 # 霸道的kill
 ```bash

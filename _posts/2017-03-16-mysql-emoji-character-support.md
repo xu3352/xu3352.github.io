@@ -2,13 +2,13 @@
 layout: post
 title: "mysql修改列字符集来支持emoji符号"
 date: '2017-03-16 12:55:53'
-categories: mysql
+category: mysql
 tags: mysql
 ---
 
-> 当 ```mysql``` 遇到 ```emoji``` 表情符号
+> 当 `mysql` 遇到 `emoji` 表情符号
 
-mysql 5.5.3版本以上的版本才支持哦
+`mysql 5.5.3` 版本以上的版本才支持哦
 
 # 代码清单
 ```sql

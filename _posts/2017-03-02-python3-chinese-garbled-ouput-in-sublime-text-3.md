@@ -2,13 +2,11 @@
 layout: post
 title: "sublime text 3 python3 utf-8中文输出乱码解决"
 date: '2017-03-02 14:12:20'
-categories: python
-tags: 
-- python3
-- sublime-text-3
+category: python
+tags: python sublime-text-3
 ---
 
-> 中文输出在 ```python3``` 的控制台没问题,但是 ```sublime text 3``` 里面直接 ```build``` 会报错…
+> 中文输出在 `python3` 的控制台没问题,但是 `sublime text 3` 里面直接 `build` 会报错…
 
 # 先看控制台
 ```bash
@@ -20,8 +18,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 中文
 ```
 
-直接在控制台执行也是没有问题的：```python3 str_utf8_python3.py```   
-文件：```str_utf8_python3.py```
+直接在控制台执行也是没有问题的：`python3 str_utf8_python3.py`   
+文件：`str_utf8_python3.py`
 ```python
 #!/usr/bin/env python
 #coding=utf-8
@@ -31,7 +29,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 print("中文")
 ```
 
-但是在```sublime text 3```里直接 ```build``` 报错
+但是在`sublime text 3`里直接 `build`报错
 ```python
 Traceback (most recent call last):
   File "/Users/xuyinglong/coding-python/str_utf8_python3.py", line 6, in 
@@ -40,7 +38,7 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
 ``` 
 
 # 改造
-改造：```str_utf8_python3.py```, 再次执行OK, 感觉略坑…
+改造：`str_utf8_python3.py`再次执行OK, 感觉略坑…
 ```python
 #!/usr/bin/env python
 #coding=utf-8

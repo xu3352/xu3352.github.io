@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "神奇的Tmux"
-date: '2017-02-15 00:06:08'
-categories: linux tmux
-tags: tmux
+date: '2017-02-15 00:06:08 +0800'
+category: linux
+tags: linux tmux
 ---
 
 > tmux是linux中一种管理窗口的程序

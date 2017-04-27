@@ -2,8 +2,8 @@
 layout: post
 title: "Java IO文本文件读写操作，批量操作"
 date: '2017-01-11 18:30:09'
-categories: java io
-tags: java
+category: java
+tags: java io file
 ---
 
 > Java标准的IO文本文件读写操作

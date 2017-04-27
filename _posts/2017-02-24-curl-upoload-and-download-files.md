@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "CURL上传下载"
-date: '2017-02-24 20:50:58'
-categories: linux curl
-tags: curl
+date: '2017-02-24 20:50:58 +0800'
+category: linux
+tags: curl linux-command linux 
 ---
 
 > 开发测试的时候非常方便😆

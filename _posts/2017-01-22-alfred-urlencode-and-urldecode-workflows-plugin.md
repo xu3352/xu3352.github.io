@@ -2,8 +2,8 @@
 layout: post
 title: "Alfred urlencode/urldecode插件"
 date: '2017-01-22 04:13:54'
-categories: tools alfred
-tags: alfred
+category: mac
+tags: alfred tools python
 ---
 
 > Alfred urlencode/urldecode插件

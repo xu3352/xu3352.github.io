@@ -2,8 +2,8 @@
 layout: post
 title: "Subline Text 3里运行 javascript"
 date: '2017-04-26 16:07:00 +0800'
-categories: coding
-tags: nodejs javascript
+category: ide
+tags: sublime-text-3 javascript nodejs
 ---
 
 > Sublime Text 也可以直接运行 JS 了，每次粘贴到浏览器里运行多麻烦
@@ -18,8 +18,9 @@ $ npm install -g grunt-cli
 ```
 
 # Sublime Text 运行环境
-```Tools -> Build System -> New Build System...```
-保存时取名为 ```node``` 或 ```javascript``` 之类的即可
+`Tools -> Build System -> New Build System...`
+保存时取名为 `node` 或 `javascript` 之类的即可
+
 ```
 {
   "cmd": ["node", "$file"],
@@ -51,9 +52,9 @@ for (var num = 0; num < 10; num++) {
     genChars(40);
 }
 ```
-运行：```Cmd + B``` 直接运行就能看到效果了 或者 手动选择 ```Tools -> Build System -> node```
+运行：`Cmd + B` 直接运行就能看到效果了 或者 手动选择 `Tools -> Build System -> node`
 
-![效果图](http://on6gnkbff.bkt.clouddn.com/20170426083256_nodejs-run-javascript.png)
+![效果图](http://on6gnkbff.bkt.clouddn.com/20170426083256_nodejs-run-javascript.png){:width="100%"}
 
 参考：
 - [Run JavaScript code SublimeText](http://stackoverflow.com/questions/38887342/run-javascript-code-sublimetext)

@@ -2,7 +2,8 @@
 layout: post
 title:  "使用jekyll-import导入wordpress文章"
 date:   2017-04-19 14:31:00 +0800
-categories: blog jekyll
+category: blog
+tags: jekyll wordpress blog
 ---
 > 把 WordPress 的文章导入到 Jekyll 里
 
@@ -49,13 +50,13 @@ $ ruby -rubygems -e 'require "jekyll-import";
 ```
 
 # 总结
-生成结果就在当前目录，```_posts```目录下就是发布的文章了，同级的目录是对应的```page```页面。  
+生成结果就在当前目录，`_posts`目录下就是发布的文章了，同级的目录是对应的`page`页面。  
 导入过程还是很方便的，不过有个很尴尬的问题，中文乱码。。。感觉又瞎折腾了。。。  
-看文档提示只会导入文章，页面和评论```(This only imports post & page data & content)```
+看文档提示只会导入文章，页面和评论`This only imports post & page data & content)`
 
-![jekyll-import效果图](http://on6gnkbff.bkt.clouddn.com/20170419075028_jekyll-import.png)
+![jekyll-import效果图](http://on6gnkbff.bkt.clouddn.com/20170419075028_jekyll-import.png){:width="100%"}
 
 参考：  
-[Jekyll Importters:WordPress](http://import.jekyllrb.com/docs/wordpress/)   
-[从wordpress移植到Jekyll!](http://abloz.com/%E6%8A%80%E6%9C%AF/2017/02/06/welcome-to-jekyll/)
+- [Jekyll Importters:WordPress](http://import.jekyllrb.com/docs/wordpress/)   
+- [从wordpress移植到Jekyll!](http://abloz.com/%E6%8A%80%E6%9C%AF/2017/02/06/welcome-to-jekyll/)
 

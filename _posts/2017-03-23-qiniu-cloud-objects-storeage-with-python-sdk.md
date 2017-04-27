@@ -2,7 +2,8 @@
 layout: post
 title:  "七牛云对象存储SDK Python版"
 date:   2017-03-23 01:51:00 +0800
-categories: python qiniu
+category: python
+tags: qiniu python 
 ---
 > 七牛云对象存储服务。BLOG图片、附件等资源存储还是很方便的
 

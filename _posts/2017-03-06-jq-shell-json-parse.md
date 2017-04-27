@@ -2,8 +2,8 @@
 layout: post
 title: "shell脚本json工具包（jq）"
 date: '2017-03-06 22:09:51'
-categories: linux jq
-tags: jq
+category: linux
+tags: jq json linux
 ---
 
 > 用 curl 返回 json 时，捕捉某一个字段非常方便

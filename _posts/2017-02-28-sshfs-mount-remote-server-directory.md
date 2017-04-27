@@ -2,8 +2,8 @@
 layout: post
 title: "sshfs挂载远程主机目录"
 date: "2017-02-28 16:48:40"
-categories: linux sshfs
-tags: sshfs
+category: linux
+tags: sshfs linux
 ---
 
 > 最近查询日志比较频繁，而ssh登录远程服务器后很快就会过期，再加上多个服务器之间切换，多搞几次之后就有点不爽了😡
@@ -81,5 +81,5 @@ log "log viewer job complate..."
 - [安装epel源后，报错Error: Cannot retrieve metalink for repository: epel. Please verify its path..](http://jschu.blog.51cto.com/5594807/1750177)
 - [ssh到指定目录](http://www.haow.ca/blog//2013/ssh/)
 
-epel安装，我的是：```vim /etc/yum.repos.d/epel.repo``` ，然后把 ```mirrorlist``` 里的 ```https``` 改成 ```http``` 后OK的
+epel安装，我的是：`vim /etc/yum.repos.d/epel.repo` ，然后把 `mirrorlist` 里的 `https` 改成 `http` 后OK的
 

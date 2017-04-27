@@ -1,19 +1,19 @@
 ---
 layout: post
 title: "sublime text 3执行mysql语句"
-date: '2017-02-08 11:54:13'
-categories: mysql
+date: '2017-02-08 11:54:13 +0800'
+category: mysql
 tags: mysql sublime-text-3
 ---
 
 > Sublime Text 3执行简单的 sql 语句(mysql版)
 
 # Mysql终端比较
-- ```Sequel Pro```：简洁快速，自动补全，使用方便，绝大部分时间使用此App
-- ```IDEA Database插件```：深度集成，非常强大，补全提示没的说，跨库查询时，不会自动提示不全（已解决）
-- ```sublime text 3```：没有自动补全，以命令行形式执行SQL和展示结果集，适合简单的查询和执行语句，并且是整个文件全部执行
+- `equel Pro`：简洁快速，自动补全，使用方便，绝大部分时间使用此App
+- `DEA Database插件`：深度集成，非常强大，补全提示没的说，跨库查询时，不会自动提示不全（已解决）
+- `ublime text 3`：没有自动补全，以命令行形式执行SQL和展示结果集，适合简单的查询和执行语句，并且是整个文件全部执行
 
-在使用```Sequel Pro```的时候，有时候需要在```sublime text 3```里正则批量替换编辑好SQL语句，然后切换到```Sequel Pro```里执行，操作多了就会嫌麻烦了。。。
+在使用`Sequel Pro`的时候，有时候需要在`sublime text 3`里正则批量替换编辑好SQL语句，然后切换到`Sequel Pro`里执行，操作多了就会嫌麻烦了。。。
 
 # 开始制作
 Google了一些视频，文档，然后可以继续了    
@@ -27,7 +27,7 @@ brew install mysql
 mysql -h *** -u *** -p
 ```
 
-3.测试通过，切换到SBL3：```Tools > Build System > New Build System...```，保存并取名为：```mysql```
+3.测试通过，切换到SBL3：`Tools > Build System > New Build System...`，保存并取名为：`mysql`
 ```
 {
     "cmd": ["/usr/local/bin/mysql", "-h", "***", "-u", "***", "-p***", "-D", "wordpress", "-e", "source $file", "-t"],
@@ -35,7 +35,7 @@ mysql -h *** -u *** -p
 }
 ```
 
-4.新建一个测试的```test.sql```文件并保存
+4.新建一个测试的`test.sql`文件并保存
 ```sql
 -- show databases;
 -- use wordpress;
@@ -45,8 +45,8 @@ show tables;
 select * from tbl_a;
 ```
 
-5.开始执行sql语句：```Tools > Build System > mysql```，然后按 ```Command+B``` 执行即可看到结果：
-```
+5.开始执行sql语句：`Tools > Build System > mysql`，然后按 `Command+B` 执行即可看到结果：
+```sql
 mysql: [Warning] Using a password on the command line interface can be insecure.
 +-----------------------+
 | Tables_in_wordpress   |

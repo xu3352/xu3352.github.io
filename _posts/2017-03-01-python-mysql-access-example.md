@@ -2,10 +2,8 @@
 layout: post
 title: "Python Mysql访问示例"
 date: '2017-03-01 20:45:01'
-categories: python mysql
-tags: 
-- mysql
-- python
+category: python
+tags: python mysql
 ---
 
 > Python3 Mysql数据库查询 Demo示例

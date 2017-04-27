@@ -28,6 +28,6 @@ location ^~ /path/serverlog.htm {
 ```
 
 参考：  
-[Nginx: Block URL Access (wp-admin/wp-login.php) To All Except One IP Address](https://www.cyberciti.biz/faq/nginx-block-url-access-all-except-one-ip-address/)     
-[nginx location匹配规则](http://www.nginx.cn/115.html)
+- [Nginx: Block URL Access (wp-admin/wp-login.php) To All Except One IP Address](https://www.cyberciti.biz/faq/nginx-block-url-access-all-except-one-ip-address/)     
+- [nginx location匹配规则](http://www.nginx.cn/115.html)
 

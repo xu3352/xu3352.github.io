@@ -2,8 +2,8 @@
 layout: post
 title: "哪些工具/服务提高了你的工作效率？"
 date: '2017-01-15 17:49:31'
-categories: tools
-tags: tools
+category: work
+tags: work efficiency tools
 ---
 
 > 工欲善其事，必先利其器

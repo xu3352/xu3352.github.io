@@ -2,8 +2,8 @@
 layout: post
 title: "Jekyll安装Twitter主题包"
 date: '2017-04-26 20:47:00 +0800'
-categories: blog
-tags: jekyll theme
+category: blog
+tags: jekyll theme bootstrap blog
 ---
 
 > Jekyll美化，安装一个能瞅对眼的主题
@@ -48,7 +48,7 @@ Twitter 的代码渲染还是有点坑，看起来着实不爽，纠结了好久
 code{color:rgba(0, 0, 0, 0.75);padding:1px 3px;}
 ```
 
-2. 在```assets/themes/twitter/css/1.4.0/bootstrap.css``` 文件最后追加原先的语法高亮支持
+2. 在`assets/themes/twitter/css/1.4.0/bootstrap.css` 文件最后追加原先的语法高亮支持
 ```css
 /** Syntax highlighting styles */
 .highlight { background: #fff; }
@@ -116,8 +116,8 @@ code{color:rgba(0, 0, 0, 0.75);padding:1px 3px;}
 ```
 
 # 其他
-运行 ```jekyll serve``` 如果报错```“Liquid Exception: Failed to get header.”```，需要把 ```_config.yml``` 文件中的：
-```highlighter: pygments``` 修改为 ```highlighter: rouge```
+运行 `jekyll serve` 如果报错`“Liquid Exception: Failed to get header.”`，需要把 `_config.yml` 文件中的：
+`highlighter: pygments` 修改为 `highlighter: rouge`
 ```bash
 # 记得先安装 rouge
 gem install rouge

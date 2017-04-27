@@ -2,8 +2,8 @@
 layout: post
 title: "Tomcat JVM性能优化(浅谈jstat)"
 date: '2017-02-11 19:47:02'
-categories: tomcat jstat
-tags: tomcat jstat
+category: java
+tags: tomcat jstat jvm java optimization
 ---
 
 > Tomcat JVM性能监控，优化
@@ -22,10 +22,10 @@ JAVA_OPTS="$JAVA_OPTS -server
 "
 ```
 
-- **-Xms** 初始堆的大小（-Xms 和 -Xmx 两个值设置为一样）
-- **-XX:NewSize** 新生代对象生成时占用内存的默认值
-- **-XX:PermSize** 非堆内存初始值
-- **-XX:+DisableExplicitGC** 禁止调用 ```System.gc()```；但jvm的gc仍然有效
+- **-Xms**                   - 初始堆的大小（-Xms 和 -Xmx 两个值设置为一样）
+- **-XX:NewSize**            - 新生代对象生成时占用内存的默认值
+- **-XX:PermSize**           - 非堆内存初始值
+- **-XX:+DisableExplicitGC** - 禁止调用 `System.gc()`；但jvm的gc仍然有效
 
 # jstat使用
 找到你Tomcat的进程ID（PID）
@@ -56,9 +56,9 @@ $ jstat -gc PID 1000 5
 - **GCT** 从应用程序启动到采样时gc用的总时间(s)
 
 应该尽量减少FGC次数，不然对应用的影响也就越大了（卡死的感觉）
-如果OU接近OC时，那就应该调整：```-Xms 和 -Xmx```。（如果机器内存足够，懒人的做法是可以设置大一点😆，当然过多其实也是浪费）
-如果PU接近PC时，应该调整```-XX:PermSize 或 -XX:MaxPermSize```。
-可根据自己的情况结合 ```jstat``` 来调整相应的参数，建议 ```tomcat``` 运行了一段时间过后使用 ```jstat``` 统计更好，原因你应该懂的。
+如果OU接近OC时，那就应该调整：`-Xms 和 -Xmx`。（如果机器内存足够，懒人的做法是可以设置大一点😆，当然过多其实也是浪费）
+如果PU接近PC时，应该调整`-XX:PermSize 或 -XX:MaxPermSize`。
+可根据自己的情况结合 `jstat` 来调整相应的参数，建议 `tomcat` 运行了一段时间过后使用 `jstat` 统计更好，原因你应该懂的。
 
 # 总结
 **总而言之：最终目的就是减少Full GC！！！**

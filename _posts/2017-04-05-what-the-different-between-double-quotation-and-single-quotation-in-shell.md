@@ -2,7 +2,8 @@
 layout: post
 title:  "双引号和单引号在shell中有什么不同？"
 date:   2017-04-05 22:45:00 +0800
-categories: shell command
+category: linux
+tags: shell linux
 ---
 > linux shell中 " "(双引号)与 ' '(单引号)的区别
 
@@ -111,7 +112,7 @@ NULL
 ```
 
 参考:   
-    [linux shell中的单引号与双引号的区别(看完就不会有引号的疑问了)](http://lspgyy.blog.51cto.com/5264172/1282107)    
-    [双引号与单引号的区别到底是什么呢？？](http://bbs.chinaunix.net/thread-2076396-1-1.html)
+- [linux shell中的单引号与双引号的区别(看完就不会有引号的疑问了)](http://lspgyy.blog.51cto.com/5264172/1282107)    
+- [双引号与单引号的区别到底是什么呢？？](http://bbs.chinaunix.net/thread-2076396-1-1.html)
 
 
