@@ -12,7 +12,7 @@ if (array.length > 1) {
     for (var i = 0; i < array.length; i++) {
         var $h1 = $(array[i]);
         if ($h1.attr("id") != null) {
-            console.log( $h1.text() )
+            // console.log( $h1.text() )
             dom += '    <li><a style="color:#999" href="#'+ $h1.attr("id") +'">'+ $h1.text() +'</a></li>';
         }
     }
