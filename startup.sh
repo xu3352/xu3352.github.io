@@ -3,6 +3,6 @@
 #desc: start up jekyll
 
 cd ~/blog
-bundle exec jekyll serve --drafts &
+nohup bundle exec jekyll serve --drafts &
 
 
