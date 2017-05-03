@@ -3,7 +3,7 @@ layout: page
 title : "Manual"
 header : "Manual"
 group: navigation
-tagline: 在线的入门手册
+tagline: 新手入门
 ---
 {% include JB/setup %}
 
