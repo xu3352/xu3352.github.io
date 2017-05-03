@@ -27,8 +27,9 @@ liquid 把 markdown 转译成 html 之后，结构比较规律，我们只需要
 - zepto 代码少，体积比 jquery 小很多
 
 # 开始 DIY
-下载 `zepto.min.js` 文件，路径放这里吧：`assets/js/zepto.min.js`
+下载 `zepto.min.js` 文件，路径放这里吧：`assets/js/zepto.min.js`    
 新建DIY的js文件：`assets/js/post_nav.js`
+## post_nav.js V1.0
 ```javascript
 /**
  *  Jekyll-Twitter-Theme 文章H1标题预览插件
@@ -55,6 +56,64 @@ if (array.length > 1) {
     $sideBar.append(dom);
 }
 ```
+## post_nav.js v1.1
+```javascript
+/**
+ *  Jekyll-Twitter-Theme 文章H1标题预览插件
+ *  依赖 zepto.min.js 等类jquery库
+ *  v1.0 仅支持展示H1
+ *  v1.1 支持H1~H6，小标题自动往后缩进
+ */
+
+/** 获取 H1~H6 所有元素 */
+function getHeadlineTags() {
+    var arrays = [];
+    $("*[id]").each(function(){
+        var tagName = $(this).prop("tagName");
+        if ($.inArray(tagName, hs) >= 0) {
+            // console.log(tagName)
+            arrays.push($(this));
+        }
+    });
+    return arrays;
+}
+
+/** 判断元素标题等级H1~H6，返回0~5，如果不是H1~H6，则返回-1 */
+function getHeadlineLevel(h) {
+    var tagName = $(h).prop("tagName");
+    return $.inArray(tagName, hs);
+}
+
+/** 生成目录列表 */
+function generateContentList(array) {
+    if (array.length > 1) {
+        var dom =  '<ul class="post_nav">'
+        for (var i = 0; i < array.length; i++) {
+            var $h1 = $(array[i]);
+            var level = getHeadlineLevel( $h1 );
+            var li_style = level <= 0 ? '': ' style="margin-left:'+(level*12)+'px"';
+            dom += '<li'+li_style+'><a style="color:#999" href="#'+ $h1.attr("id") +'">'+ $h1.text() +'</a></li>';
+        }
+        dom += '</ul> ';
+
+        // 边栏root [Published, Tags]
+        var $sideBar = $("ul.tag_box").parent();
+
+        // append dom
+        $sideBar.append('<h4>Content List</h4>');
+        $sideBar.append(dom);
+    }
+}
+
+// H1~H6 标签名数组
+var hs = ["H1", "H2", "H3", "H4", "H5", "H6"];
+// 找到所有 H1~H6 
+var array = getHeadlineTags();
+// 生成 Content List
+generateContentList(array);
+
+```
+
 
 # 嵌入 Jekyll 页面
 由于我使用的是 Twitter 主题的，我把两个 js 文件的引入放到了这里：`_includes/themes/twitter/default.html`
@@ -75,4 +134,5 @@ if (array.length > 1) {
 
 参考：
 - [Zepto.js API 中文版](http://www.css88.com/doc/zeptojs_api/)
-
+- [jQuery: Get selected element tag name](http://stackoverflow.com/questions/5347357/jquery-get-selected-element-tag-name)
+- [jquery array contains](https://api.jquery.com/jQuery.inArray/)
