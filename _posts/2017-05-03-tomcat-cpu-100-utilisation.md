@@ -68,7 +68,7 @@ vim /tmp/jstack_5189.txt
 
 # 柳暗花明
 用 APM 里自带的 `Thread Profiler` 分析过几次，80%以上的时间都消耗在 `Object.wait()`，不解。。。     
-![](//on6gnkbff.bkt.clouddn.com/20170503070231_new-relic-apm-thread-profiler.png){:width="100%"}
+![](http://on6gnkbff.bkt.clouddn.com/20170503070231_new-relic-apm-thread-profiler.png){:width="100%"}
 没办法，只好还是继续研究 `jstack` 了，里面也是好多 `WAITING` 状态的，不知道代表什么意思，google/百度呗，强大的 [stackoverflow](//stackoverflow.com) 几乎95以上的技术问题都能找到答案，前提是能看懂😆    
 [这篇文章](//stackoverflow.com/questions/3780814/apache-tomcat-threads-in-waiting-state-with-100-cpu-utilisation)里提到 `wait on` 应该是 TCP/IP 后台监听线程，问题不在这里。于是把问题转向了 `BLOCKED`。于是开始统计每个状态出现的数量，分析每个状态代表的含义。 
 ```bash
