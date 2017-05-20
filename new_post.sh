@@ -3,6 +3,7 @@
 #desc: create a new post articles with template
 
 TITLE=$1
+TITLE_ZH=$2
 TEMPLATE=draft_template.md
 DATE=`date "+%Y-%m-%d"`
 TIME=`date "+%H:%M:%S"`
@@ -16,7 +17,11 @@ echo "file name:" _posts/$FILE_NAME
 CONTENT=`cat $TEMPLATE`
 
 # fill title
-CONTENT=`echo "${CONTENT}" | sed "s/{title}/${TITLE}/g"`
+POST_TITLE=$TITLE
+if [ -n "$TITLE_ZH" ]; then
+    POST_TITLE=$TITLE_ZH
+fi
+CONTENT=`echo "${CONTENT}" | sed "s/{title}/${POST_TITLE}/g"`
 
 # fill time
 CONTENT=`echo "${CONTENT}" | sed "s/{time}/${DATE} ${TIME}/g"`

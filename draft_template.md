@@ -1,11 +1,12 @@
 ---
 layout: post
 title: "{title}"
+tagline: ""
 date: '{time} +0800'
 category: linux
 tags: linux
 ---
-> 引用
+> {title}
 
 # 标题
 内容
