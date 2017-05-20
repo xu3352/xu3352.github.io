@@ -15,8 +15,8 @@ tagline: 新手入门
 
 # Linux
 - [Linux(Unix)](https://www.tutorialspoint.com/unix/index.htm)
-- [快乐的 Linux 命令行](http://billie66.github.io/TLCL/index.html)
-- [鸟哥的私房菜](http://cn.linux.vbird.org/) (基础篇3版、服务器篇3版)
+- [快乐的 Linux 命令行](http://billie66.github.io/TLCL/index.html) (《The Linux Command Line》 的中文版)
+- [鸟哥的私房菜](http://cn.linux.vbird.org/) (基础篇3版、服务器篇3版，非常详细和全面)
 
 # Front-End 前端
 - [W3school](http://www.w3school.com.cn/)
@@ -26,4 +26,5 @@ tagline: 新手入门
 
 # Go
 - [Go语言圣经（中文版）](http://docs.ruanjiadeng.com/gopl-zh/index.html)
+
 
