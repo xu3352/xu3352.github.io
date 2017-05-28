@@ -121,9 +121,11 @@ generateContentList(array);
 ```html
     ... 其他代码 ...
     
+    {% if page.layout == 'post' %}
     <!-- diy js -->
     <script type="text/javascript" src="/assets/js/zepto.min.js"></script>
     <script type="text/javascript" src="/assets/js/post_nav.js"></script>
+    {% endif %}
   </body>
 </html>
 ```
