@@ -2,7 +2,7 @@
 layout: post
 title: "Atlassian产品介绍：jira+confluence+fisheye+crucible+crowd 介绍"
 tagline: ""
-date: '2017-05-28 00:09:50 +0800'
+date: '2017-05-27 23:50:50 +0800'
 category: atlassian
 tags: agile atlassian
 ---
