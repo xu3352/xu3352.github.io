@@ -34,7 +34,8 @@ $ tar -xzvf atlassian-jira-software-7.3.6.tar.gz
 # 2.放到指定目录, 比如：/data/software/
 $ mv atlassian-jira-software-7.3.6-standalone /data/software/
 
-# 3. 使用 jdk 1.8 版本(这里使用的是不推荐的版本，估计哪块有点bug吧)
+# 3. 使用jdk 1.8 版本(这里使用的是不推荐的版本，估计哪块有点bug吧)
+#   由于默认 jdk 是1.6的，所以需要手动指定 jdk 版本
 $ cd /data/software/atlassian-jira-software-7.3.6-standalone
 
 # 3.1 修改catalina.sh
@@ -97,7 +98,9 @@ Base URL: `http://192.168.7.250:9100`
 选择稍后配置
 
 ## 选择语言
-默认其实已经中文了，比较方便，然后基本配置就可以了
+默认其实已经中文了，比较方便    
+
+到这里，安装和基本配置基本完成，后面的可以创建项目，走走流程；看看系统设置，权限之类的东西
 
 # 创建项目
 可以选择创建示例项目，看看大致的流程，多用用就熟悉了
