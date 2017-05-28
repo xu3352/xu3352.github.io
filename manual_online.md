@@ -27,4 +27,6 @@ tagline: 新手入门
 # Go
 - [Go语言圣经（中文版）](http://docs.ruanjiadeng.com/gopl-zh/index.html)
 
+# jekyll
+- [jekyll中文](http://jekyllcn.com/docs/home/)
 
