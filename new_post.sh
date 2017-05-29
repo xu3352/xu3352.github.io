@@ -9,6 +9,8 @@ DATE=`date "+%Y-%m-%d"`
 TIME=`date "+%H:%M:%S"`
 # echo $DATE $TIME
 
+DIR=`pwd`
+
 # file path generate
 FILE_NAME="$DATE-`echo $TITLE|sed 's/[ ][ ]*/-/g'`.md"
 echo "file name:" _posts/$FILE_NAME
@@ -26,8 +28,12 @@ CONTENT=`echo "${CONTENT}" | sed "s/{title}/${POST_TITLE}/g"`
 # fill time
 CONTENT=`echo "${CONTENT}" | sed "s/{time}/${DATE} ${TIME}/g"`
 
-# output file
-echo "${CONTENT}" > _posts/$FILE_NAME
+# output file (check exists)
+if [ ! -e "$DIR/_posts/$FILE_NAME" ]; then
+    echo "${CONTENT}" > _posts/$FILE_NAME
+else
+    echo "file exists..." 
+fi
 
 # edit file with vim
 vim _posts/$FILE_NAME
