@@ -33,8 +33,9 @@ tags: confluence atlassian agile
 
 
 ## 下载地址
-[confluence 5.4.4](https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-5.4.4.zip)   
-[所有版本列表](https://www.atlassian.com/software/confluence/download-archives)
+[confluence 5.4.4](https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-5.4.4.zip)    
+[所有版本列表](https://www.atlassian.com/software/confluence/download-archives)     
+下载的时候有个提速技巧，就是把 `https` 改成 `http`
 
 ## 指定数据目录
 跟 jira、fisheye 类似，同样指定一下数据目录，最好跟安装目录分开，方便以后更新升级之类的影响
