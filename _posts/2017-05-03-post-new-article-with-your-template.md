@@ -19,7 +19,7 @@ copy 自带的示例，修改YAML头信息：`title，date，category，tags` �
 # 模板
 首先是模板：`draft_template.md`     
 注意bash前面应该是三个连在一起的！记得把 `\` 去掉
-```html
+```markdown
 ---
 layout: post
 title: "{title}"
