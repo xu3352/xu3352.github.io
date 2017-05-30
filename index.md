@@ -2,6 +2,7 @@
 layout: page
 title: Hello World!
 tagline: "Just for Fun"
+number: 1
 ---
 {% include JB/setup %}
 

@@ -4,6 +4,7 @@ title : "Manual"
 header : "Manual"
 group: navigation
 tagline: 新手入门
+number: 5
 ---
 {% include JB/setup %}
 
