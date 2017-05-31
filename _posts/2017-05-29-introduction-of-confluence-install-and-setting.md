@@ -3,7 +3,7 @@ layout: post
 title: "confluence 5.4.4 安装和配置介绍"
 tagline: ""
 date: '2017-05-29 22:31:25 +0800'
-category: atlassion
+category: atlassian
 tags: confluence atlassian agile
 ---
 > confluence 5.4.4 安装和配置介绍
