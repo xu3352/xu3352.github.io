@@ -7,7 +7,7 @@ date: '{time} +0800'
 category: linux
 tags: linux
 ---
-> {title}
+> {{ page.description }}
 
 # 标题
 内容
