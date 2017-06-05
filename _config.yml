@@ -26,7 +26,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://xu3352.github.io
+production_url : https://xu3352.github.io
 
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
@@ -141,7 +141,7 @@ description: | # this means to ignore newlines until "baseurl:"
   Just for Fun ^_^.
   Code is Poetry
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://xu3352.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: xuyinglong
 github_username:  xu3352
 
