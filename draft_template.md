@@ -2,6 +2,7 @@
 layout: post
 title: "{title}"
 tagline: ""
+description: ""
 date: '{time} +0800'
 category: linux
 tags: linux

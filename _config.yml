@@ -28,7 +28,6 @@ author :
 #
 production_url : http://xu3352.github.io
 
-gems: ["jekyll-sitemap"]
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -151,4 +150,5 @@ markdown: kramdown
 theme: minima
 gems:
   - jekyll-feed
+  - jekyll-sitemap
 
