@@ -21,7 +21,7 @@ JVM 不够用的现象已经出现过2~3次了，临时方案就是直接调整�
 
 细想一下，现在的内存缓存工具类使用越来越多，调用频繁的接口也是用到了。由于这个是静态 Map 做的，所以存到这里的对象不会被 GC 清理掉，怀疑是这里有问题，所以在 quartz 里配置了一个定时任务，定时的把过期的对象清理掉。部署之后的效果：清理10w对象大约花了几到几十毫秒，所以不担心频繁的清理的问题。而后面的 JVM 老年代撑满的问题也解决了。
 
-清理调用方法：`CacheUtils.clearAllExpired()` [CacheUtils代码](https://xu3352.github.io/linux/2017/05/03/tomcat-cpu-100-utilisation#附录代码)
+清理调用方法：`CacheUtils.clearAllExpired()` [CacheUtils代码](https://xu3352.github.io/linux/2017/05/02/tomcat-cpu-100-utilisation#附录代码)
 
 # APM监控图表
 New Relic 的 APM 的 JVM 监控图表：可以看到 jvm 已经停止服务(红了一片表示没有上传apm日志)，频繁的GC，CPU也很高，服务提供正常的服务
