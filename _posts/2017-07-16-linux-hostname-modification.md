@@ -10,17 +10,22 @@ tags: linux APM
 > {{ page.description }}
 
 # hostname
-`hostname` 可以用来查看和修改 主机名称，但是主机重启后就失效
+`hostname` 可以用来查看和修改 主机名称，但是主机重启后就失效     
+**注意：没有权限的话，请使用 root 用户**
 ```bash
+# 查看主机名
+$ hostname
+xxx-xxx-xxx
+
 # 修改主机名
-hostname server_007
+$ hostname server_007
 ```
 
 # network
 `/etc/sysconfig/network` 文件存储了主机名，系统启动时会读取次文件的主机名
 ```bash
 # 修改 network 文件中的主机名
-vim /etc/sysconfig/network
+$ vim /etc/sysconfig/network
 
 NETWORKING=yes
 HOSTNAME=server_007
@@ -34,7 +39,7 @@ NOZEROCONF=yes
 
 ```bash
 # 修改 hosts 文件里的主机名
-vim /etc/hosts
+$ vim /etc/hosts
 
 127.0.0.1 server_007
 10.13.xxx.xxx server_007
