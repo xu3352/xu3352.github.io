@@ -6,9 +6,9 @@ date: '2017-05-04 16:40:34 +0800'
 category: monitor
 tags: new-relic APM java linux
 ---
-> 一款非常好用的应用性能监控服务。免费版就已经非常强大，你值得拥有！！！    
 > **See (don't guess) where are your app's bottlenecks**  
-> **找到（不要猜测）你的应用程序的瓶颈在哪里**
+> **找到（不要猜测）你的应用程序的瓶颈在哪里**   
+> 一款非常好用的应用性能监控服务。免费版就已经非常强大，你值得拥有！！！    
 
 # New Relic介绍
 [New Relic](https://newrelic.com/) 是国外知名的、老牌、资深监控服务商。  
@@ -21,7 +21,7 @@ Google上搜索一下“apm 监控 推荐”，第一个是知乎的：[有什�
 - 非侵入式安装，无需在代码里埋点，只需简单的安装即可。大部分语言都支持，最喜欢这点了，简直无敌了
 - 功能强大，报表丰富，让性能低下的地方无所遁形，error 也可直观的统计到，对你的应用性能了如指掌
 
-如果你还在犹豫，那么你应该是少一个翻墙工具(Mac推荐[鱼摆摆](https://ybb1024.com/))了，是否好用，也就只有用过之后才知道。 :-)
+如果你还在犹豫，那么你应该是少一个翻墙工具了（貌似不用翻墙也是可以访问的），是否好用，也就只有用过之后才知道。 :-)
 
 # APM介绍
 [APM](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-new-relic-apm)：**Application Performance Monitoring**  应用性能监控    
