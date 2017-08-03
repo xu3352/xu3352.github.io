@@ -22,4 +22,7 @@ tags: intellij-idea svn java
 7. 如果有冲突，那么会有弹框提示，一个一个解决冲突就可以了
 8. 分支代码已经合并到本地了，可以选择马上提交，也可以稍后再提交
 
+---
+更多：
+- [IntelliJ IDEA SVN 分支代码合并（图文详解）](https://xu3352.github.io/java/2017/07/02/IntelliJ-IDEA-svn-merge)
 
