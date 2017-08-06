@@ -10,8 +10,11 @@ $(function(){
         var thumb = (index++ == 0) ? 'id="thumb1"' : 'data-thumb-id="thumb1"';
         $img.before('<a class="MagicThumb" '+ thumb +' href="'+$img.attr("src")+'"></a>');
         $img.prev('.MagicThumb').append( $img );
+        
         // reload all Magic Thumb images
-        MagicThumb.refresh();
+        setTimeout(function(){
+            if (MagicThumb) MagicThumb.refresh();
+        }, 1500);
     });
 })
 
