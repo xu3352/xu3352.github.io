@@ -79,11 +79,11 @@ $(function(){
 `_includes/themes/twitter/default.html`
 ```html
 <!-- magicthumb plugin -->
-<link type="text/css" rel="stylesheet" href="http://on6gnkbff.bkt.clouddn.com/20170806073349_magicthumb.css"/>
-<script type="text/javascript" src="http://on6gnkbff.bkt.clouddn.com/20170806073350_magicthumb.js"></script>
+<link type="text/css" rel="stylesheet" href="/assets/css/magicthumb.css"/>
+<script type="text/javascript" src="/assets/js/magicthumb.js"></script>
 <script type="text/javascript" src="/assets/js/magicthumb_pre.js"></script>
 ```
-![](http://on6gnkbff.bkt.clouddn.com/20170806102645_magic-thumb-01.png){:width="100%"}
+![](http://on6gnkbff.bkt.clouddn.com/20170806123852_magic-thumb-02.png){:width="100%"}
 如此，Markdown嵌入图片的语法不用改动，而且老的文章也不需要修改，都可以使用Magic Thumb插件了！！！
 
 上一篇文章图片比较多，不妨试试

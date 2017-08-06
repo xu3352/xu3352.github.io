@@ -12,9 +12,7 @@ $(function(){
         $img.prev('.MagicThumb').append( $img );
         
         // reload all Magic Thumb images
-        setTimeout(function(){
-            if (MagicThumb) MagicThumb.refresh();
-        }, 1500);
+        MagicThumb.refresh();
     });
 })
 
