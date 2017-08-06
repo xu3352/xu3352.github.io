@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "使用shell脚本+模板发布新文章"
+title: "Jekyll使用shell脚本+模板发布新文章"
 date: '2017-05-03 17:22:57 +0800'
 category: linux
-tags: blog shell tools linux
+tags: jekyll blog shell tools linux
 ---
 > shell脚本使用模板创建一篇新文章
 
