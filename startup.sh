@@ -3,6 +3,6 @@
 #desc: start up jekyll
 
 cd ~/blog
-nohup bundle exec jekyll serve --drafts --incremental &
+nohup bundle exec jekyll serve --drafts --trace &
 
 
