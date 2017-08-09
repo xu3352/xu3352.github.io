@@ -148,7 +148,7 @@ github_username:  xu3352
 # Build settings
 markdown: kramdown
 theme: minima
-gems:
+plugins:
   - jekyll-feed
   - jekyll-sitemap
 
