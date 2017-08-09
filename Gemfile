@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "jekyll", "~> 3.1"
 gem "jekyll-sitemap"
 gem "pygments.rb"
-
+gem "jekyll-gist"
 
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
