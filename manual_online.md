@@ -30,11 +30,12 @@ number: 5
 # Go
 - [Go语言圣经（中文版）](http://docs.ruanjiadeng.com/gopl-zh/index.html)
 
-# jekyll
-- [jekyll中文](http://jekyllcn.com/docs/home/)
+# Jekyll
+- [Jekyll 中文官网](http://jekyllcn.com/docs/home/)
 
-# Markdown 
-- [表格生成器](http://www.tablesgenerator.com/markdown_tables)
+- [Markdown 表格生成器](http://www.tablesgenerator.com/markdown_tables)
+
+- [Liquid 简易手册](https://shopify.github.io/liquid/)
 
 # Docker 
 - [《Docker — 从入门到实践》](https://xu3352.github.io/docker/2017/07/21/docker-primer)
