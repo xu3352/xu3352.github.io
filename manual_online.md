@@ -33,7 +33,7 @@ number: 5
 # Jekyll
 - [Jekyll 中文官网](http://jekyllcn.com/docs/home/)
 
-- [Markdown 表格生成器](http://www.tablesgenerator.com/markdown_tables)
+- [Markdown 操作](http://xianbai.me/learn-md/article/about/helloworld.html)
 
 - [Liquid 简易手册](https://shopify.github.io/liquid/)
 
