@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Jekyll 构建加速：增量构建"
+title: "Jekyll 构建加速：增量构建(--incremental)"
 tagline: ""
 description: "平时全部构建一次需要花好几秒，增量构建：--incremental 不到一秒"
 date: '2017-08-10 03:52:13 +0800'
