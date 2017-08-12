@@ -35,6 +35,9 @@ else
     echo "file exists..." 
 fi
 
+# change modification time to regenerate some pages
+source flush_cache.sh
+
 # edit file with vim
 vim _posts/$FILE_NAME
 
