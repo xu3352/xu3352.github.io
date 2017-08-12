@@ -5,7 +5,7 @@ tagline: ""
 description: "自从使用增量构建之后, 构建确实很快, 很方便; 但是某些公共的模板文件并不能一起更新, 比如: `index.md archive.html categories.html tags.html`，所以搞个触发构建的机制"
 date: '2017-08-12 14:15:32 +0800'
 category: blog
-tags: jekyll blog
+tags: jekyll shell blog
 ---
 > {{ page.description }}
 
