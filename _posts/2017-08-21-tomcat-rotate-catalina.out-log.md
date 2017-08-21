@@ -5,7 +5,7 @@ tagline: ""
 description: "每隔一段时间, 总是要花一些时间来清理 `Tomcat` 的 `catalina.out` 日志, 为什么不做成脚本呢?"
 date: '2017-08-21 17:42:39 +0800'
 category: linux
-tags: tomcat awk log linux
+tags: tomcat shell awk log linux
 ---
 > {{ page.description }}
 
