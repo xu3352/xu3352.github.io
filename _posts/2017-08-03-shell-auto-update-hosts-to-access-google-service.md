@@ -71,6 +71,11 @@ crontab -e
 
 当然也是修改 `/etc/hosts` 文件了，后续再慢慢介绍
 
+# 补充
+用了一段时间, 自动更新的 hosts 也不太好使, 好像是2017.08月上旬开始不好使的, 然后发现 [老D博客 - 2017 Google hosts 持续更新](https://laod.cn/hosts/2017-google-hosts.html) 是好使的, 定时任务是在跑的, 不过没替换当前的 hosts 了, 而是存入一个备用文件了, 没准哪天又好使了呢, 到时候直接换回来就行了
+
+于 2017-09-10 补充...
+
 ---
 参考：
 - [微博-鱼摆摆家的华叔](http://weibo.com/emptyhua?refer_flag=1005050010_&is_hot=1)
