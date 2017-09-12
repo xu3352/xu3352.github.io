@@ -816,15 +816,213 @@ Number of employees in Tehcnology Dept = 3
 - [Vi and Vim Macro Tutorial: How To Record and Play](http://www.thegeekstuff.com/2009/01/vi-and-vim-macro-tutorial-how-to-record-and-play/)
 - [Vim Editor: How to Correct Spelling Mistakes Automatically](http://www.thegeekstuff.com/2009/03/vim-editor-how-to-correct-spelling-mistakes-automatically/)
 
-# 24. Chmod Command Examples
-# 25. View Multiple Log Files in One Terminal
-# 26. Less Command
-# 27. Wget Examples
+# 24. Chmod命令
+3种角色:
+- `u` 用户 
+- `g` 用户组
+- `o` 其他
+- `a` 代表所有的3种角色
 
-未完待续
+3种全新:
+- `r` 读权限 (4)
+- `w` 写权限 (2)
+- `x` 可执行权限 (1)
+
+如果不了解 linux 文件属性, 请看这里:[鸟哥私房菜 - Linux文件属性](http://cn.linux.vbird.org/linux_basic/0210filepermission.php#filepermission_perm)
+
+示例:
+```bash
+# 1. 给 文件/文件夹 加单个权限
+$ chmod u+x filename
+
+# 2. 给 文件/文件夹 加多个权限
+$ chmod u+r,g+x filename
+
+# 3. 删除权限
+$ chmod u-rx filename
+
+# 4. 给所有角色加权限
+$ chmod a+x filename
+
+# 5. 同步权限
+$ chmod --reference=file1 file2
+
+# 6. 目录递归设置权限
+$ chmod -R 755 directory-name/
+
+# 7. 给所有子目录设置可执行权限(如果有多个子目录和文件同时存在, 仅目录会设置可执行权限)
+# 注意:如果文件的 `go` 角色都已经有执行权限了, 那么 `u` 角色也将会被设置为可执行权限
+$ chmod u+X *
+```
+
+更多:
+- [7 Chmod Command Examples for Beginners](http://www.thegeekstuff.com/2010/06/chmod-command-examples/)
+- [Beginners Guide to File and Directory Permissions ( umask, chmod, read, write, execute )](http://www.thegeekstuff.com/2010/04/unix-file-and-directory-permissions/)
+
+# 25. Tail命令:一个终端查看多个文件的日志
+通常我们动态的查看日志都是直接使用命令:`tail -f log_file`, 而如果想看两个文件的呢, 那么开2个终端不就好了么?
+
+第一种方式, 自己做个脚本:
+```bash
+$ vi multi-tail.sh
+#!/bin/sh
+# When this exits, exit all back ground process also.
+trap 'kill $(jobs -p)' EXIT
+# iterate through the each given file names,
+for file in "$@"
+do
+     # show tails of each in background.
+     tail -f $file &
+done
+
+# wait .. until CTRL+C
+wait
+```
+然后使用: `./multi-tail.sh error_log access_log`
+
+第二种方式: 标准的 tail 命令方式
+```bash
+$ tail -f /var/log/syslog -f /var/log/auth.log
+```
+更多: [3 Methods To View tail -f output of Multiple Log Files in One Terminal](http://www.thegeekstuff.com/2009/09/multitail-to-view-tail-f-output-of-multiple-log-files-in-one-terminal/)
+
+# 26. Less命令 
+`less` 命令主要用于文件浏览 (而不是使用编辑器打开并查看)
+
+`less` 和 `more` 命令类似, 但是比 `more` 命令更加强大, 支持 往前/往后 查看; 而且 `less` 不是整个文件全部加载的, 所以在查看大文件的时候比较有用;
+
+搜索导航:(正向)
+- `/pattern` - 按正则 `pattern` 搜索并跳转到 下一个 出现的位置
+- `n` - 下一个 匹配(上次的`pattern`)的位置
+- `N` - 上一个 匹配的位置
+
+逆向导航:
+- `?pattern` - 按正则 `pattern` 搜索并跳转到 上一个 出现的位置
+- `n` - 上一个 匹配(上次的`pattern`)的位置
+- `N` - 下一个 匹配的位置
+
+屏幕导航:
+- `CTRL + F` - 往下 一屏幕
+- `CTRL + B` - 往上 一屏幕
+- `CTRL + D` - 往下 半屏幕
+- `CTRL + U` - 往上 半屏幕
+- `空格` - 往下 一屏幕(常用)
+
+行导航:
+- `j` - 往下 一行 (同 `↑`)
+- `k` - 往上 一行 (同 `↓`)
+- `20j` - 往下 20行
+- `20k` - 往上 20行
+- `CTRL+G` - 显示当前文件名以及行，字节和百分比统计信息
+
+其他导航:
+- `G` - 文件最后位置
+- `gg` - 文件开始位置
+- `q` 或 `ZZ` - 退出 `less`
+
+在 `less` 查看中模拟 `tail -f`
+- `F` - 查看过程中, 按下 `F` 就可以达到类似 `tail -f` 动态查看日志的效果
+
+其他有用的选项:
+- `v` - 使用默认的编辑器编辑当前文件
+- `h` - 帮助文档(查查手册之类的很有用)
+- `&pattern` - 仅展示匹配的行
+
+标记导航:
+- `ma` - 标记当前位置为字母 `a`
+- `a - 调整到标记 `a` 的位置
+
+多个文件查看:
+方式1:文件名作为参数
+```bash
+$ less file1 file2
+```
+方式2: 使用命令模式打开另个文件
+```bash
+$ less file1
+:e file2
+```
+
+多个文件模式下: 切换文件
+- `:n` - 下一个文件
+- `:p` - 上一个文件
+
+更多信息:
+- [Less Command: 10 Tips for Effective Navigation](http://www.thegeekstuff.com/2010/02/unix-less-command-10-tips-for-effective-navigation/)
+- [Open & View 10 Different File Types with Linux Less Command](http://www.thegeekstuff.com/2009/04/linux-less-command-open-view-different-files-less-is-more/)
+
+# 27. Wget例子 
+`wget` 是在网络上下载文件的最佳选择
+
+10多个实用例子:
+```bash
+#示例1: 单个文件下载, 存储到当前目录
+$ wget http://www.openss7.org/repos/tarballs/strx25-0.9.2.1.tar.bz2
+
+# 示例2: 下载后改名
+$ wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701
+
+# 示例3: 控制下载速度
+$ wget --limit-rate=200k http://www.openss7.org/repos/tarballs/strx25-0.9.2.1.tar.bz2
+
+# 示例4: 断点续传支持(大文件适用)
+$ wget -c http://www.openss7.org/repos/tarballs/strx25-0.9.2.1.tar.bz2
+
+# 示例5: 后台下载 (大文件合适)
+$ wget -b http://www.openss7.org/repos/tarballs/strx25-0.9.2.1.tar.bz2
+Continuing in background, pid 1984.
+Output will be written to 'wget-log'.
+
+# 示例6: 伪装 User-Agent 选项
+$ wget --user-agent="Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.3) Gecko/2008092416 Firefox/3.0.3" URL-TO-DOWNLOAD
+
+# 示例7: 检查下载链接是否可用 (200 表示可用)
+$ wget --spider download-url
+Spider mode enabled. Check if remote file exists.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Remote file exists and could contain further links,
+but recursion is disabled -- not retrieving.
+
+# 示例5: 设置重试次数 (默认重试20次)
+$ wget --tries=75 DOWNLOAD-URL
+
+# 示例6: 批量下载
+$ cat > download-file-list.txt
+URL1
+URL2
+URL3
+URL4
+$ wget -i download-file-list.txt
+
+# 示例7: 下载整个网站
+$ wget --mirror -p --convert-links -P ./LOCAL-DIR WEBSITE-URL
+# –mirror : 开启镜像模式
+# -p : 下载所有可用的文件
+# –convert-links : 下载之后链接转换为本地链接
+# -P ./LOCAL-DIR : 指定目录存储所有文件
+
+# 示例8: 排除指定类型文件
+$ wget --reject=gif WEBSITE-TO-BE-DOWNLOADED
+
+# 示例9: 日志信息输出到文件
+$ wget -o download.log DOWNLOAD-URL
+
+# 示例10: 文件超过指定大小, 则放弃下载 (仅适用于递归下载)
+$ wget -Q5m -i FILE-WHICH-HAS-URLS
+
+# 示例11: 仅下载指定类型文件
+$ wget -r -A.pdf http://url-to-webpage-with-pdfs/
+
+# 示例12: FTP 下载
+$ wget ftp-url
+$ wget --ftp-user=USERNAME --ftp-password=PASSWORD DOWNLOAD-URL
+```
+更多参考:
+- [Wget Download Guide With 15 Examples](http://www.thegeekstuff.com/2009/09/the-ultimate-wget-download-guide-with-15-awesome-examples/)
 
 ---
-参考：
+其他参考：
 - [Linux 101 Hacks 官网 - The Geek Stuff](http://www.thegeekstuff.com/)
 - [grep 命令系列：grep 中的正则表达式](https://linux.cn/article-6941-1.html)
 - [Linux Shell 1>/dev/null 2>&1 含义](http://blog.csdn.net/ithomer/article/details/9288353)
