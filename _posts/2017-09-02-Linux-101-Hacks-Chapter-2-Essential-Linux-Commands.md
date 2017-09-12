@@ -750,6 +750,72 @@ Number of employees in Tehcnology Dept = 3
 - `i` - 向右
 - `h` - 向左
 
+多次移动位置可以在前面加上数字, 比如: `10j` 表示向下移动10行
+
+行内移动:
+- `0` - 当前行第一个位置
+- `^` - 当前行第一个非空白字符处
+- `$` - 但启航末尾位置
+- `g_` - 当前行最后一个非空白字符处
+
+### 屏幕导航
+- `H` - 当前屏幕的第一行 (head)
+- `M` - 当前屏幕中间的一行 (middle)
+- `L` - 当前屏幕最后一行 (last)
+- `ctrl+f` - 跳转到往前一屏 (forward)
+- `ctrl+b` - 跳转到往后一屏 (backwards)
+- `ctrl+d` - 跳转到往下半屏位置 (down half)
+- `ctrl+u` - 跳转到往上屏位置 (up half)
+
+### 特殊导航
+- `N%` - 跳转到文件 N% 百分比位置
+- `NG` - 跳转到 N行 位置
+- `G` - 文件最后
+- `" - 最后关闭文件时, 转到 NORMAL 模式的位置(上次离开文件时位置)
+- `^ - 最后关闭文件时, 转到 INSERT 模式的位置(文件最后一次插入字符的位置)
+- `gg` - 文件开始位置 
+
+### 单词导航
+- `w` - 跳转到下一个 `word`
+- `W` - 跳转到下一个 `WORD` 
+- `b` - 跳转到上一个 `word`
+- `B` - 跳转到上一个 `WORD`
+- `e` - 当前 `word` 末尾
+- `E` - 当前 `WORD` 末尾
+
+`word` 由一系列字母,数字和下划线组成     
+`WORD` 由一系列非空白字符组成, 用空格分隔    
+
+两个的区别比如:
+- `192.168.1.1` – 一个 WORD
+- `192.168.1.1` – 7个 words
+
+### 段落导航
+- `{` - 当前段落开始处, 多次按下时, 跳转到上一段落开始处
+- `}` - 当前段路结束处, 多次按下时, 跳转到下一段落开始处
+
+### 搜索导航
+- `/pattern` - 按正则模式搜索并跳转到 下一个 匹配的位置; 按 `n` 跳转到下个出现的位置, 按 `shift+n` 上个出现的位置
+- `?pattern` - 按正则模式搜索并跳转到 上一个 匹配的位置
+- `*` - 按光标当前 `word` 搜索并调整到 下一个 匹配的位置
+- `#` - 按光标当前 `word` 搜索并调整到 上一个 匹配的位置
+
+### 代码导航
+- `%` - 括号配对, 寻找括号的另一半; 比如:`{}`, `[]`, `()`
+
+### 命令行导航
+- `:n` - 命令模式下, 跳转到第 n 行
+- `vim +10 /etc/passwd` - 打开文件并跳转到第 10 行位置
+- `vim +/install README` - 打开文件并跳转到第一次匹配的 `install` 位置119.128.112.160
+- `vim +?bug README` - 打开文件跳转到最后一次出现的 `bug` 的位置
+
+更多讨论和例子:
+- [8 Essential Vim Editor Navigation Fundamentals](http://www.thegeekstuff.com/2009/03/8-essential-vim-editor-navigation-fundamentals/)
+- [Vim search and replace – 12 powerful find and replace examples](http://www.thegeekstuff.com/2009/04/vi-vim-editor-search-and-replace-examples/)
+- [How To Add Bookmarks Inside Vim Editor](http://www.thegeekstuff.com/2009/02/how-to-add-bookmarks-inside-vi-and-vim-editor/)
+- [Vi and Vim Macro Tutorial: How To Record and Play](http://www.thegeekstuff.com/2009/01/vi-and-vim-macro-tutorial-how-to-record-and-play/)
+- [Vim Editor: How to Correct Spelling Mistakes Automatically](http://www.thegeekstuff.com/2009/03/vim-editor-how-to-correct-spelling-mistakes-automatically/)
+
 # 24. Chmod Command Examples
 # 25. View Multiple Log Files in One Terminal
 # 26. Less Command
