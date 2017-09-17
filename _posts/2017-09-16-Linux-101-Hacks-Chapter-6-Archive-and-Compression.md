@@ -5,7 +5,7 @@ tagline: ""
 description: "常用的归档和压缩/解压命令"
 date: '2017-09-16 22:12:10 +0800'
 category: linux
-tags: linux
+tags: linux linux-command linux-101-hacks ebook
 ---
 > {{ page.description }}
 
