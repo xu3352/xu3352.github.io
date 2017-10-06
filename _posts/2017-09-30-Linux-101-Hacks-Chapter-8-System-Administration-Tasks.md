@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linux 101 Hacks 第八章:系统管理任务(第一部分)"
+title: "Linux 101 Hacks 第八章:系统管理任务(一:分区相关)"
 tagline: ""
 description: "Linux系统方面的管理，涉及命令包括：`fdisk mke2fsk mount tune2fs mkswap useradd passwd groupadd ssh ssh-copy-id crontab mkfs rsync chkconfig iptables `"
 date: '2017-09-30 20:56:29 +0800'
@@ -201,7 +201,28 @@ Filesystem volume name:   database-home
 ```
 
 # 59.创建交换区文件系统
+创建交换分区: 
+```bash
+# 创建指定大小的文件
+$ dd if=/dev/zero of=/home/swap-fs bs=1M count=512
+512+0 records in
+512+0 records out
 
-未完待续...
+$ ls -l /home/swap-fs
+-rw-r--r--  1 root root 536870912 Jan  2 23:13 /home/swap-fs
+
+# 安装到交换区
+$ mkswap /home/swap-fs
+
+# 启用交换分区
+$ swapon /home/swap-fs
+```
+
+如果想要重启的时候也生效，可以在 `/etc/fstab` 添加一行：
+```bash
+$ /home/swap-fs swap swap defaults 0 0 
+```
+
+更多: [2 Ways to Add Swap Space Using dd, mkswap and swapon](http://www.thegeekstuff.com/2010/08/how-to-add-swap-space/)
 
 
