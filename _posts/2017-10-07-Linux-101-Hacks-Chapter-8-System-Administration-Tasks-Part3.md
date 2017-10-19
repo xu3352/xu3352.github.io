@@ -624,6 +624,59 @@ Cron | Anacron
 
 **更多**: [Cron Vs Anacron: How to Setup Anacron on Linux (With an Example)](http://www.thegeekstuff.com/2011/05/anacron-examples/)
 
-# 70.IPTables Rules Examples
+# 70.iptables规则设置
+
+[Linux防火墙：iptables命令](http://man.linuxde.net/iptables)
+
+**示例1**: 删除已有的规则(删除全部规则)
+```bash
+$ iptables -F
+
+# 或者
+$ iptables --flush
+```
+
+**示例2**: 设置默认链策略
+```bash
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
+```
+当您将 `INPUT` 和 `OUTPUT` 链的默认策略作为 `DROP` 时，对于您拥有的每个防火墙规则要求，您应该定义两个规则。 即一个用于传入，一个用于传出
+
+在下面的所有示例中，我们为每个场景都有两个规则，因为我们将DROP设置为INPUT和OUTPUT链的默认策略
+
+如果您信任您的内部用户，可以省略上面的最后一行。 即默认情况下不要丢弃所有传出数据包。 在这种情况下，对于每个防火墙规则要求，只需要定义一个规则。 即仅为传入定义规则，因为传出对所有数据包是 `ACCEPT`
+
+**示例3**: 禁用指定的IP地址
+```bash
+BLOCK_THIS_IP="x.x.x.x"
+iptables -A INPUT -s "$BLOCK_THIS_IP" -j DROP
+```
+
+另一种变体:禁用指定IP在eth0上的TCP流量
+```bash
+iptables -A INPUT -i eth0 -s "$BLOCK_THIS_IP" -j DROP
+iptables -A INPUT -i eth0 -p tcp -s "$BLOCK_THIS_IP" -j DROP
+```
+
+**示例4**: 允许所有的SSH访问
+```bash
+iptables -A INPUT -i eth0 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+```
+
+**示例5**: 仅允许从特定网络传入SSH
+```bash
+iptables -A INPUT -i eth0 -p tcp -s 192.168.100.0/24 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+```
+`192.168.100.0/24` 表示 `192.168.100.0/255.255.255.0`
+
+**更多**:
+- [25 Most Frequently Used Linux IPTables Rules Examples](http://www.thegeekstuff.com/2011/06/iptables-rules-examples/)
+- [IPTables Tables, Chains, Rules Fundamentals](http://www.thegeekstuff.com/2011/01/iptables-fundamentals/)
+- [How to Add Firewall Rules](http://www.thegeekstuff.com/2011/02/iptables-add-rule/)
+- [Incoming and Outgoing Rule Examples](http://www.thegeekstuff.com/2011/03/iptables-inbound-and-outbound-rules/)
 
 
