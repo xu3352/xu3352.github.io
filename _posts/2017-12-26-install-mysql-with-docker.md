@@ -5,7 +5,7 @@ tagline: ""
 description: "docker 安装最新版的 mysql"
 date: '2017-12-26 12:52:01 +0800'
 category: linux
-tags: linux
+tags: mysql docker linux
 ---
 > {{ page.description }}
 
