@@ -14,7 +14,6 @@ author :
   name : YINGLONG XU
   email : xu3352@gmail.com
   github : xu3352
-  twitter : xuyinglong
 ```
 
 # Latest Posts
