@@ -11,6 +11,9 @@ number: 5
 # 清单 
 各种在线手册或者书籍，有事没事多看看总是好的
 
+# 菜鸟教程
+- [菜鸟教程--各种语言/框架/API的入门篇](http://www.runoob.com/)
+
 # Python
 - [Python 3](https://www.tutorialspoint.com/python3/index.htm)
 
