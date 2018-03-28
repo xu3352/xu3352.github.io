@@ -22,7 +22,7 @@ ntpdate time.nist.gov
 service ntpd stop
 ```
 
-2. 提示:`no server suitable for synchronization found`, 可以查看 `/etc/ntp.conf` 配置文件, 把 `notrap` 去掉再尝试
+2. 提示:`no server suitable for synchronization found`, 可以查看 `/etc/ntp.conf` 配置文件, 把 `notrap` 去掉再尝试; 还有一种情况是 `time.nist.gov` 无法访问, 建议换一个地址, 或者直接使用IP地址
 ```bash
 # Access Control Support
 # restrict    default kod nomodify notrap nopeer noquery
@@ -31,8 +31,6 @@ restrict    default kod nomodify nopeer noquery
 restrict -6 default kod nomodify nopeer noquery
 restrict 127.0.0.1
 ```
-
-还有一种情况是 `time.nist.gov` 无法访问, 建议换一个地址, 或者直接使用IP地址
 
 3. 也有可能是防火墙的问题(可能是server的防火墙屏蔽了upd 123端口), 也可以把防火墙关掉尝试
 ```bash
