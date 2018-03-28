@@ -13,6 +13,7 @@ tags: ntpdate linux
 ```bash
 ntpdate time.nist.gov
 ```
+如果是内网服务器之间的时间同步, 可以直接使用 `ntpdate ip` 即可
 
 # 报错处理
 
@@ -30,6 +31,8 @@ restrict    default kod nomodify nopeer noquery
 restrict -6 default kod nomodify nopeer noquery
 restrict 127.0.0.1
 ```
+
+还有一种情况是 `time.nist.gov` 无法访问, 建议换一个地址, 或者直接使用IP地址
 
 3. 也有可能是防火墙的问题(可能是server的防火墙屏蔽了upd 123端口), 也可以把防火墙关掉尝试
 ```bash
