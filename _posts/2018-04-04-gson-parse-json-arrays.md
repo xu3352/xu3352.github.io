@@ -4,8 +4,8 @@ title: "Gson解析json数组"
 tagline: ""
 description: "gson快捷方便的解析Java对象数组"
 date: '2018-04-04 16:03:16 +0800'
-category: linux
-tags: linux
+category: java
+tags: gson json java
 ---
 > {{ page.description }}
 
