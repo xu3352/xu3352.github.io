@@ -51,6 +51,10 @@ Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
 
 看起来没问题, 然后再来个偷梁换柱, 把 `/usr/bin/php` 替换成我们最新的
 ```bash
+# 查找位置
+$ whereis php
+/usr/bin/php
+
 # 先备份
 $ sudo /usr/bin/php /usr/bin/php5.5
 
@@ -124,7 +128,7 @@ $ whereis php-fpm
 # 备份
 $ sudo mv /usr/sbin/php-fpm /usr/sbin/php-fpm5.5
 
-# 替换
+# 创建一个链接
 $ sudo ln -s /usr/local/php5-7.2.2-20180201-132629/sbin/php-fpm /usr/sbin/php-fpm
 ```
 
