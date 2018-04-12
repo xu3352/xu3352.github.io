@@ -59,7 +59,7 @@ $ whereis php
 $ sudo /usr/bin/php /usr/bin/php5.5
 
 # 创建一个链接, 类似window下面的快捷方式
-$ ln -s /usr/local/php5-7.2.2-20180201-132629/bin/php /usr/bin/php
+$ sudo ln -s /usr/local/php5-7.2.2-20180201-132629/bin/php /usr/bin/php
 ```
 然后 `php -v` 就可以看到是 7.2.2 版本了
 
