@@ -54,6 +54,26 @@ sys.stdout.write("中文\n")
 sys.stdout.buffer.write("中文\n".encode())
 ```
 
+# 构建补充
+自定义的 `Build` 改成如下就可以支持了: 
+
+首次创建: `Tools` -> `Build System` -> `New Build System...`, 内容如上; 实际 `python3` 可以写绝对路径; 保存时命名为 `python3.sublime-build` 即可
+```bash
+{
+    "cmd": ["/usr/local/bin/python3", "-u", "$file"],
+    "env": {"PYTHONIOENCODING": "utf8"}, 
+    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    "selector": "source.python"
+}
+```
+
+修改路径: `Preferences` -> `Browse Packages...` -> `./Packages/User/python3.sublime-build`
+
+构建文件时可以手动选择: `Tools` -> `Build System` -> `python3`, 然后 `Cmd + B` 直接就可以执行你当前的 `xx.py` 文件了
+
+(2018.04.15 补充更新)
+
+
 参考：
 - [How to print utf-8 to console with Python 3.4 (Windows 8)?](http://stackoverflow.com/questions/25127673/how-to-print-utf-8-to-console-with-python-3-4-windows-8)
 - [How to set sys.stdout encoding in Python 3?](http://stackoverflow.com/questions/4374455/how-to-set-sys-stdout-encoding-in-python-3)
