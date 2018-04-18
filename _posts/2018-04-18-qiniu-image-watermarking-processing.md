@@ -82,7 +82,7 @@ print(md5sum('/Users/xuyinglong/Downloads/base64.html'));
 
 ---
 参考：
-- [七牛云-图片水印处理-文字水印](https://developer.qiniu.com/dora/manual/1316/image-watermarking-processing-watermark)
+- [七牛云-图片水印处理-文字水印](https://developer.qiniu.com/dora/manual/1316/image-watermarking-processing-watermark#2)
 - [How can you encode a string to Base64 in JavaScript?](https://stackoverflow.com/questions/246801/how-can-you-encode-a-string-to-base64-in-javascript)
 - [Online Tools - MD5 File Checksum](https://emn178.github.io/online-tools/md5_checksum.html)
 - [Python3之hashlib](https://www.cnblogs.com/wang-yc/p/5616663.html)
