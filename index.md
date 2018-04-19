@@ -13,7 +13,7 @@ title : XU3352'S TECH BLOG
 author :
   name : YINGLONG XU
   email : xu3352@gmail.com
-  github : xu3352
+  github : github.com/xu3352
 ```
 
 # Latest Posts
