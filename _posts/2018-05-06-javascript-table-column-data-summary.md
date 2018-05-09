@@ -71,6 +71,7 @@ function data_grid_sum(table) {
         var $th = $(this);
         indexList.push($table.find("thead tr th").index($th))
     });
+    if (indexList.length <= 0) return;
 
     // init dict
     var dict = {};
