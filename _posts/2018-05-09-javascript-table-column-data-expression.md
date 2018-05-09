@@ -164,7 +164,10 @@ console.log( eval("(23+30)/100") );
  * @param num 保留几位小数
  */
 Number.prototype.percent = function(num) {
-    return (this * 100).toFixed(num).toString() + '%';
+    if (!isFinite(this)) return "";
+    var n = (this * 100).toFixed(num);
+    if (n == 0) return "";
+    return n.toString() + '%';
 }
 
 console.log( 0.11234.percent(1) );
@@ -227,7 +230,8 @@ function data_grid_calc(table) {
 // 表达式填充
 function grid_calc_expr_fill(expr, list) {
     var valueExpr = expr;
-    for (var i = 0; i < list.length; i++) {
+    // 倒序!(不然超过10列会悲剧)
+    for (var i = list.length - 1; i >= 0; i--) {
         var reg = new RegExp("c" + i, 'g');
         valueExpr = valueExpr.replace(reg, list[i]);
     }
