@@ -5,7 +5,7 @@ tagline: ""
 description: "最近搞统计, 有一些原始值从后端过来后需要进行一些计算, 或者要做求百分比的展示, 这里我就放到浏览器来完成了"
 date: '2018-05-09 19:22:10 +0800'
 category: javascript
-tags: javascript jquery
+tags: javascript jquery-plugin jquery
 ---
 > {{ page.description }}
 
@@ -114,12 +114,13 @@ console.log( eval("(23+30)/100") );
         <tr>
             <th>序号</th>
             <th>标题</th>
-            <th class="sum">数据C2</th>
-            <th class="sum">数据C3</th>
-            <th class="sum">数据C4</th>
-            <th grid-calc-expr="c3+c4">c5=c3+c4</th>
-            <th grid-calc-expr="(c2/(c3+c4)).percent(1)">c6=(c2/(c3+c4)).percent(1)</th>
-            <th grid-calc-expr="(c2/(c5+c2)).percent(2)">c7=(c2/(c5+c2)).percent(2)</th>
+            <th grid-alias="x" class="sum">数据c2<br/>alias=x</th>
+            <th grid-alias="y" class="sum">数据c3<br/>alias=y</th>
+            <th grid-alias="z" class="sum">数据c4<br/>alias=z</th>
+            <th grid-alias="total" grid-expr="y+z">c5=y+z<br/>alias=total</th>
+            <th grid-expr="(c2/(c3+c4)).percent(1)">c6=(c2/(c3+c4)).percent(1)</th>
+            <th grid-expr="(c2/(c5+c2)).percent(2)">c7=(c2/(c5+c2)).percent(2)</th>
+            <th grid-expr="(x/(total+x)).percent(2)">c8=(x/(total+x)).percent(2)</th>
         </tr>
     </thead>
     <tbody>
@@ -129,6 +130,7 @@ console.log( eval("(23+30)/100") );
             <td>10</td>
             <td>11</td>
             <td>30</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -142,6 +144,7 @@ console.log( eval("(23+30)/100") );
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>3</td>
@@ -149,6 +152,7 @@ console.log( eval("(23+30)/100") );
             <td>2</td>
             <td>20</td>
             <td>30</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -162,6 +166,7 @@ console.log( eval("(23+30)/100") );
 /**
  * 小数转百分比形式
  * @param num 保留几位小数
+ * @returns ##.#%
  */
 Number.prototype.percent = function(num) {
     if (!isFinite(this)) return "";
@@ -170,12 +175,14 @@ Number.prototype.percent = function(num) {
     return n.toString() + '%';
 }
 
-console.log( 0.11234.percent(1) );
-console.log( eval("((23+30)/100).percent(1)") );
+// console.log( 0.11234.percent(1) );
+// console.log( eval("((23+30)/100).percent(1)") );
 
 /**
  * table列表达式计算
- * $("table thead tr th[grid-calc-expr]") 这一列会进行计算
+ * $("table thead tr th[grid-expr]") 这一列会进行计算
+ * 数据列以 [c0, c1, c2 ...] 命名, 可以使用 grid-alias 取别名
+ * @see https://xu3352.github.io/javascript/2018/05/09/javascript-table-column-data-expression
  * @param table
  */
 function data_grid_calc(table) {
@@ -183,14 +190,26 @@ function data_grid_calc(table) {
 
     // 过滤出哪些列需要计算 [{index:expr}]
     var exprList = [];
-    $table.find("thead tr th[grid-calc-expr]").each(function () {
+    $table.find("thead tr th[grid-expr]").each(function () {
         var $th = $(this);
         var index = $table.find("thead tr th").index($th);
-        var expr = $(this).attr("grid-calc-expr");
+        var expr = $(this).attr("grid-expr");
         exprList.push( {index:index, expr:expr} );
     });
+    if (exprList.length <= 0) return;
+
+    // 别名字典 {aliasA:c3}
+    var aliasDict = {};
+    $table.find("thead tr th[grid-alias]").each(function () {
+        var $th = $(this);
+        var index = $table.find("thead tr th").index($th);
+        var alias = $(this).attr("grid-alias");
+        aliasDict[alias] = "c" + index;
+    });
+    // console.log( aliasDict );
 
     // 统计 tbody 对应的 td 的 text, 放到字典里
+    var row = 1;
     $table.find("tbody tr").each(function () {
         var $tr = $(this);
 
@@ -204,8 +223,8 @@ function data_grid_calc(table) {
                 // 如果没有值, 但这一列是表达式呢?
                 var index = $tr.find("td").index($tds[i]);
                 var $head_tr = $table.find("thead tr th:eq("+index+")");
-                if ($head_tr.attr("grid-calc-expr")) {
-                    v = "(" + $head_tr.attr("grid-calc-expr") + ")"
+                if ($head_tr.attr("grid-expr")) {
+                    v = "(" + $head_tr.attr("grid-expr") + ")"
                 }
             }
             dataTdList.push(v);
@@ -217,29 +236,74 @@ function data_grid_calc(table) {
             var index = exprList[i]["index"];
             var expr = exprList[i]["expr"];
 
-            var valueExpr = grid_calc_expr_fill(expr, dataTdList);
-            // console.log("expr:" + expr + " valueExpr:"+valueExpr);
-
-            // 把最终结果放入指定的列
-            var data = eval( valueExpr );
-            $tr.find("td:eq(" + index + ")").text( data );
+            // 表达式填值后 eval 计算
+            var numberExpr = grid_expr_complex_to_simple(expr, aliasDict, dataTdList);
+            var number = eval( numberExpr );
+            // 展示
+            $tr.find("td:eq(" + index + ")").text( number );
+            // 日志
+            // console.log("data[" + row + "," + index + "] expr:" + expr + " numberExpr:" + numberExpr + " number:" + number);
         }
+        row++;
     });
 }
+// 表达式计算:复杂->简单->数字
+function grid_expr_complex_to_simple(expr, aliasDict, dataTdList) {
+    var newExpr = expr;
+    var aliasList = grid_alias_reverse_list(aliasDict);
 
-// 表达式填充
-function grid_calc_expr_fill(expr, list) {
-    var valueExpr = expr;
+    // console.log(newExpr);
+    // 循环求值:直到表达式 (没有别名 && 没有[c0, c1, c2 ...]) 的时候为止
+    do {
+        newExpr = grid_expr_alias_replace(newExpr, aliasList, aliasDict);
+        // console.log(newExpr);
+        newExpr = grid_expr_fill(newExpr, dataTdList);
+        // console.log(newExpr);
+    } while (grid_expr_has_alias(newExpr, aliasList) || newExpr.match(/c\d+/))
+    return newExpr;
+}
+// 倒序的别名List
+function grid_alias_reverse_list(aliasDict) {
+    var aliasList = [];
+    for (var alias in aliasDict) {
+        aliasList.push(alias);
+    }
+    aliasList.reverse();  // 倒序, 长的先替换
+    return aliasList;
+}
+// 表达式是否包含别名
+function grid_expr_has_alias(expr, aliasList) {
+    for (var i in aliasList) {
+        if (expr.indexOf(aliasList[i]) >= 0) return true;
+    }
+    return false;
+}
+// 表达式别名替换:别名长的优先!
+function grid_expr_alias_replace(expr, aliasList, aliasDict) {
+    var newExpr = expr;
+    // 包含别名的进行别名替换
+    if (aliasDict.length <= 0) return newExpr;
+    if (!grid_expr_has_alias(newExpr, aliasList)) return newExpr;
+
+    for (var i in aliasList) {
+        var alias = aliasList[i];
+        newExpr = newExpr.replace(new RegExp(alias, 'g'), aliasDict[alias]);
+    }
+    return newExpr;
+}
+// 表达式填充:列编号大的优先!
+function grid_expr_fill(expr, list) {
+    var newExpr = expr;
+    // 匹配 [c0, c1, c2 ...] 的进行数值填充
+    if (!newExpr.match(/c\d+/)) return newExpr;
+
     // 倒序!(不然超过10列会悲剧)
     for (var i = list.length - 1; i >= 0; i--) {
         var reg = new RegExp("c" + i, 'g');
-        valueExpr = valueExpr.replace(reg, list[i]);
+        newExpr = newExpr.replace(reg, list[i]);
     }
-    // 递归一下, 如果 list 里也有表达式的话
-    if (valueExpr.match(/c\d+/)) return grid_calc_expr_fill(valueExpr, list);
-    return valueExpr;
+    return newExpr;
 }
-
 
 /**
  * 合计指定列的值, 最后追加table最后一行, 指定列将会自动累加
@@ -295,22 +359,60 @@ $(function(){
     });
     */
     data_grid_sum($("#myTable"));
-
     data_grid_calc($("#myTable"));
 });
 </script>
-</html>
+</html>          
 ```
 
-# 注意事项
+**注意事项**:
 1. `data_grid_sum` 合计行处理
 2. `data_grid_calc` 表达式计算处理
-3. `grid_calc_expr_fill` 填充数据(如果列包含了表达式, 递归填充)
-4. `Number.prototype.percent` 百分比处理, 参数为保留小数位数
-5. 在 `table thead tr th` 绑定表达式属性: `grid-calc-expr` 如:`<th grid-calc-expr="c3+c4">cx列</th>`
-6. 表达式列:仅用小写字母 `c` + 数字 <span style="color:red">0开始算</span> 如:`c0 c1 .... c10`, 超过的话会报错的!!!
-7. 表达式可以嵌套不是原始值的列, 如:`c7` 当中使用的 `c5`
-8. 可以自定义函数(如:百分比处理函数), 非常强大!
+3. `Number.prototype.percent` 百分比处理, 参数为保留小数位数
+4. 在 `table thead tr th` 绑定表达式属性: `grid-expr` 如:`<th grid-expr="c3+c4">cx列</th>`
+5. 表达式列:支持使用小写字母 `c` + 数字 <span style="color:red">0开始算</span> 如:`c0 c1 .... c10`, 超过的话会报错的!!!
+
+# 别名支持
+实际使用过程中, 如果列比较多(超过10列), 数起来会比较容易出错, 想过使用 `c-1 c-2` 之类的, 替换的时候比较麻烦; 最后还是使用别名来解决吧
+
+![别名](http://on6gnkbff.bkt.clouddn.com/20180510055255_js-table-data-grid-calc-03.png){:width="100%"}
+
+**详解**:
+- 可使用 `grid-alias` 定义别名, 然后别的表达式就可以使用别名了, 实际效果等价 `x=c2`
+- `c7` 和 `c8` 的表达式是等同的; `c7` 表达式使用的`列+编号`, `c8` 表达式使用的别名
+
+
+列数较少的可以直接使用: `c0 c1 c2 ...` 来写表达式
+
+缺点:一是容易数错编号(0开始), 二是列的位置如果变动, 则需要修改对应的编号
+
+所以建议: <span style="color:red">全部使用别名表达式!!!</span> 命名时避免使用 `c0 c1 c2 ...` 的情况!
+
+
+# 表达式计算过程
+以上图最后一行的 `c8` 列表达式为例: 
+1. 原始表达式:`(x/(total+x)).percent(2)`
+2. 替换掉别名后:`(c2/(c5+c2)).percent(2)` 
+3. 列包含了表达式: `(22/((c3+c4)+22)).percent(2)`  这里的 `c5=c3+c4`
+3. 最终的数字表达式:`(22/((51+68)+22)).percent(2)`
+
+复杂表达式, 后来想到想到别名和cx混用的情况, 然后再进行了改造:
+![别名](http://on6gnkbff.bkt.clouddn.com/20180510080324_js-table-data-grid-calc-04.png){:width="100%"}
+
+还是以上图最后一行 `c8` 列为例, 但这里的 `c5=y+z`, 过程如下:
+
+1. `(x/(total+x)).percent(2)`
+1. `(c2/(c5+c2)).percent(2)`
+1. `(22/((y+z)+22)).percent(2)`
+1. `(22/((c3+c4)+22)).percent(2)`
+1. `(22/((51+68)+22)).percent(2)`
+
+`data[4,8]` 数据:
+- expr:`(x/(total+x)).percent(2)` 
+- numberExpr:`(22/((51+68)+22)).percent(2)` 
+- number:`15.60%`
+
+目测这个用着就比较舒服了
 
 ---
 参考：

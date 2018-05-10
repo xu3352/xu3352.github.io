@@ -5,7 +5,7 @@ tagline: ""
 description: "也可以算个小插件了 :) "
 date: '2018-05-06 13:29:21 +0800'
 category: javascript
-tags: javascript jquery
+tags: javascript jquery-plugin jquery
 ---
 > {{ page.description }}
 
