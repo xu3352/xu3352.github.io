@@ -26,7 +26,7 @@ function data_grid_orderby(table) {
         var index = $table.find("thead tr th").index($th);
         var $trList = $table.find("tbody tr");
 
-        // 正序排列
+        // 排序处理
         $trList.sort(function (tr1, tr2) {
             var d1 = parseFloat($(tr1).find("td:eq(" + index + ")").text());
             var d2 = parseFloat($(tr2).find("td:eq(" + index + ")").text());
@@ -35,7 +35,7 @@ function data_grid_orderby(table) {
             return d1 < d2 ? 1 : -1;    // 正序 => 倒序(默认)
         });
 
-        // 重新排序
+        // 去掉老的, 展示新的
         $table.find("tbody tr").remove();
         for (var i in $trList) {
             if ( $trList[i].tagName == "TR" ) {
