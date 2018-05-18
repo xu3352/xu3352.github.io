@@ -81,6 +81,7 @@ json数组转Java数组
 ```java
 String jsonString = "[{\"brand\":\"Jeep\",\"doors\":3},{\"brand\":\"Porsche\",\"doors\":2}]";
 Type listType = new TypeToken<List<Car>>(){}.getType();
+Gson gson = new Gson();
 List<Car> carList = gson.fromJson(jsonString, listType);
 System.out.println( carList );
 ```
