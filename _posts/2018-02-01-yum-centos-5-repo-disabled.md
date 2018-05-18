@@ -14,17 +14,23 @@ tags: linux centos5 yum
 
 折腾了半天... 
 
-中间也是阿里和163的各种换, 也是各种不好使, 感谢大神的分享
-
+报错信息: 
 ```bash
-[root@server_xxx yum.repos.d]# yum clean all
+$ yum -y install openssl
+http://mirrors.aliyun.com/centos/%24releasever/addons/x86_64/repodata/repomd.xml: [Errno 14] HTTP Error 404: Not Found
+Trying other mirror.
+http://mirrors.aliyuncs.com/centos/%24releasever/addons/x86_64/repodata/repomd.xml: [Errno 14] HTTP Error 404: Not Found
+Trying other mirror.
+Error: Cannot retrieve repository metadata (repomd.xml) for repository: addons. Please verify its path and try again
+```
+```bash
+$ yum clean all
 Loaded plugins: fastestmirror
 gpgcheck=1
 Cleaning up Everything
 Cleaning up list of fastest mirrors
-[root@server_weixin_slave4 yum.repos.d]#
-[root@server_weixin_slave4 yum.repos.d]#
-[root@server_weixin_slave4 yum.repos.d]# yum makecache
+
+$ yum makecache
 Loaded plugins: fastestmirror
 Determining fastest mirrors
  * epel: mirrors.aliyuncs.com
@@ -33,6 +39,9 @@ Trying other mirror.
 Error: Cannot retrieve repository metadata (repomd.xml) for repository: addons. Please verify its path and try again
 ```
 
+<span style="color:red">这里针对的 Centos5 或者 redhat5 </span>
+
+中间也是阿里和163的各种换, 也是各种不好使, 感谢大神的分享
 
 把 `/etc/yum.repos.d/CentOS-Base.repo` 内容改成下面的
 ```bash
@@ -57,7 +66,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 
 
 #released updates   
-[updates]  
+[updates]
 name=CentOS-$releasever - Updates  
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates  
 #baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/  
@@ -67,7 +76,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 
 
 #additional packages that may be useful  
-[extras]  
+[extras]
 name=CentOS-$releasever - Extras  
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras  
 #baseurl=http://mirror.centos.org/centos/$releasever/extras/$basearch/  
@@ -77,7 +86,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 
 
 #additional packages that extend functionality of existing packages  
-[centosplus]  
+[centosplus]
 name=CentOS-$releasever - Plus  
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus  
 #baseurl=http://mirror.centos.org/centos/$releasever/centosplus/$basearch/  
@@ -88,7 +97,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 
 
 #contrib - packages by Centos Users  
-[contrib]  
+[contrib]
 name=CentOS-$releasever - Contrib  
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib  
 #baseurl=http://mirror.centos.org/centos/$releasever/contrib/$basearch/  
@@ -96,6 +105,39 @@ baseurl=http://vault.centos.org/5.11/contrib/$basearch/
 gpgcheck=1  
 enabled=0  
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+```
+
+补充, 记得把 `epel.repo` 源一起改掉
+```bash
+[epel]
+name=Extra Packages for Enterprise Linux 5 - $basearch
+baseurl=http://mirrors.aliyun.com/epel/5/$basearch
+        http://mirrors.aliyuncs.com/epel/5/$basearch
+mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-5&arch=$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-5
+ 
+[epel-debuginfo]
+name=Extra Packages for Enterprise Linux 5 - $basearch - Debug
+baseurl=http://mirrors.aliyun.com/epel/5/$basearch/debug
+        http://mirrors.aliyuncs.com/epel/5/$basearch/debug
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-5&arch=$basearch
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-5
+gpgcheck=0
+ 
+[epel-source]
+name=Extra Packages for Enterprise Linux 5 - $basearch - Source
+baseurl=http://mirrors.aliyun.com/epel/5/SRPMS
+        http://mirrors.aliyuncs.com/epel/5/SRPMS
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-5&arch=$basearch
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-5
+gpgcheck=0
 ```
 
 有些地方可能还是报404的错, 不过好像不影响使用, 就是速度很慢...
