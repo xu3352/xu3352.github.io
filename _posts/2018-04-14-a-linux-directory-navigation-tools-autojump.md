@@ -57,28 +57,8 @@ SyntaxError: invalid syntax
 
 所以安装好之后一般都是创建软链, 而且 `python3` 自带了 `pip3`
 
-安装 `python3` 步骤:
-```bash
-# 1. 下载安装包(如果下载不了, 可以手动传)
-$ wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz
+安装 `python3` 步骤参考: [Python 3 安装使用](https://xu3352.github.io/python/2018/05/15/python-3-install)
 
-# 2. 安装目录创建
-$ mkdir -p /usr/local/python3
-
-# 3. 解压
-$ tar -zxvf Python-3.6.1.tgz
-
-# 4. 编译
-$ cd Python-3.6.1
-$ ./configure --prefix=/usr/local/python3
-
-# 5. 执行安装
-$ make && make install
-
-# 6. 创建软链
-$ ln -s /usr/local/python3/bin/python3 /usr/bin/python3
-$ ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
-```
 
 查看 `python` 版本号:
 ```bash
@@ -135,5 +115,6 @@ j -d 10
 参考：
 - [linux 超级方便的目录命令行工具：autojump](https://vastxiao.github.io/article/2017/04/14/Linux/autojump_info/)
 - [autojump报错:Please source the correct autojump file in your...](https://github.com/wting/autojump/issues/488)
-- [Linux安装python3.6](https://www.cnblogs.com/kimyeee/p/7250560.html)
+- [Python 3 安装使用](https://xu3352.github.io/python/2018/05/15/python-3-install)
+
 
