@@ -140,6 +140,12 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-5
 gpgcheck=0
 ```
 
+最后在重新缓存一遍:
+```bash
+$ yum clean all
+$ yum makecache
+```
+
 有些地方可能还是报404的错, 不过好像不影响使用, 就是速度很慢...
 
 ---
