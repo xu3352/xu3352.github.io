@@ -39,6 +39,8 @@ Trying other mirror.
 Error: Cannot retrieve repository metadata (repomd.xml) for repository: addons. Please verify its path and try again
 ```
 
+# 更换 yum/epel 源
+
 <span style="color:red">这里针对的 Centos5 或者 redhat5 </span>
 
 中间也是阿里和163的各种换, 也是各种不好使, 感谢大神的分享
@@ -144,12 +146,29 @@ gpgcheck=0
 ```bash
 $ yum clean all
 $ yum makecache
+
+# 耗时较长(估计得10分钟以上), 有需要可以跑一下
+$ yum update
 ```
 
 有些地方可能还是报404的错, 不过好像不影响使用, 就是速度很慢...
+
+# yum 使用警告
+如果在使用 `yum install zlib-devel` 时, 如果出现以下警告, 那么安装并不会成功!!! 
+
+<span style="color:red">warning: rpmts_HdrFromFdno: Header V3 DSA signature: NOKEY, key ID e8562897</span>
+
+```bash
+# 针对 Centos5 
+rpm --import http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-5
+```
+然后重新执行 `yum install zlib-devel` 就OK了 
+
+(`2018-05-19` 更新)
 
 ---
 参考：
 - [centos5.X yum源地址变更](http://blog.csdn.net/qq_36357820/article/details/77732656)
 - [阿里云镜像YUM源 EPEL源](https://my.oschina.net/dingzang/blog/702891)
+- [yum安装时warning: rpmts_HdrFromFdno: Header V3 DSA signature: NOKEY, key ID e8562897](http://www.hongxuejing.com/linux/linux-yum-warning-43.html)
 
