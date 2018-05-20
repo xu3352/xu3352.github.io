@@ -162,17 +162,15 @@ $ make && make install
 
 `/usr/local/python3` 这个目录我也一起删除掉了
 
-<!--
-重新修改 `./setup.py`: (此文件不改也可以)
+- 修改 `./setup.py`: (默认的openssl路径不改也可以)
 ```bash
         # Detect SSL support for the socket module (via _ssl)
         search_for_ssl_incs_in = [
-                              '/usr/local/openssl/include', # 修改
+                              '/usr/local/openssl/include', # 修改为新目录
                               '/usr/local/openssl/include/openssl',  # 新增
                               '/usr/contrib/ssl/include/'
                              ]
 ```
--->
 
 - 修改 `./Modules/Setup.dist`:
 <pre>
