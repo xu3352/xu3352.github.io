@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python Flask:一个极简的web服务"
+title: "Python Flask:一个极简的web服务+文件上传"
 tagline: ""
 description: "`Flask` 是一个面向简单需求小型应用的 “微框架（`microframework`）”"
 date: '2018-04-29 16:43:26 +0800'
@@ -121,6 +121,9 @@ def upload_success():
     <h1>上传成功</h1>
     <a href="/upload/">继续上传</a>
     '''
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080, debug=True)
 ```
 
 1. 限制指定的后缀文件才可以上传
