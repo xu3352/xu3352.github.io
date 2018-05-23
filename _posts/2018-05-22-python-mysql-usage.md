@@ -37,7 +37,8 @@ Python Mysql 工具包
 1. %s 为 mysql 占位符; 能用 %s 的地方就不要自己拼接 sql 了
 2. sql 里有一个占位符可使用 string 或 number; 有多个占位符可使用 tuple|list
 3. insertmany 的时候所有字段使用占位符 %s (预编译), 参数使用 tuple|list
-4. 结果集如果只有一列的情况, 会自动转换为简单的列表 参考:simple_list()
+4. queryall 结果集如果只有一列的情况, 会自动转换为简单的列表 参考:simple_list()
+5. queryone 结果集如果只有一行一列的情况, 自动转为结果数据 参考:simple_value()
 """
 import os
 import json
@@ -80,7 +81,7 @@ def queryone(sql, param=None):
     row = cur.fetchone()
     cur.close()
     con.close()
-    return row
+    return simple_value(row)
 
 
 def queryall(sql, param=None):
@@ -165,6 +166,23 @@ def simple_list(rows):
     return rows
 
 
+def simple_value(row):
+    """
+    结果集只有一行, 一列的情况, 直接返回数据
+    :param row: {'count(*)': 3}
+    :return: 3
+    """
+    if not row:
+        return None
+
+    if len(row.keys()) == 1:
+        # print(row.keys())
+        key = list(row.keys())[0]
+        return row[key]
+
+    return row
+
+
 if __name__ == '__main__':
     print("hello everyone!!!")
 
@@ -204,7 +222,7 @@ if __name__ == '__main__':
 
     # 查询
     print("再次查询全表:", queryall("select * from test_users"))
-
+    print("数据总数:", queryone("select count(*) from test_users"))
 ```
 
 # 运行结果
@@ -220,6 +238,7 @@ hello everyone!!!
 更新: 1
 删除: 1
 再次查询全表: [{'id': 1, 'password': '111111', 'email': 'new@126.com'}, {'id': 2, 'password': '222222', 'email': 'bbb@126.com'}, {'id': 3, 'password': '333333', 'email': 'ccc@126.com'}]
+数据总数: 3
 ```
 
 # 使用方法
@@ -234,10 +253,11 @@ hello everyone!!!
 默认多行的结果集都是 list[dict] 的, 即使只有一列也是! 所以加了个 simple_list 方法只取数据 list
 
 **工具类注意事项**:
-1. %s 为 mysql 占位符; 能用 %s 的地方就不要自己拼接 sql 了
-2. sql 里有一个占位符可使用 string 或 number; 有多个占位符可使用 tuple or list
-3. insertmany 的时候所有字段使用占位符 %s (预编译), 参数使用 tuple or list
-4. 结果集如果只有一列的情况, 会自动转换为简单的列表 参考:simple_list()
+1. `%s` 为 `mysql` 占位符; 能用 `%s` 的地方就不要自己拼接 `sql` 了
+2. `sql` 里有一个占位符可使用 `string` 或 `number`; 有多个占位符可使用 `tuple|list`
+3. `insertmany` 的时候所有字段使用占位符 `%s` (预编译), 参数使用 `tuple|list`
+4. `queryall` 结果集如果只有一列的情况, 会自动转换为简单的列表 参考:`simple_list()`
+5. `queryone` 结果集如果只有一行一列的情况, 自动转为结果数据 参考:`simple_value()`
 
 # 其他
 `pymysql` 由于 sql 都是直接写的, 所以数据库操作非常灵活; 如果做 `ORM` 的话, 就需要自己手动进行转换; 类似于 `java` 的 `MyBatise` 
