@@ -16,14 +16,19 @@ Centos/Redhat上安装autojump:
 $ sudo yum -y install autojump
 ```
 
-放入 `~/.bashrc` 文件最后位置
+首次加载: `~/.bashrc` 文件最后位置
 ```bash
+# 最后追加
 $ vim ~/.bashrc
-
-. /usr/share/autojump/autojump.bash
+. /etc/profile.d/autojump.bash
+#或者 source /etc/profile.d/autojump.bash
 ```
 
-相当于: `source /usr/share/autojump/autojump.bash`
+其他位置, 使用 `find` 查找一下:
+```bash
+$ find / -name 'autojump.bash'
+/usr/share/autojump/autojump.bash
+```
 
 然后重新加载文件:
 ```bash
@@ -37,7 +42,7 @@ $ source ~/.bashrc
 
 在使用 `cd path` 之后会自动记录到库里, 使用次数越多, 优先级越高
 
-`/usr/share/autojump/autojump.bash` 内置了几个方法, 常用的当然就是: `j` 
+`/etc/profile.d/autojump.bash` 内置了几个方法, 常用的当然就是: `j` 
 
 # 补充
 某些机器上执行报错:
@@ -81,7 +86,7 @@ $ vim /usr/bin/autojump
 #!/usr/bin/env python3
 
 # 2. 重新加载配置文件
-# 查找配置文件位置(如果不是 /usr/share/autojump/autojump.bash 位置的话)
+# 查找配置文件位置
 $ find / -name 'autojump.bash'
 /etc/profile.d/autojump.bash
 
