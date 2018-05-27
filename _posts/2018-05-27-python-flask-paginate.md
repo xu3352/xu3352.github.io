@@ -134,4 +134,6 @@ def index():
 参考：
 - [Github:lixxu/flask-paginate](https://github.com/lixxu/flask-paginate)
 - [Flask-Paginate 最新文档](http://flask-paginate.readthedocs.io/en/latest/)
+- [Bootstrap Pagination](https://www.w3schools.com/bootstrap/bootstrap_pagination.asp)
+- [Bootstrap 4 Pagination](https://www.w3schools.com/bootstrap4/bootstrap_pagination.asp)
 
