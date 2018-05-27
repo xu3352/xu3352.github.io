@@ -16,6 +16,8 @@ number: 5
 
 # Python
 - [Python 3](https://www.tutorialspoint.com/python3/index.htm)
+- [菜鸟教程 - Python2](http://www.runoob.com/python/python-tutorial.html)
+- [菜鸟教程 - Python3](http://www.runoob.com/python3/python3-tutorial.html)
 
 # Linux
 - [Linux(Unix)](https://www.tutorialspoint.com/unix/index.htm)
@@ -25,7 +27,8 @@ number: 5
 - [Shell 程序设计教程](http://opus.konghy.cn/shell-tutorial/index.html)
 
 # Front-End 前端
-- [W3school](http://www.w3school.com.cn/)
+- [W3school中文](http://www.w3school.com.cn/)
+- [W3school英文(更加全面)](https://www.w3schools.com/)
 
 # Git
 - [Git命令大全](https://xu3352.github.io/blog/2017/04/28/git-cheat-sheet)
