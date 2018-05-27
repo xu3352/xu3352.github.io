@@ -206,6 +206,7 @@ function data_grid_calc(table) {
         var alias = $(this).attr("grid-alias");
         aliasDict[alias] = "c" + index;
     });
+    var aliasList = grid_alias_reverse_list(aliasDict);
     // console.log( aliasDict );
 
     // 统计 tbody 对应的 td 的 text, 放到字典里
@@ -237,7 +238,7 @@ function data_grid_calc(table) {
             var expr = exprList[i]["expr"];
 
             // 表达式填值后 eval 计算
-            var numberExpr = grid_expr_complex_to_simple(expr, aliasDict, dataTdList);
+            var numberExpr = grid_expr_complex_to_simple(expr, aliasDict, aliasList, dataTdList);
             var number = eval( numberExpr );
             // 展示
             $tr.find("td:eq(" + index + ")").text( number );
@@ -248,9 +249,8 @@ function data_grid_calc(table) {
     });
 }
 // 表达式计算:复杂->简单->数字
-function grid_expr_complex_to_simple(expr, aliasDict, dataTdList) {
+function grid_expr_complex_to_simple(expr, aliasDict, aliasList, dataTdList) {
     var newExpr = expr;
-    var aliasList = grid_alias_reverse_list(aliasDict);
 
     // console.log(newExpr);
     // 循环求值:直到表达式 (没有别名 && 没有[c0, c1, c2 ...]) 的时候为止
@@ -268,7 +268,12 @@ function grid_alias_reverse_list(aliasDict) {
     for (var alias in aliasDict) {
         aliasList.push(alias);
     }
-    aliasList.reverse();  // 倒序, 长的先替换
+    // 倒序:长的排前面, 一样长的按字母倒序
+    aliasList.sort(function (a, b) {
+       if (a.length != b.length) return a.length < b.length;
+       if (a == b) return 0;
+       return a < b;
+    });
     return aliasList;
 }
 // 表达式是否包含别名
@@ -413,6 +418,11 @@ $(function(){
 - number:`15.60%`
 
 目测这个用着就比较舒服了
+
+# 其他
+`grid_alias_reverse_list` 方法排序有问题, 之前只是做了一个 `reverse` 反转操作, 而并不是理想的倒序排的, 其实只要解决长的别名排在前面就行, 防止别名字符串有包含的情况时替换出现问题; 另外此函数改为在别名字典取值后就执行, 减少调用次数
+
+(2018.05.27 更)
 
 ---
 参考：
