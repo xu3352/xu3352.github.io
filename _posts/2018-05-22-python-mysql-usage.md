@@ -5,7 +5,7 @@ tagline: ""
 description: "通过 `db_config.json` 加载数据库配置; 常规的增删改查进行封装"
 date: '2018-05-22 09:32:26 +0800'
 category: python
-tags: pymysql python mysql
+tags: pymysql logger python mysql
 ---
 > {{ page.description }}
 
@@ -18,7 +18,7 @@ tags: pymysql python mysql
   "password": "123456",
   "db": "mars",
   "charset": "utf8",
-  "port": "3306"
+  "port": 3306
 }
 ```
 
@@ -37,12 +37,19 @@ Python Mysql 工具包
 1. %s 为 mysql 占位符; 能用 %s 的地方就不要自己拼接 sql 了
 2. sql 里有一个占位符可使用 string 或 number; 有多个占位符可使用 tuple|list
 3. insertmany 的时候所有字段使用占位符 %s (预编译), 参数使用 tuple|list
-4. queryall 结果集如果只有一列的情况, 会自动转换为简单的列表 参考:simple_list()
-5. queryone 结果集如果只有一行一列的情况, 自动转为结果数据 参考:simple_value()
+4. queryall 结果集只有一列的情况, 会自动转换为简单的列表 参考:simple_list()
+5. queryone 结果集只有一行一列的情况, 自动转为结果数据 参考:simple_value()
+6. insertone 插入一条数据, 返回数据ID
 """
 import os
 import json
+import traceback
+
 import pymysql.cursors
+
+from utils import loggerutils
+
+logger = loggerutils.logger
 
 
 def find(name, path):
@@ -54,18 +61,14 @@ def find(name, path):
 
 def connect_mysql():
     """ 创建链接 """
-    config = find("db_config.json", os.path.abspath("."))
-    with open(config, "r") as file:
-        load_dict = json.load(file)
-    return pymysql.connect(
-        host=load_dict['host'],
-        user=load_dict['user'],
-        password=load_dict['password'],
-        db=load_dict['db'],
-        charset=load_dict['charset'],
-        port=int(load_dict['port']),
-        cursorclass=pymysql.cursors.DictCursor
-    )
+    try:
+        config = find("db_config.json", os.path.abspath("."))
+        with open(config, "r") as file:
+            load_dict = json.load(file)
+        return pymysql.connect(cursorclass=pymysql.cursors.DictCursor, **load_dict)
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        logger.error("cannot create mysql connect")
 
 
 def queryone(sql, param=None):
@@ -77,8 +80,16 @@ def queryone(sql, param=None):
     """
     con = connect_mysql()
     cur = con.cursor()
-    cur.execute(sql, param)
-    row = cur.fetchone()
+
+    row = None
+    try:
+        cur.execute(sql, param)
+        row = cur.fetchone()
+    except Exception as e:
+        con.rollback()
+        logger.error(traceback.format_exc())
+        logger.error("[sql]:{} [param]:{}".format(sql, param))
+
     cur.close()
     con.close()
     return simple_value(row)
@@ -93,8 +104,16 @@ def queryall(sql, param=None):
     """
     con = connect_mysql()
     cur = con.cursor()
-    cur.execute(sql, param)
-    rows = cur.fetchall()
+
+    rows = None
+    try:
+        cur.execute(sql, param)
+        rows = cur.fetchall()
+    except Exception as e:
+        con.rollback()
+        logger.error(traceback.format_exc())
+        logger.error("[sql]:{} [param]:{}".format(sql, param))
+
     cur.close()
     con.close()
     return simple_list(rows)
@@ -115,12 +134,38 @@ def insertmany(sql, arrays=None):
         cnt = cur.executemany(sql, arrays)
         con.commit()
     except Exception as e:
-        print(e)
         con.rollback()
+        logger.error(traceback.format_exc())
+        logger.error("[sql]:{} [param]:{}".format(sql, arrays))
 
     cur.close()
     con.close()
     return cnt
+
+
+def insertone(sql, param=None):
+    """
+    插入一条数据
+    :param sql: sql语句
+    :param param: string|tuple
+    :return: id
+    """
+    con = connect_mysql()
+    cur = con.cursor()
+
+    lastrowid = 0
+    try:
+        cur.execute(sql, param)
+        con.commit()
+        lastrowid = cur.lastrowid
+    except Exception as e:
+        con.rollback()
+        logger.error(traceback.format_exc())
+        logger.error("[sql]:{} [param]:{}".format(sql, param))
+
+    cur.close()
+    con.close()
+    return lastrowid
 
 
 def execute(sql, param=None):
@@ -138,8 +183,9 @@ def execute(sql, param=None):
         cnt = cur.execute(sql, param)
         con.commit()
     except Exception as e:
-        print(e)
         con.rollback()
+        logger.error(traceback.format_exc())
+        logger.error("[sql]:{} [param]:{}".format(sql, param))
 
     cur.close()
     con.close()
@@ -258,11 +304,51 @@ hello everyone!!!
 3. `insertmany` 的时候所有字段使用占位符 `%s` (预编译), 参数使用 `tuple|list`
 4. `queryall` 结果集如果只有一列的情况, 会自动转换为简单的列表 参考:`simple_list()`
 5. `queryone` 结果集如果只有一行一列的情况, 自动转为结果数据 参考:`simple_value()`
+6. `insertone` 插入一条数据, 返回数据ID
 
 # 其他
 `pymysql` 由于 sql 都是直接写的, 所以数据库操作非常灵活; 如果做 `ORM` 的话, 就需要自己手动进行转换; 类似于 `java` 的 `MyBatise` 
 
 如果你在找 `Python` 的 `ORM` 框架的话, `SQLAlchemy` 应该是个不错的选择; 类似于 `Java` 的 `Hibernate`
+
+# 日志
+`loggerutils.py`
+```python
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+# author: xu3352<xu3352@gmail.com>
+"""
+Python 日志工具包
+@see https://blog.csdn.net/chosen0ne/article/details/7319306
+"""
+import logging
+import logging.handlers
+
+log_file = 'output.log'
+fmt = '%(asctime)s - %(levelname)s - %(filename)s#%(funcName)s():%(lineno)s - %(name)s - %(message)s'
+
+# 实例化handler
+handler = logging.handlers.RotatingFileHandler(log_file, maxBytes=1024 * 1024, backupCount=5)
+formatter = logging.Formatter(fmt)  # 实例化formatter
+handler.setFormatter(formatter)     # 为handler添加formatter
+
+logger = logging.getLogger("main")  # 获取名为tst的logger
+logger.addHandler(handler)          # 为logger添加handler
+logger.setLevel(logging.DEBUG)      # 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+
+
+if __name__ == '__main__':
+    logger.debug("first message debug")
+    logger.info("first message info")
+    logger.warning("first message warning")
+    logger.error("first message error")
+    logger.critical("first message critical")
+```
+
+2018.05.28 更 
+- 增加 `logger` 把错误日志记录到指定的文件里 
+- `connect_mysql` 改造为 `kwargs` 形式传参(以后可以传入数据源字典)
+- 增加 `insertone` 方法, 返回主键ID
 
 ---
 参考：
