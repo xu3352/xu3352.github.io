@@ -16,6 +16,7 @@ number: 5
 
 # Python
 - [Python 3](https://www.tutorialspoint.com/python3/index.htm)
+- [Python Cookbook 3rd Edition Documentation(中文)](http://python3-cookbook-personal.readthedocs.io/zh_CN/latest/index.html)
 - [菜鸟教程 - Python2](http://www.runoob.com/python/python-tutorial.html)
 - [菜鸟教程 - Python3](http://www.runoob.com/python3/python3-tutorial.html)
 
