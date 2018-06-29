@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linux 101 Hacks 第二章:基础的Linux命令(第一部分)"
+title: "Linux 101 Hacks 第二章:基础的Linux命令(第一部分 grep find tr xargs sort uniq cut stat diff)"
 tagline: ""
 description: "必不可少的 `linux` 命令, 如: `grep find xargs sort uniq cut stat diff sed awk vim chmod less wget`等等..."
 date: '2017-09-02 13:48:32 +0800'
