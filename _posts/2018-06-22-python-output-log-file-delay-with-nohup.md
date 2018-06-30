@@ -24,7 +24,18 @@ nohup python -u ./cmd.py > cmd.log &
 
 没错, 只需要执行的时候加一个 `-u` 的参数避免延迟缓存写入
 
+# 补充
+StackOverflow上禁用缓冲的方法: [Python Disable output buffering](https://stackoverflow.com/questions/107705/disable-output-buffering)
+
+**Python禁用buffering**:
+- `python -u` - 使用 `-u` 开关来执行python脚本 (最方便, 推荐)
+- `sys.stdout.flush()` - 每次输出之后加这个(临时一用)
+- `PYTHONUNBUFFERED=1` - 设置环境变量
+- `sys.stdout重写` - 重定义输出 `sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)`
+
+
 ---
 参考：
 - [Nohup is not writing log to output file](https://stackoverflow.com/questions/12919980/nohup-is-not-writing-log-to-output-file)
+- [Python Disable output buffering](https://stackoverflow.com/questions/107705/disable-output-buffering)
 
