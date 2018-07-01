@@ -32,6 +32,22 @@ tags: tmux iTerm2 linux
 步骤请看文末最后2篇文章
 
 # Tmux 使用/快捷键
+一些配置
+```nginx
+# 开启鼠标模式
+set -g mode-mouse on
+set -g mouse on     # >=2.1
+
+# 允许鼠标选择窗格
+set -g mouse-select-pane on
+
+# 如果喜欢给窗口自定义命名，那么需要关闭窗口的自动命名
+set-option -g allow-rename off
+
+# 如果对 vim 比较熟悉，可以将 copy mode 的快捷键换成 vi 模式
+set-window-option -g mode-keys vi
+```
+
 首先要感谢人家的整理 :)
 {% gist ryerh/14b7c24dfd623ef8edc7 %}
 
