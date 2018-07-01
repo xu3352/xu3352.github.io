@@ -15,6 +15,7 @@ tags: iterm2 zsh theme mac
 
 # 安装iTerm2+solarized dark主题
 参下面的配置，作者把步骤已经写得很好了
+[mac下iterm2和zsh配置](http://orangecoder.com/2016/01/28/iterm2-zsh/ "mac下iterm2和zsh配置")
 
 # 注意事项
 如果`agnoster`分支图标乱码，请先安装[`Powerline修正过的字体`]，然后在 `iTerm2` 里选择安装好的补丁字体就可以了。
