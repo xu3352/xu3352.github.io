@@ -29,7 +29,9 @@ tags: tmux iTerm2 linux
 再次使用 `tmux` 之后, 至少很快可以恢复到之前的工作状态 (2步搞定:1.链接终端 2.恢复上次的tmux会话)
 
 # 安装 Tmux
-`Linux` 建议使用 源码包 进行安装, 使用 `yum` 安装的版本号比较低, 具体可参看:[Linux终端复用神器-Tmux使用梳理](https://www.cnblogs.com/kevingrace/p/6496899.html)
+`Linux` 建议使用 源码包 进行安装, 使用 `yum` 安装的版本号比较低, 具体可参看:
+- [How to install the latest stable tmux on CentOS 7](https://liyang85.github.io/how-to-install-the-latest-stable-tmux-on-centos7.html)
+- [Linux终端复用神器-Tmux使用梳理](https://www.cnblogs.com/kevingrace/p/6496899.html)
 
 ```
 # 查看版本号
