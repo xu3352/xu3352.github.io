@@ -48,5 +48,7 @@ number: 5
 - [《Docker — 从入门到实践》](https://xu3352.github.io/docker/2017/07/21/docker-primer)
 
 # TOOLS
+- [Code Beautify - 格式化/转换:HTML/JSON等...](https://codebeautify.org/)
+    - [HTML Viewer - HTML格式美化](https://codebeautify.org/htmlviewer/)
 - [文字LOGO在线制作](https://cooltext.com/)
 
