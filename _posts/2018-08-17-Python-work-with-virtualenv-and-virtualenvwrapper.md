@@ -136,6 +136,20 @@ $ deactivate
 # mkproject  创建项目
 $ mkproject [-f|--force] [-t template] [virtualenv_options] ENVNAME
 ```
+
+指定 `python` 解释器创建环境:
+```bash
+# 本地的2个版本的python, 第一个为默认的
+$ python -V
+Python 2.7.10
+$ python3 -V
+Python 3.5.2
+
+# mkvirtualenv -h  可以查看命令帮助文档
+$ mkvirtualenv -p python3 ENVNAME
+```
+这里创建的环境就是以 `python 3.5.2` 为基础的了
+
 [更多 virtualenvwrapper 使用命令](https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html)
 
 # 其他
