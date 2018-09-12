@@ -28,10 +28,11 @@ $ brew update
 
 **几个镜像**:
 - `https://git.coding.net/homebrew/homebrew.git` - Coding
-- `git://mirrors.tuna.tsinghua.edu.cn/homebrew.git` - 清华
-- `http://mirrors.ustc.edu.cn/homebrew.git` - 中科大
+- `https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git` - 清华
+- `https://mirrors.ustc.edu.cn/brew.git` - 中科大
 
 ---
 参考：
 - [解决 "brew update" 无响应](https://www.jianshu.com/p/631e63dab0a0)
+- [Mac下更换Homebrew镜像源](https://blog.csdn.net/lwplwf/article/details/79097565)
 
