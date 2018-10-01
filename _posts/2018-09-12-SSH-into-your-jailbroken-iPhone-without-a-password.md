@@ -16,6 +16,8 @@ tags: ssh expect jailbroken mac
 - `创建秘钥/公钥` 
 - `拷贝公钥到目标服务器` 
 
+如果不好使, 可以先检查一下目标机器的目录权限: [SSH免密码登陆(公钥认证)](https://xu3352.github.io/linux/2017/06/24/ssh-login-without-password#补充)
+
 # Expect自动填充密码
 这里重点介绍一下 `expect` 自动交互脚本, 常见的应该就是自动填充登录密码了吧
 
