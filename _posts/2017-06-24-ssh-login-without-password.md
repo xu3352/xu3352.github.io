@@ -64,7 +64,7 @@ $ ssh -vvv root@192.168.7.191
 ......
 
 # 目标机器的 sshd 日志 
-$ tail -200 /var/log/secure
+$ tail -200 /var/log/secure | grep sshd
 Oct  1 09:04:50 725 sshd[4088]: Authentication refused: bad ownership or modes for directory /private/var/root
 ```
 
