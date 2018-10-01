@@ -18,6 +18,15 @@ tags: ssh expect jailbroken mac
 
 如果不好使, 可以先检查一下目标机器的目录权限: [SSH免密码登陆(公钥认证)-目录权限设置](https://xu3352.github.io/linux/2017/06/24/ssh-login-without-password#补充)
 
+```bash
+# 目标机器目录权限重置
+$ chmod 750 $HOME
+$ chmod 700 $HOME/.ssh
+$ chmod 600 $HOME/.ssh/authorized_keys
+```
+
+`Cydia` 安装了 `syslogd` 之后查看 sshd 日志: `tail -200 /var/log/syslog | grep sshd`
+
 # Expect自动填充密码
 这里重点介绍一下 `expect` 自动交互脚本, 常见的应该就是自动填充登录密码了吧
 
