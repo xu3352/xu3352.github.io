@@ -45,17 +45,17 @@ Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '[localhost]:2222' (RSA) to the list of known hosts.
 iPhone:~ root#
 ```
+如果换了一台设备的话, 再次连接时会有错误提示, 把 `~/.ssh/known_hosts` 对应的 `[localhost]:2222` 一行删除就好了
 
 再设置个别名就更方便了:
 ```bash
-# 设置别名
+# 设置别名, 当然是加到配置文件里最好了 (~/.zshrc 或 ~/.bashrc)
 $ alias ssh_usb='ssh root@localhost -p 2222'
 
 # 登录
 $ ssh_usb
 iPhone:~ root#
 ```
-
 
 # SCP 文件传输
 ```bash
