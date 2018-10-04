@@ -21,16 +21,33 @@ $(function(){
         var $s = $(this);
         var isNarrowModel = ($s.attr("is-narrow") == "true");
         if (isNarrowModel) {
-            $(".span10").attr("class", "span14");
-            $(".span4").css("margin-left","40px");
-            $(".tag_box a").css("background","#eef");
-            $s.text(titles[1]);
+            changeToWideModel(this);    
         } else {
-            $(".span14").attr("class", "span10");
-            $(".tag_box a").css("background","#eee");
-            $s.text(titles[0]);
+            changeToNarrowModel(this);
         }
-        $s.attr("is-narrow", !isNarrowModel);
     });
+
+    function changeToWideModel(a) {
+        $(".span10").attr("class", "span14");
+        $(".span4").css("margin-left","40px");
+        $(".tag_box a").css("background","rgb(219, 221, 224)");
+        $(a).text(titles[1]);
+        $(a).attr("is-narrow", false);
+        Cookies.set("isNarrowModel", 0);
+    }
+
+    function changeToNarrowModel(a) {
+        $(".span14").attr("class", "span10");
+        $(".tag_box a").css("background","#eee");
+        $(a).text(titles[0]);
+        $(a).attr("is-narrow", true);
+        Cookies.set("isNarrowModel", 1);
+    }
+   
+    // 初始动作:默认宽屏
+    var isNarrowModel = Cookies.get("isNarrowModel");
+    if (typeof isNarrowModel == 'undefined' || isNarrowModel == "0") {
+        changeToWideModel($(".sidebar-switch"));
+    }
 })
 
