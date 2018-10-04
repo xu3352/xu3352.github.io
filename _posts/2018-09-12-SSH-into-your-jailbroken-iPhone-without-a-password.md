@@ -27,6 +27,12 @@ $ chmod 600 $HOME/.ssh/authorized_keys
 
 `Cydia` 安装了 `syslogd` 之后查看 sshd 日志: `tail -200 /var/log/syslog | grep sshd`
 
+**放个大招**: <span style="color:red;">一条命令搞定</span> (2018.10.04 补充)
+```bash
+# 1. 重置 $HOME 目录权限; 2. 删除 .ssh 目录后再重新创建; 3. 重新导入公钥;
+$ ssh root@192.168.7.191 'chmod 750 $HOME && rm -rf .ssh && mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+```
+
 # Expect自动填充密码
 这里重点介绍一下 `expect` 自动交互脚本, 常见的应该就是自动填充登录密码了吧
 
