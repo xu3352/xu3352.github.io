@@ -9,6 +9,8 @@ tags: libimobiledevice ssh usb usbmuxd mac
 ---
 > {{ page.description }}
 
+之前的一篇文章:[SSH免密码登录越狱iPhone:公钥登录](https://xu3352.github.io/mac/2018/09/12/SSH-into-your-jailbroken-iPhone-without-a-password)
+
 # 安装 libimobiledevice
 Mac 下直接可以通过 HomeBrew 安装, 自动就把依赖的包 `libplist ✘, libtasn1 ✘, usbmuxd ✘` 一起安装了
 ```bash
@@ -68,7 +70,8 @@ $ scp -P 2222 user@ip:/path/to/remoteFile /path/to/localFile
 
 ---
 参考：
-- [iOS应用逆向与安全 - 2.3.5 通过USB登陆]
+- <<iOS应用逆向与安全>> - 2.3.5 通过USB登陆
+- [SSH免密码登录越狱iPhone:公钥登录](https://xu3352.github.io/mac/2018/09/12/SSH-into-your-jailbroken-iPhone-without-a-password)
 - [什么是usbmuxd? iDevice通过USB与桌面系统通信原理小科普](http://bbs.iosre.com/t/usbmuxd-idevice-usb/1482)
 - [OpenSSH + usbmuxd](https://www.jianshu.com/p/fd2773a8359f)
 
