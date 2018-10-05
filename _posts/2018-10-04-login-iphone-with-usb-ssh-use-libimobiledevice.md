@@ -63,9 +63,9 @@ iPhone:~ root#
 $ scp /path/to/localFile user@ip:/path/to/remoteFile
 $ scp user@ip:/path/to/remoteFile /path/to/localFile 
 
-# USB方式:上传/下载 指定到转发端口即可
-$ scp -P 2222 /path/to/localFile user@ip:/path/to/remoteFile
-$ scp -P 2222 user@ip:/path/to/remoteFile /path/to/localFile 
+# USB方式:上传/下载 指定到本机的转发端口
+$ scp -P 2222 /path/to/localFile root@localhost:/path/to/remoteFile
+$ scp -P 2222 root@localhost:/path/to/remoteFile /path/to/localFile 
 ```
 
 ---
