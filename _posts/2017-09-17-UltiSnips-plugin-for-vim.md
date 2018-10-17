@@ -81,10 +81,10 @@ Plugin 'honza/vim-snippets'
 
 来几个例子就上手了:
 示例1. 插入日期: `date` + `tab`
-![插入日期示例](http://mednoter.com/media/files/2015-04-06-date.gif){:width="100%"}
+![插入日期示例](http://mednoter.com/media/files/2015/2015-04-06-date.gif){:width="100%"}
 
 示例2. 插入注释块: `bbox` + `tab`
-![插入注释块](http://mednoter.com/media/files/2015-04-06-bbox.gif){:width="100%"}
+![插入注释块](http://mednoter.com/media/files/2015/2015-04-06-bbox.gif){:width="100%"}
 
 是不是非常棒
 
