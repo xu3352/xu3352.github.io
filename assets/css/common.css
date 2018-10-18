@@ -1,0 +1,15 @@
+/**
+ * self define css
+ */
+
+code.cursor {
+    color:white;
+    background-color:#323462;
+    padding: 0;
+    -webkit-border-radius: inherit;
+}
+
+table th, table td {
+    line-height: inherit;
+}
+
