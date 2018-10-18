@@ -13,3 +13,11 @@ table th, table td {
     line-height: inherit;
 }
 
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
