@@ -3,7 +3,7 @@ layout: page
 title: Atlassian
 header: Atlassian Series
 group: navigation
-tagline: Atlassian系列
+tagline: Atlassian CI 系列
 number: 6
 ---
 {% include JB/setup %}
