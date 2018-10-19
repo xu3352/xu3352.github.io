@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "vim-easy-align 表格格式化/对齐插件"
+title: "Vim-easy-align 表格格式化/对齐插件"
 tagline: ""
 description: "非常强大的对齐格式化插件; 对于编辑 `Markdown` 的 `table` 来说简直就是量身定制神器 <br>支持的分隔符: `<Space>` `=` `:` `.` `|` `&` `#` `,`"
 date: '2018-10-18 11:34:59 +0800'
