@@ -25,7 +25,7 @@ $ vim --version | grep clipboard
 
 对源码安装感兴趣的可以参考一下:[Mac源码安装vim 支持python2/3,lua,ruby,perl解释器](https://xu3352.github.io/mac/2018/07/22/vim-install-from-so    urce-on-mac-support-python2-python3-lua-ruby-perl)
 
-# 开启/禁用剪贴板
+# 全局启用/禁用
 1. 手动开启(推荐, 按需开启/禁用)
     - 打开文件: `vim filename`
     - 切换到命令模式: `ESC` + `:`
@@ -38,7 +38,23 @@ $ vim --version | grep clipboard
     - 临时禁用/开启方式同上; 每次默认是开启的 (有时也不一定方便的)
 
 ---
+(2018-10-20更)
+# 局部启用(推荐)
+全局启用有个明显的缺点, 就是缓冲区和剪贴板通用了
+
+比如: `yw` `yy` `dw` `vip` 之类的操作内容直接放到剪贴板里了;
+
+比如在网页拷贝的字符串, 想在 `vim` 里覆盖一段内容, 当你删除内容后粘贴时, 是你刚刚删除的内容, 因为删除的内容已经把剪贴板覆盖了
+
+1. `:set clipboard=` - 改为模式模式
+2. `可视化模式选中目标文本`
+3. `"*y` - 存入寄存器 `"*` 中, 而 `"*` 和`"+` 在Mac和Windows中，都是指系统剪切板（clipboard); 其他程序直接就可以: `Ctrl+v` 粘贴使用 
+4. `"*p` - vim 粘贴 `"*` 寄存器的内容, 即从系统剪贴板里粘贴到 vim 里; 比如从网页上拷贝的内容可使用吃饭时粘贴
+
+---
 参考：
 - [How to copy to clipboard in Vim?](https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim)
 - [Mac源码安装vim 支持python2/3,lua,ruby,perl解释器](https://xu3352.github.io/mac/2018/07/22/vim-install-from-source-on-mac-support-python2-python3-lua-ruby-perl)
+- [How can I copy text to the system clipboard from Vim?](https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim)
+- [使用 Vim 寄存器](https://harttle.land/2016/07/25/vim-registers.html)
 
