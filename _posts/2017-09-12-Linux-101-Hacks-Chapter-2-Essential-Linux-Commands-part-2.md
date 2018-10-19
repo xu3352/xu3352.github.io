@@ -5,7 +5,7 @@ tagline: ""
 description: "必不可少的 `linux` 命令, 如: `grep find xargs sort uniq cut stat diff sed awk vim chmod less wget`等等..."
 date: '2017-09-02 13:48:32 +0800'
 category: linux
-tags: linux linux-command linux-101-hacks ebook
+tags: sed awk vim chmod wget linux linux-command linux-101-hacks ebook
 ---
 > {{ page.description }}
 

@@ -128,6 +128,7 @@ Keystrokes      | Buffer Contents
 `cw`copy`<Esc>` | ...We're waiting for `content` before the site can go live...<br>...If you are `content` with this, let's go ahead with it...<br>...We'll launch as soon as we have the cop<code class="cursor">y</code>...
 `n`             | ...We're waiting for <code class="highlighter-rouge"><code class="cursor">c</code>ontent</code> before the site can go live...<br>...If you are `content` with this, let's go ahead with it...<br>...We'll launch as soon as we have the copy...
 `.`             | ...We're waiting for cop<code class="cursor">y</code> before the site can go live...<br>...If you are `content` with this, let's go ahead with it...<br>...We'll launch as soon as we have the copy...
+{:table-multi-text}
 
 
 **步骤**:
@@ -366,6 +367,8 @@ Keystrokes | Buffer Contents
 {start}    | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br><code class="cursor">p</code>rint a,<br>a, b = b, a+b<br>fib(42)<br>
 `Vj`       | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br><code class="highlighter-rouge">print a,</code><br><code class="highlighter-rouge"><code class="cursor">a</code>, b = b, a+b</code><br>fib(42)<br>
 `>.`       | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="cursor">p</code>rint a,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a, b = b, a+b<br>fib(42)<br>
+{:.table-multi-text}
+
 
 这里的2次缩进 `>.` 也可以用 `2>` 替代; 不过推荐用第一种方式, 不用数数, 参考: [Tip 11](#tip-11-能重复的就别数数)
 

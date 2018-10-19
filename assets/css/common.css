@@ -13,6 +13,10 @@ table th, table td {
     line-height: inherit;
 }
 
+table.table-multi-text th, table.table-multi-text td {
+    line-height: normal;
+}
+
 .red {
     color: red;
 }
