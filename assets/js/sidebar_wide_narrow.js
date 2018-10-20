@@ -30,7 +30,7 @@ $(function(){
     function changeToWideModel(a) {
         $(".span10").attr("class", "span14");
         $(".span4").css("margin-left","40px");
-        $(".tag_box a").css("background","rgb(219, 221, 224)");
+        $(".tag_box a").addClass("widemode");
         $(a).text(titles[1]);
         $(a).attr("is-narrow", false);
         Cookies.set("isNarrowModel", 0);
@@ -38,7 +38,7 @@ $(function(){
 
     function changeToNarrowModel(a) {
         $(".span14").attr("class", "span10");
-        $(".tag_box a").css("background","#eee");
+        $(".tag_box a").removeClass("widemode");
         $(a).text(titles[0]);
         $(a).attr("is-narrow", true);
         Cookies.set("isNarrowModel", 1);

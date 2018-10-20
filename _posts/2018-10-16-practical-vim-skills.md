@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Vim实用技巧进阶 - Practical.Vim.2nd.Edition"
+title: "Vim实用技巧进阶(1-3章) - Practical.Vim.2nd.Edition"
 tagline: ""
-description: "Practical.Vim.2nd.Edition 实用技巧进阶 (持续更新)"
+description: "Practical.Vim.2nd.Edition 实用技巧进阶:第1~3章"
 date: '2018-10-16 15:47:05 +0800'
 category: linux
-tags: vim linux
+tags: vim practical-vim linux
 ---
 > {{ page.description }}
 
@@ -329,53 +329,9 @@ Keystrokes    | Buffer Contents
 `f.`          | Typing in Insert mode extends the line<code class="cursor">.</code> But in Replace mode<br>the line length doesn't change.
 `R`,␣b`<Esc>` | Typing in Insert mode extends the line, <code class="cursor">b</code>ut in Replace mode<br>the line length doesn't change.
 
-# 第4章 可视模式
-> Visual Mode
-
-## Tip 20 Grok可是模式
-> Grok Visual Mode
-
-## Tip 21 可视化选择定义
-> Define a Visual Selection
-
-Command       | Effect
-`v`           | 切换为可视化模式:以字符为单位
-`V`           | 切换为可视化模式:以行为单位
-`<C-v>`       | 切换为可视化模式:以块为单位
-`gv`          | 切换为可视化模式:上次的重启开启
-`<Esc>`/`C-[` | 切换为常规模式
-`o`           | 可视化模式下:跳转到高亮文本的另一头
-
-## Tip 22 重复行可视化模式命令
-> Repeat Line-wise Visual Commands
-
-示例为一段 python 代码格式的缩进, 先设置一下: (确保一个缩进为4个空格)
-
-`:set shiftwidth=4 softtabstop=4 expandtab`
-<pre>
-def fib(n):
-    a, b = 0, 1
-    while a < n:
-print a,
-a, b = b, a+b
-fib(42)
-</pre>
-
-先缩进, 然后重复
-
-Keystrokes | Buffer Contents
-{start}    | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br><code class="cursor">p</code>rint a,<br>a, b = b, a+b<br>fib(42)<br>
-`Vj`       | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br><code class="highlighter-rouge">print a,</code><br><code class="highlighter-rouge"><code class="cursor">a</code>, b = b, a+b</code><br>fib(42)<br>
-`>.`       | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="cursor">p</code>rint a,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a, b = b, a+b<br>fib(42)<br>
-{:.table-multi-text}
-
-
-这里的2次缩进 `>.` 也可以用 `2>` 替代; 不过推荐用第一种方式, 不用数数, 参考: [Tip 11](#tip-11-能重复的就别数数)
-
-## Tip 23 首选的可视化命令
-> Prefer Operators to Visual Commands Where Possible
 
 ---
+参考:
 - [Vim编辑器导航基础](https://xu3352.github.io/linux/2017/09/02/Linux-101-Hacks-Chapter-2-Essential-Linux-Commands-part-2#23-vim%E7%BC%96%E8%BE%91%E5%99%A8%E5%AF%BC%E8%88%AA%E5%9F%BA%E7%A1%80)
 - [vim中做简单运算](https://blog.csdn.net/a627088424/article/details/39001487)
 

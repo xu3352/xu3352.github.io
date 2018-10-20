@@ -25,3 +25,30 @@ table.table-multi-text th, table.table-multi-text td {
     color: green;
 }
 
+kbd {
+    display: inline-block;
+    margin: 0 .1em;
+    padding: .1em .6em;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #242729;
+    text-shadow: 0 1px 0 #FFF;
+    background-color: #e1e3e5;
+    border: 1px solid #adb3b9;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #FFF inset;
+    white-space: nowrap;
+}
+
+.tag_box a {
+    color: #39739d;
+    background-color: #E1ECF4;
+    border-color: #E1ECF4;
+}
+
+.tag_box a.widemode {
+    background-color: #b5c9d8;
+}
+
+
