@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Vim实用技巧进阶(1-3章) - Practical.Vim.2nd.Edition"
+title: "Vim实用技巧进阶(第1~3章:介绍,常规模式,插入模式) - Practical.Vim.2nd.Edition"
 tagline: ""
-description: "Practical.Vim.2nd.Edition 实用技巧进阶:第1~3章"
+keywords: "vim,practical-vim,vim介绍,常规模式,插入模式"
+description: "Practical.Vim.2nd.Edition 实用技巧进阶:第1~3章 - 介绍,常规模式,插入模式"
 date: '2018-10-16 15:47:05 +0800'
 category: linux
 tags: vim practical-vim linux
