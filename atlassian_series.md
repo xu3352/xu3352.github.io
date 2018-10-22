@@ -6,7 +6,7 @@ group: navigation
 tagline: Atlassian CI 系列
 number: 6
 ---
-{% include JB/setup %}
+[//]: # {% include JB/setup %}
 
 {% for tag in site.tags %} 
   {% if tag[0] == 'atlassian' 

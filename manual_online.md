@@ -6,7 +6,7 @@ group: navigation
 tagline: 新手入门
 number: 5
 ---
-{% include JB/setup %}
+[//]: # {% include JB/setup %}
 
 # 清单 
 各种在线手册或者书籍，有事没事多看看总是好的
@@ -59,6 +59,5 @@ number: 5
 - [Code Beautify - 格式化/转换:HTML/JSON等...](https://codebeautify.org/)
     - [HTML Viewer - HTML格式美化](https://codebeautify.org/htmlviewer/)
     - [JSON formatter](https://jsonformatter.org/)
-- [文字LOGO在线制作](https://cooltext.com/)
 
 
