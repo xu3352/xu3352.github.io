@@ -9,6 +9,12 @@ code.cursor {
     -webkit-border-radius: inherit;
 }
 
+code.visual {
+    background-color:#CADCEE;
+    padding: 0;
+    -webkit-border-radius: inherit;
+}
+
 table th, table td {
     line-height: inherit;
 }
