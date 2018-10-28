@@ -10,7 +10,10 @@ tags: vim practical-vim linux
 ---
 > {{ page.description }}
 
-# Tip 42 用 :edit 打开文件
+# 第7章 文件打开和存储
+> Open Files and Save Them to Disk
+
+## Tip 42 用 :edit 打开文件
 {: #tip42}
 > Open a File by Its Filepath Using ‘:edit’
 
@@ -78,7 +81,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 - *:h cmdline-special* - 命令行里的特殊的符号, 比如 `%` `#` 等
 - *:h ::h* - 查看更多的文件标识符, 里面有详细的示例
 
-# Tip 43 用 :find 打开文件
+## Tip 43 用 :find 打开文件
 {: #tip43}
 > Open a File by Its Filename Using ‘:find’
 
@@ -125,7 +128,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 - *:h 'path'*
 - *:h file-searching*
 
-# Tip 44 用netrw探索文件系统 
+## Tip 44 用netrw探索文件系统 
 {: #tip44}
 > Explore the File System with netrw
 
@@ -205,7 +208,7 @@ Ex Command | Shorthand | Effect
 - *:h netrw-del*
 - *:h netrw-ref*
 
-# Tip 45 将文件存到不存在的目录
+## Tip 45 将文件存到不存在的目录
 {: #tip45}
 > Save Files to Nonexistent Directories
 
@@ -223,7 +226,7 @@ Ex Command | Shorthand | Effect
 **手册**:
 - *:h ctrl-G*
 
-# Tip 46 用超级用户存文件 
+## Tip 46 用超级用户存文件 
 {: #tip46}
 > Save a File as the Super User
 
