@@ -64,4 +64,11 @@ kbd {
     background-color: #b5c9d8;
 }
 
+.post_nav li[is-show='0'] {
+    display: none;
+}
+
+.post_nav a.active {
+    text-decoration: underline;
+}
 
