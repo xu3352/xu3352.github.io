@@ -30,14 +30,6 @@ table.table-multi-text th, table.table-multi-text td {
     line-height: normal;
 }
 
-.red {
-    color: red;
-}
-
-.green {
-    color: green;
-}
-
 kbd {
     display: inline-block;
     margin: 0 .1em;
@@ -70,5 +62,34 @@ kbd {
 
 .post_nav a.active {
     text-decoration: underline;
+}
+
+/* some class color */
+.red {
+    color: #d43f3a;
+}
+
+.green {
+    color: #2e6da4;
+}
+
+.primary {
+    color: #2e6da4;
+}
+
+.success {
+    color: #4cae4c;
+}
+
+.info {
+    color: #46b8da;
+}
+
+.warning {
+    color: #eea236;
+}
+
+.danger {
+    color: #d43f3a;
 }
 
