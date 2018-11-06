@@ -17,11 +17,13 @@ tags: vim practical-vim linux
 批量编辑 或者 纵向编辑模式 有时可以极大的提高工作效率
 
 ## Tip 20 Grok可视化模式
+{: #tip20}
 > Grok Visual Mode
 
 `Grok` : 通过感觉意会
 
 ## Tip 21 定义视觉选择
+{: #tip21}
 > Define a Visual Selection
 
 Command         | Effect
@@ -33,6 +35,7 @@ Command         | Effect
 `o`             | 可视化模式下:跳转到高亮文本的另一头
 
 ## Tip 22 重复行可视化模式命令
+{: #tip22}
 > Repeat Line-wise Visual Commands
 
 示例为一段 python 代码格式的缩进, 先设置一下: (确保一个缩进为4个空格)
@@ -59,6 +62,7 @@ Keystrokes | Buffer Contents
 这里的2次缩进 `>.` 也可以用 `2>` 替代; 不过推荐用第一种方式, 不用数数, 参考: [Tip 11](#tip-11-能重复的就别数数)
 
 ## Tip 23 尽量优先可视命令操作符
+{: #tip23}
 > Prefer Operators to Visual Commands Where Possible
 
 可视模式下操作更加直观, 但是有个短板, 就是使用 `.` 命令时表现得不太好
@@ -89,6 +93,7 @@ Keystrokes | Buffer Contents
 同理: `gu{motion}` 表示转小写   可视化模式下按 `u` 也是转小写
 
 ## Tip 24 可视化模式编辑表格
+{: #tip24}
 > Edit Tabular Data with Visual-Block Mode
 
 把下面的文案做成看起来像表格的样子
@@ -112,6 +117,7 @@ Visual mode          44
 - `Vr-` - 选择当前行, 字符替换为 "-"
 
 ## Tip 25 纵向编辑
+{: #tip25}
 > Change Columns of Text 
 
 直接来示例吧
@@ -126,6 +132,7 @@ li.three a{ background-image: url('/images/sprite.png');  }
 当我们选中区域, 按下 <kbd>c</kbd> 进入插入模式时, 这个时候只有 `第一行` 是正在进行修改的, 但我们编辑完成, 按 <kbd>Esc</kbd> 返回常规模式时, 会把变更应用到所有行
 
 ## Tip 26 可视化模式追加数据
+{: #tip26}
 > Append After a Ragged Visual Block
 
 把下面的 `javascript` 代码追加 `;` 结束符号

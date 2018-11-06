@@ -50,11 +50,13 @@ tags: vim practical-vim linux
 > The Vim Way
 
 ## Tip 1 点命令
+{: #tip1}
 > Meet the Dot Command
 
 `.` 命令 重复上一次更改操作, vim里最强大和常用的命令
 
 ## Tip 2 不要重复
+{: #tip2}
 > Don’t Repeat Yourself
 
 尽量减少移动步骤
@@ -69,6 +71,7 @@ tags: vim practical-vim linux
 `O`      | `ko`     | 向上插入一行, 进入插入模式
 
 ## Tip 3 退一步,跳三步
+{: #tip3}
 > Take One Step Back, Then Three Forward
 
 尽量使动作可重复
@@ -97,6 +100,7 @@ Keystrokes    | Buffer Contents
 1. 再按两次 `;.` 组合即可完成后面的2个 `+` 的替换 
 
 ## Tip 4 动作,重复动作,相反动作
+{: #tip4}
 > Act, Repeat, Reverse
 
 意图              | 动作                    | 重复动作 | 反转(撤销)
@@ -111,6 +115,7 @@ Keystrokes    | Buffer Contents
 宏在某些时候非常好使!
 
 ## Tip 5 手动查找和替换
+{: #tip5}
 > Find and Replace by Hand
 
 示例文案: "content" 出现在了每一行
@@ -140,6 +145,7 @@ Keystrokes      | Buffer Contents
 - `.` - 重复上一次的替换动作, 把第一行的内容也替换掉
 
 ## Tip 6 一键完成
+{: #tip6}
 > Meet the Dot Formula
 
 > One Keystroke to Move, One Keystroke to Execute <br/>
@@ -153,11 +159,13 @@ Keystrokes      | Buffer Contents
 常规模式是 `Vim` 默认的状态
 
 ## Tip 7 三思而后行
+{: #tip7}
 > Pause with Your Brush Off the Page
 
 动手之前可以先思考一下
 
 ## Tip 8 大步撤销
+{: #tip8}
 > Chunk Your Undos
 
 在我们进行修改之后, 可以按 `u` 进行撤销上一次的更改
@@ -175,11 +183,13 @@ Keystrokes      | Buffer Contents
 更多可查看手册: `:h u`
 
 ## Tip 9 撰写可重复的更改
+{: #tip9}
 > Compose Repeatable Changes
 
 重复性的动作尽量可以用: `.` 替代
 
 ## Tip 10 简单计算
+{: #tip10}
 > Use Counts to Do Simple Arithmetic 
 
 示例文案:
@@ -206,11 +216,13 @@ Keystrokes | Buffer Contents
 手册: `:h ctrl-x` `:h ctrl-a`
 
 ## Tip 11 能重复的就别数数
+{: #tip11}
 > Don't Count If You Can Repeat
 
 数完估计都操作完了
 
 ## Tip 12 动作组合
+{: #tip12}
 > Combine and Conquer
 
 `Operator + Motion = Action`
@@ -237,6 +249,7 @@ Keystrokes | Buffer Contents
 > Insert Mode
 
 ## Tip 13 插入模式立即更正
+{: #tip13}
 > Make Corrections Instantly from Insert Mode
 
 插入模式下进行更正:
@@ -249,6 +262,7 @@ Keystrokes | Effect
 **同样适用于 `Bash/Zsh` 等终端操作**
 
 ## Tip 14 返回常规模式
+{: #tip14}
 > Get Back to Normal Mode
 
 Keystrokes | Effect
@@ -259,6 +273,7 @@ Keystrokes | Effect
 `zz` 把当前行放到屏幕中间位置; 通常和 `<C-o>zz` 组合使用
 
 ## Tip 15 插入模式下寄存器粘贴
+{: #tip15}
 > Paste from a Register Without Leaving Insert Mode
 
 示例文案: 粘贴一段文字到第二行行末
@@ -279,6 +294,7 @@ Keystrokes | Buffer Contents
 - `.<Esc>` - 句号结尾后退出插入模式
 
 ## Tip 16 数学计算
+{: #tip16}
 > Do Back-of-the-Envelope Calculations in Place
 
 文案: 这里我们计算椅子的总价
@@ -291,6 +307,7 @@ Keystrokes       | Buffer Contents
 `<C-r>=6*35<CR>` | 6 chairs, each costing $35, totals $210<code class="cursor">.</code>
 
 ## Tip 17 非常用字符插入
+{: #tip17}
 > Insert Unusual Characters by Character Code
 
 Keystrokes            | Effect
@@ -304,6 +321,7 @@ Keystrokes            | Effect
 - `:h i_CTRL-V_digit`
 
 ## Tip 18 组合字符插入
+{: #tip18}
 > Insert Unusual Characters by Digraph
 
 `<C-k>{char1}{char2}` 组合字符
@@ -321,6 +339,7 @@ Keystrokes            | Effect
 - `:h digraph-table`
 
 ## Tip 19 覆盖模式
+{: #tip19}
 > Overwrite Existing Text with Replace Mode
 
 常规模式下按 `R` 即可开启覆盖模式; `r` 仅覆盖一个字符
