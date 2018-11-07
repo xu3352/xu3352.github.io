@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vim实用技巧进阶(第5章:命令模式) - Practical.Vim.2nd.Edition"
-tagline: ""
+tagline: "Tip 27~36"
 keywords: "vim,practical-vim,ex-commands,command-history,命令模式,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶: 第5章-命令模式"
 date: '2018-10-21 20:30:46 +0800'

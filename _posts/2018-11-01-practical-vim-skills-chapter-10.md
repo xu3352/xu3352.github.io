@@ -3,7 +3,7 @@ layout: post
 title: "Vim实用技巧进阶(第10章:复制和粘贴) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,copy,paste,register,clipboard,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶 第10章:复制和粘贴"
-tagline: ""
+tagline: "Tip 60~64"
 date: '2018-11-01 09:44:57 +0800'
 category: linux
 tags: vim practical-vim linux

@@ -3,7 +3,7 @@ layout: post
 title: "Vim实用技巧进阶(第8章:文档导航基础) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,vim导航基础,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶: 第8章 - 文档导航基础"
-tagline: ""
+tagline: "Tip 47~55"
 date: '2018-10-27 13:00:49 +0800'
 category: linux
 tags: vim practical-vim linux

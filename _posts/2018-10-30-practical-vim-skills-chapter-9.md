@@ -3,7 +3,7 @@ layout: post
 title: "Vim实用技巧进阶(第9章:文件相互跳转导航) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,navigate,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶 第9章:文件相互跳转导航"
-tagline: ""
+tagline: "Tip 56~59"
 date: '2018-10-30 10:34:51 +0800'
 category: linux
 tags: vim practical-vim linux

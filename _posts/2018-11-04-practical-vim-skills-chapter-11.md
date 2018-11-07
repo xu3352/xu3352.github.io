@@ -3,7 +3,7 @@ layout: post
 title: "Vim实用技巧进阶(第11章:宏指令) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,macros,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶 第10章:宏指令"
-tagline: ""
+tagline: "Tip 65~72"
 date: '2018-11-04 15:03:48 +0800'
 category: linux
 tags: vim practical-vim linux

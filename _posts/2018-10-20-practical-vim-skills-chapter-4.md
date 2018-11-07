@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vim实用技巧进阶(第4章:可视化模式) - Practical.Vim.2nd.Edition"
-tagline: ""
+tagline: "Tip 20~26"
 keywords: "vim,practical-vim,可视化模式"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶: 第4章-可视化模式"
 date: '2018-10-20 00:19:17 +0800'

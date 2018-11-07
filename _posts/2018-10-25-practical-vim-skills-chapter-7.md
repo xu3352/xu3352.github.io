@@ -3,7 +3,7 @@ layout: post
 title: "Vim实用技巧进阶(第7章:文件打开和存储) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,netrw,文件打开和存储,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶: 第7章 - 文件打开和存储"
-tagline: ""
+tagline: "Tip 42~46"
 date: '2018-10-25 10:21:15 +0800'
 category: linux
 tags: vim practical-vim linux

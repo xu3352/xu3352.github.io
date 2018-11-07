@@ -3,6 +3,7 @@ layout: post
 title: "Vim实用技巧进阶(第6章:管理多个文件) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,files,管理多个文件,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶: 第6章-管理多个文件"
+tagline: 'Tip 37~41'
 date: '2018-10-23 11:21:46 +0800'
 category: linux
 tags: vim practical-vim linux
