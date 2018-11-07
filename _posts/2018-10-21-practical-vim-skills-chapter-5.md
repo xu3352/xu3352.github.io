@@ -44,8 +44,8 @@ Command                                         | Effect
 
 | `<C-w>`           | 往前删除一个词
 | `<C-u>`           | 往前删除所有字符
-| `<C-v>` / `<C-k>` | 插入非常用字符 参考: [Tip 17 非常用字符插入](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip-17-%E9%9D%9E%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E6%8F%92%E5%85%A5)
-| `<C-r>{register}` | 插入指定 `{register}` 的内容  参考:[Tip 15 插入模式下寄存器粘贴](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip-15-%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%AF%84%E5%AD%98%E5%99%A8%E7%B2%98%E8%B4%B4)
+| `<C-v>` / `<C-k>` | 插入非常用字符 参考: [Tip 17 非常用字符插入](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip17)
+| `<C-r>{register}` | 插入指定 `{register}` 的内容  参考:[Tip 15 插入模式下寄存器粘贴](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip15)
 
 不过在命令模式下只能使用: `<left>` `<right>` 进行移动了
 
@@ -145,7 +145,7 @@ Command    | Effect
 
 `Vjj` 使用可视化模式选中第2~4行之后, `:` 启动命令模式, 自动补齐可视化模式的区间 `:'<,'>` 然后输入 `m$` 回车, 即可把选中的行移动到文件最后
 
-重复最后一次 Ex 命令只需要按 `@:` 即可, 后面 Tip 31 将会提到
+重复最后一次 Ex 命令只需要按 `@:` 即可, 后面 [Tip 31](https://xu3352.github.io/linux/2018/10/21/practical-vim-skills-chapter-5#tip31) 将会提到
 
 **手册**:
 - *:h :copy*
@@ -203,7 +203,7 @@ Keystrokes       | Buffer Contents
 
 `<C-o>` 命令同样适用于 *:next* *:cnext* *:tnext* 等命令 
 
-而执行 Ex 命令后([Tip 27](#tip27)), 如果想要撤销, 只需按 `u` 即可
+而执行 Ex 命令后([Tip 27](https://xu3352.github.io/linux/2018/10/21/practical-vim-skills-chapter-5#tip27)), 如果想要撤销, 只需按 `u` 即可
 
 **手册**:
 - *:h @:*
@@ -383,7 +383,7 @@ $ exit
 
 **使用缓冲区的内容进行标准输入或输出**:
 - `:read !{cmd}` - 把 *cmd* 执行的结果(标准输出)写入当前文件(缓冲区) 如: `:read !ls`
-- `:write !{cmd}` - 和上面相反, 把当前文件(缓冲区)内容当做标准输入传给了 *cmd* 命令 (Tip 46)
+- `:write !{cmd}` - 和上面相反, 把当前文件(缓冲区)内容当做标准输入传给了 *cmd* 命令 ([Tip 46](https://xu3352.github.io/linux/2018/10/25/practical-vim-skills-chapter-7#tip46))
 
 `!` 符号的位置不同有不同的含义:
 - `:[range]write !sh` - 把缓冲区当做标准输入传给了 *sh* 命令
