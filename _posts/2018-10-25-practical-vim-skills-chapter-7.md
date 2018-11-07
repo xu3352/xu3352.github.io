@@ -166,6 +166,7 @@ filetype plugin on
 打开文件用 *:edit {filename}* 这里把 `{filename}` 改成 `{path}` 文件目录即可
 
 Ex Command | Shorthand | Effect
+----       | ----      | ----
 `:edit .`  | `:e.`     | 打开文件管理器:当前工作区
 `:Explore` | `:E`      | 打开文件管理器:当前窗口的目录
 

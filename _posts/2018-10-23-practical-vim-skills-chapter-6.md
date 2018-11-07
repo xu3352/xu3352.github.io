@@ -135,6 +135,7 @@ lib/
 *2.用通配符匹配* 
 
 Glob            | Files Matching the Expansion
+----            | ----
 `:args *.*`     | index.html <br>app.js
 `:args **/*.js` | app.js <br>lib/framework.js <br>app/controllers/Mailer.js <br>...etc
 `:args **/*.* ` | app.js <br>index.js <br>lib/framework.js <br>lib/theme.css <br>app/controllers/Mailer.js <br>...etc
@@ -201,6 +202,7 @@ visual_mode.pml
 因为有未保存的缓冲区, 所以会有错误警告提醒, 要么把未保存的缓冲区保存(*:write*), 要么撤销变更(*:edit!*)
 
 Command    | Effect
+----       | ----
 `:w[rite]` | 缓冲区写入磁盘, 即存文件
 `:e[dit]!` | 重写从磁盘加载内容到缓冲区, 即撤销全部更改
 `:qa[ll]!` | 关闭所有窗口, 忽略所有变更 并湖绿警告提醒
@@ -245,6 +247,7 @@ Vim 允许我们切分工作区来展示多个 *缓冲区*
 ![窗口切分](http://p9fggfk3y.bkt.clouddn.com/20181024022816_vim-split-windows.png){:width="80%"}
 
 Command            | Effect
+----               | ----
 `<C-w>s`           | 水平(上下)切分; 可使用 `:edit {filename}` 加载其他文件
 `<C-w>v`           | 垂直(左右)切分
 `:sp[lit] {file}`  | 水平(上下)切分, 加载 *{file}* 到新建的窗口
@@ -253,6 +256,7 @@ Command            | Effect
 **窗口之前的切换**:
 
 Command  | Effect
+----     | ----
 `<C-w>w` | 循环切换
 `<C-w>h` | 切换到 左 侧窗口
 `<C-w>j` | 切换到 下 侧窗口
@@ -271,12 +275,14 @@ Command  | Effect
 **关闭窗口**:
 
 Ex Command | Normal Command | Effect
+----       | ----           | ----
 `:clo[se]` | `<C-w>c`       | 关闭当前活动的窗口
 `on[ly]`   | `<C-w>o`       | 只保留活动的窗口, 关闭其他的
 
 **窗口重新排列/大小调整**:
 
 Keystrokes  | Buffer Contents
+----        | ----
 `<C-w>=`    | 宽高平局分配
 `<C-w>_`    | 当前窗口 高度 调到最大
 `<C-w>|`    | 当前窗口 宽度 调到最大
@@ -284,7 +290,7 @@ Keystrokes  | Buffer Contents
 `[N]<C-w>|` | 当前窗口 宽度 设置为 10列
 `<C-w>[n]-` | 当前窗口 高度 -n 个单位
 `<C-w>[n]+` | 当前窗口 高度 +n
-`<C-w>[n]>` | 当前窗口 宽度 +n 
+`<C-w>[n]>` | 当前窗口 宽度 +n
 `<C-w>[n]<` | 当前窗口 宽度 -n
 
 *GUI* 的可以直接使用鼠标拖动窗口中间的线调整窗口大小
@@ -321,6 +327,7 @@ Keystrokes  | Buffer Contents
 **打开/关闭标签页**
 
 Command                 | Effect
+----                    | ----
 `:tabe[dit] {filename}` | 新建一个标签页
 `<C-w>T`                | 把当前窗口移动到新建的标签页
 `:tabc[lose]`           | 关闭标签页 (所有窗口都关掉)
@@ -331,6 +338,7 @@ Command                 | Effect
 标签页编号是从 1 开始的
 
 Ex Command       | Normal Command | Effect
+----             | ----           | ----
 `:tabn[ext] {N}` | `{N}gt`        | 切换到第 {N} 个标签页
 `:tabn[ext]`     | `gt`           | 切到下一个标签页
 `:tabp[revious]` | `gT`           | 切到上一个标签页

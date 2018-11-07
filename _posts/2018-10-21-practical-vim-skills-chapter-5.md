@@ -28,6 +28,7 @@ tags: vim practical-vim linux
 `Ex` 命令列表:
 
 Command                                         | Effect
+----                                            | ----
 `:[range]delete [x]`                            | 行区间删除 [内容存入寄存器 `x`]
 `:[range]yank [x]`                              | 行区间拷贝 [内容存入寄存器 `x`]
 `:[line]put [x]`                                | 指定行追加寄存器 `x` 的内容
@@ -42,10 +43,12 @@ Command                                         | Effect
 
 一些命令可以同时在 *插入模式* 和 *命令模式* 下使用:
 
-| `<C-w>`           | 往前删除一个词
-| `<C-u>`           | 往前删除所有字符
-| `<C-v>` / `<C-k>` | 插入非常用字符 参考: [Tip 17 非常用字符插入](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip17)
-| `<C-r>{register}` | 插入指定 `{register}` 的内容  参考:[Tip 15 插入模式下寄存器粘贴](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip15)
+命令              | 说明
+----              | ----
+`<C-w>`           | 往前删除一个词
+`<C-u>`           | 往前删除所有字符
+`<C-v>` / `<C-k>` | 插入非常用字符 参考: [Tip 17 非常用字符插入](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip17)
+`<C-r>{register}` | 插入指定 `{register}` 的内容  参考:[Tip 15 插入模式下寄存器粘贴](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip15)
 
 不过在命令模式下只能使用: `<left>` `<right>` 进行移动了
 
@@ -98,14 +101,15 @@ Command                                         | Effect
 区间的写法比较复杂, 这里总结一下:
 
 Symbol | Address
-`1` | 第一行
-`$` | 最后一行
-`0` | 第0行, 第一行的上一行 (`:.copy 0` 试试)
-`.` | 光标所在行:当前行
-`'m` | 标记为 `m` 的行
-`'<` | 可视化模式的 起始位置
-`'>` | 可视化模式的 结束位置
-`%` | 整个文件, 等同于 `:1,$`
+----   | ----
+`1`    | 第一行
+`$`    | 最后一行
+`0`    | 第0行, 第一行的上一行 (`:.copy 0` 试试)
+`.`    | 光标所在行:当前行
+`'m`   | 标记为 `m` 的行
+`'<`   | 可视化模式的 起始位置
+`'>`   | 可视化模式的 结束位置
+`%`    | 整个文件, 等同于 `:1,$`
 
 ## Tip 29 区间复制或移动
 {: #tip29}
@@ -131,6 +135,7 @@ Shopping list
 `:6copy.` 将第6行复制到当前行(第二行)下面
 
 Command    | Effect
+----       | ----
 `:6t.`     | 将第6行复制到当前行下面
 `:t6`      | 将当前行复制到第6行下面
 `:t.`      | 当前行复制并粘贴 (等同于常规模式的 `yyp`)
@@ -167,6 +172,7 @@ var foobarbaz = foo + bar + baz
 </pre>
 
 Keystrokes       | Buffer Contents
+----             | ----
 {start}          | <code class="cursor">v</code>ar foo = 1 <br>var bar = \'a\' <br>var baz = \'z\' <br>var foobar = foo + bar <br>var foobarbaz = foo + bar + baz
 `A;<Esc>`        | var foo = 1<code class="cursor">;</code><br>var bar = \'a\' <br>var baz = \'z\' <br>var foobar = foo + bar <br>var foobarbaz = foo + bar + baz
 `jVG`            | var foo = 1;<br><code class="visual">var bar = 'a' <br>var baz = 'z' <br>var foobar = foo + bar <br><code class="cursor">v</code>ar foobarbaz = foo + bar + baz </code>
@@ -278,6 +284,7 @@ for (tally=1; tally <= 10; tally++) {
 </pre>
 
 Keystrokes         | Buffer Contents
+----               | ----
 {start}            | var <code class="cursor">t</code>ally;<br>for (tally=1; tally <= 10; tally++) {<br>&nbsp;&nbsp;// do something with tally<br>};
 `*`                | var <code class="visual">tally</code>;<br>for (<code class="visual"><code class="cursor">t</code>ally</code>=1; <code class="visual">tally</code> <= 10; <code class="visual">tally</code>++) {<br>&nbsp;&nbsp;// do something with <code class="visual">tally</code><br>};
 `cw`counter`<Esc>` | var <code class="visual">tally</code>;<br>for (counte<code class="cursor">r</code>=1; <code class="visual">tally</code> <= 10; <code class="visual">tally</code>++) {<br>&nbsp;&nbsp;// do something with <code class="visual">tally</code><br>};
@@ -324,8 +331,9 @@ Keystrokes         | Buffer Contents
 命令窗口里是可以编辑历史命令的: 先按 `q:` 调出命令窗口
 
 Keystrokes        | Buffer Contents
+----              | ----
 {start}           | <code class="cursor">w</code>rite<br>!ruby %
-`A␣               | <Esc>`  | write <code class="cursor"> | </code><br>!ruby %
+`A␣|<Esc>`        | write <code class="cursor">|</code><br>!ruby %
 `J`               | write \|<code class="cursor">&nbsp;</code>!ruby %
 `:s/write/update` | update \|<code class="cursor">&nbsp;</code>!ruby %
 {: .table-multi-text}
@@ -335,6 +343,7 @@ Keystrokes        | Buffer Contents
 3种唤起命令窗口的方式:
 
 Command | Action
+----    | ----
 `q:`    | 打开历史命令窗口
 `q/`    | 打开搜索的历史命令窗口
 `<C-f>` | 命令模式下可按 <kbd>Ctrl + f</kbd> 切换到命令窗口
@@ -438,6 +447,7 @@ john,smith,john@example.com
 **汇总一下最有用的几种调用外部命令的用法**:
 
 Command                | Effect
+----                   | ----
 `:shell`               | 开启一个 *shell* 终端 (输入 *exit* 命令后返回到 *vim*)
 `:!{cmd}`              | 执行 *{cmd}* 命令
 `:read !{cmd}`         | 执行 *{cmd}* 命令, 把返回内容插入到当前行下面

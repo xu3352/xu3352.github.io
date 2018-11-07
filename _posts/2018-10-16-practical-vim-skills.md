@@ -14,6 +14,7 @@ tags: vim practical-vim linux
 ## 一般按键说明
 
 按键         | 说明
+----         | ----
 `x`          | 按下 `x` 字母
 `dw`         | 依次按下 `d` 和 `w` 字母
 `dap`        | 依次按下 `d` `a` `p` 字母
@@ -25,6 +26,7 @@ tags: vim practical-vim linux
 ## 替代字符
 
 按键                                          | 说明
+----                                          | ----
 `f{char}`                                     | 按下 `f` + 其他任何字符
 <code class="highlighter-rouge">`{a-z}</code> | 按下 <code class="highlighter-rouge">`</code> + 任意小写字母
 `m{a-zA-Z}`                                   | 按下 `m` + 任意大小写字母
@@ -34,16 +36,17 @@ tags: vim practical-vim linux
 
 ## 特殊的按键
 
-按键      | 说明
-`<Esc>`   | `Escape` 键
-`<CR>`    | 回车键 (同 `<Enter>`)
-`<Ctrl>`  | `Control` 键
-`<Tab>`   | `Tab` 键
-`<Shift>` | `Shift` 键
-`<S-Tab>` | 同时按下 `<Shift>` + `<Tab>` 键
-`<Up>`    | 向上健
-`<Down>`  | 向下健
-`␣`       | 空格键 <code class="highlighter-rouge" style="font-size:20px;"> ␣ </code>
+按键                          | 说明
+----                          | ----
+`<Esc>`                       | `Escape` 键
+`<CR>`                        | 回车键 (同 `<Enter>`)
+`<Ctrl>`                      | `Control` 键
+`<Tab>`                       | `Tab` 键
+`<Shift>`                     | `Shift` 键
+`<S-Tab>`                     | 同时按下 `<Shift>` + `<Tab>` 键
+`<Up>`                        | 向上健
+`<Down>`                      | 向下健
+`␣`{:style="font-size:20px;"} | 空格键 `␣`{:style="font-size:20px;"}
 
 
 # 第1章 VIM之路
@@ -62,6 +65,7 @@ tags: vim practical-vim linux
 尽量减少移动步骤
 
 复合命令 | 等同写法 | 作用
+----     | ----     | ----
 `C`      | `c$`     | 删除光标到行末, 进入插入模式
 `s`      | `cl`     | 删除光标处字符, 进入插入模式
 `S`      | `^C`     | 删除当前行, 进入插入模式
@@ -84,13 +88,15 @@ var foo = "method(" + argument1 + "," + argument2 + ")";
 ```
 
 Keystrokes    | Buffer Contents
-{start}     | <code class="cursor">v</code>ar foo = \"method(\"+argument1+\",\"+argument2+\")\";
+----          | ----
+{start}       | <code class="cursor">v</code>ar foo = \"method(\"+argument1+\",\"+argument2+\")\";
 `f+`          | var foo = \"method(\"<code class="cursor">+</code>argument1+\",\"+argument2+\")\";
 `s`␣+␣`<Esc>` | var foo = \"method(\" +<code class="cursor">&nbsp;</code>argument1+\",\"+argument2+\")\";
 `;`           | var foo = \"method(\" + argument1<code class="cursor">+</code>\",\"+argument2+\")\";
 `.`           | var foo = \"method(\" + argument1 +<code class="cursor">&nbsp;</code>\",\"+argument2+\")\";
 `;.`          | var foo = \"method(\" + argument1 + \",\" +<code class="cursor">&nbsp;</code>argument2+\")\";
 `;.`          | var foo = \"method(\" + argument1 + \",\" + argument2 +<code class="cursor">&nbsp;</code>\")\";
+{: .table-multi-text}
 
 
 1. 这里使用 `f+` (`f{char}`模式) 快速定位到单个字符 `+`;
@@ -129,7 +135,8 @@ Keystrokes    | Buffer Contents
 `:%s/content/copy/gc` 达到效果, 这里我们选择手动的方式  
 
 Keystrokes      | Buffer Contents
-{start}       | ...We're waiting for content before the site can go live...<br>...If you are <code class="cursor">c</code>ontent with this, let's go ahead with it...<br>...We'll launch as soon as we have the content...
+----            | ----
+{start}         | ...We're waiting for content before the site can go live...<br>...If you are <code class="cursor">c</code>ontent with this, let's go ahead with it...<br>...We'll launch as soon as we have the content...
 `*`             | ...We're waiting for `content` before the site can go live...<br>...If you are `content` with this, let's go ahead with it...<br>...We'll launch as soon as we have the <code class="highlighter-rouge"><code class="cursor">c</code>ontent</code>...
 `cw`copy`<Esc>` | ...We're waiting for `content` before the site can go live...<br>...If you are `content` with this, let's go ahead with it...<br>...We'll launch as soon as we have the cop<code class="cursor">y</code>...
 `n`             | ...We're waiting for <code class="highlighter-rouge"><code class="cursor">c</code>ontent</code> before the site can go live...<br>...If you are `content` with this, let's go ahead with it...<br>...We'll launch as soon as we have the copy...
@@ -204,10 +211,12 @@ Keystrokes      | Buffer Contents
 </pre>
 
 Keystrokes | Buffer Contents
+----       | ----
 {start} | .blog, .news { background-image: url(/sprite.png);  }<br><code class="cursor">.</code>blog { background-position: 0px 0px  }
 `yyp` | .blog, .news { background-image: url(/sprite.png);  }<br>.blog { background-position: 0px 0px  }<br><code class="cursor">.</code>blog { background-position: 0px 0px  }
 `cw`.news`<Esc>` | .blog, .news { background-image: url(/sprite.png);  }<br>.blog { background-position: 0px 0px  }<br>.new<code class="cursor">s</code> { background-position: 0px 0px  }
 `180<C-x>` | .blog, .news { background-image: url(/sprite.png);  }<br>.blog { background-position: 0px 0px  }<br>.news { background-position: -18<code class="cursor">0</code>px 0px  }
+{: .table-multi-text}
 
 - `<C-x>` - 数字相减
 - `<C-a>` - 数字相加 (容易和 tmux 快捷键冲突)
@@ -234,6 +243,7 @@ Keystrokes | Buffer Contents
 `Operator` 触发操作:
 
 触发 | 效果
+---- | ----
 `c`  | 修改
 `d`  | 删除
 `y`  | 复制到寄存器
@@ -255,6 +265,7 @@ Keystrokes | Buffer Contents
 插入模式下进行更正:
 
 Keystrokes | Effect
+----       | ----
 `<C-h>` | 往前删除一个字符
 `<C-w>` | 删除一个词
 `<C-u>` | 删除一行
@@ -266,6 +277,7 @@ Keystrokes | Effect
 > Get Back to Normal Mode
 
 Keystrokes | Effect
+----       | ----
 `<Esc>`    | 切换到常规模式
 `<C-[>`    | 切换到常规模式
 `<C-o>`    | 切换到插入模式  (`:h i_CTRL-O`)
@@ -283,10 +295,12 @@ Read Drew Neil's
 </pre>
 
 Keystrokes | Buffer Contents
+----       | ----
 `yt,`      | <code class="cursor">P</code>ractical Vim, by Drew Neil <br/>Read Drew Neil's
 `jA␣`      | Practical Vim, by Drew Neil <br/>Read Drew Neil's <code class="cursor">&nbsp;</code>
 `<C-r>0`   | Practical Vim, by Drew Neil <br/>Read Drew Neil's Practical Vim<code class="cursor">&nbsp;</code>
 `.<Esc>`   | Practical Vim, by Drew Neil <br/>Read Drew Neil's Practical Vim<code class="cursor">.</code>
+{: .table-multi-text}
 
 - `yt,` - 光标到第一个 "," 之间的文本放入寄存器
 - `jA␣` - 光标移动到下一行, 然后定位到行末并切换为插入模式, 再输入一个空格
@@ -303,14 +317,17 @@ Keystrokes | Buffer Contents
 </pre>
 
 Keystrokes       | Buffer Contents
+----             | ----
 `A`              | 6 chairs, each costing $35, totals $<code class="cursor">&nbsp;</code>
 `<C-r>=6*35<CR>` | 6 chairs, each costing $35, totals $210<code class="cursor">.</code>
+{: .table-multi-text}
 
 ## Tip 17 非常用字符插入
 {: #tip17}
 > Insert Unusual Characters by Character Code
 
 Keystrokes            | Effect
+----                  | ----
 `<C-v>{123}`          | 按十进制代码插入字符 (`<C-v>065` 为 `A`)
 `<C-v>u{123}`         | 按十六进制代码插入字符 (`<C-v>u1234` 为 `ሴ`)
 `<C-v>{nondigit}`     | 插入非数字字符?
@@ -345,9 +362,11 @@ Keystrokes            | Effect
 常规模式下按 `R` 即可开启覆盖模式; `r` 仅覆盖一个字符
 
 Keystrokes    | Buffer Contents
+----          | ----
 {start}       | <code class="cursor">T</code>yping in Insert mode extends the line. But in Replace mode<br>the line length doesn't change.
 `f.`          | Typing in Insert mode extends the line<code class="cursor">.</code> But in Replace mode<br>the line length doesn't change.
 `R`,␣b`<Esc>` | Typing in Insert mode extends the line, <code class="cursor">b</code>ut in Replace mode<br>the line length doesn't change.
+{: .table-multi-text}
 
 
 ---

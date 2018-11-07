@@ -27,6 +27,7 @@ tags: vim practical-vim linux
 > Define a Visual Selection
 
 Command         | Effect
+----            | ----
 `v`             | 切换为可视化模式:以字符为单位
 `V`             | 切换为可视化模式:以行为单位
 `<C-v>`         | 切换为可视化模式:以块为单位
@@ -53,6 +54,7 @@ fib(42)
 先缩进, 然后重复
 
 Keystrokes | Buffer Contents
+----       | ----
 {start}    | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br><code class="cursor">p</code>rint a,<br>a, b = b, a+b<br>fib(42)<br>
 `Vj`       | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br><code class="highlighter-rouge">print a,</code><br><code class="highlighter-rouge"><code class="cursor">a</code>, b = b, a+b</code><br>fib(42)<br>
 `>.`       | def fib(n):<br>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br>&nbsp;&nbsp;&nbsp;&nbsp;while a < n:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="cursor">p</code>rint a,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a, b = b, a+b<br>fib(42)<br>
@@ -75,12 +77,13 @@ Keystrokes | Buffer Contents
 ```
 
 Keystrokes | Buffer Contents
+----       | ----
 {start}    | <code class="cursor"><</code>a href=\"#\">one</a><br><a href=\"#\">two</a><br><a href=\"#\">three</a>
 `vit`      | <a href=\"#\"><code class="highlighter-rouge">on<code class="cursor">e</code></code></a><br><a href=\"#\">two</a><br><a href=\"#\">three</a>
 `U`        | <a href=\"#\"><code class="cursor">O</code>NE</a><br><a href=\"#\">two</a><br><a href=\"#\">three</a>
-`j.`        | <a href=\"#\">ONE</a><br><a href=\"#\"><code class="cursor">T</code>WO</a><br><a href=\"#\">three</a>
-`j.`        | <a href=\"#\">ONE</a><br><a href=\"#\">TWO</a><br><a href=\"#\"><code class="cursor">T</code>HRee</a>
-{: style="font-family:Courier;"}
+`j.`       | <a href=\"#\">ONE</a><br><a href=\"#\"><code class="cursor">T</code>WO</a><br><a href=\"#\">three</a>
+`j.`       | <a href=\"#\">ONE</a><br><a href=\"#\">TWO</a><br><a href=\"#\"><code class="cursor">T</code>HRee</a>
+{:.table-multi-text}
 
 `it` 表示标签内的所有内容 (`:h it`); 可视化模式下的 `U` 表示转大写 (`:h v_U`)
 
@@ -136,15 +139,15 @@ li.three a{ background-image: url('/images/sprite.png');  }
 > Append After a Ragged Visual Block
 
 把下面的 `javascript` 代码追加 `;` 结束符号
-<pre>
 
+<pre>
 var foo = 1
 var bar = 'a'
 var foobar = foo + bar
-
 </pre>
 
 Keystrokes                       | Buffer Contents
+----                             | ----
 {start}<br><br>*Normal mode*     | var foo = <code class="cursor">1</code><br>var bar = 'a'<br>var foobar = foo + bar
 `<C-v>jj$`<br><br>*Visual-Block* | var foo = `1`<br>var bar = `'a'`<br>var foobar` = foo + bar`<code class="cursor">&nbsp;</code>
 `A;`<br><br>*Insert model*       | var foo = 1;<code class="cursor">&nbsp;</code><br>var bar = 'a'<br>var foobar = foo + bar
