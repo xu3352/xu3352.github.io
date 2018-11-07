@@ -59,7 +59,7 @@ Keystrokes | Buffer Contents
 {:.table-multi-text}
 
 
-这里的2次缩进 `>.` 也可以用 `2>` 替代; 不过推荐用第一种方式, 不用数数, 参考: [Tip 11](#tip-11-能重复的就别数数)
+这里的2次缩进 `>.` 也可以用 `2>` 替代; 不过推荐用第一种方式, 不用数数, 参考: [Tip 11](https://xu3352.github.io/linux/2018/10/16/practical-vim-skills#tip11)
 
 ## Tip 23 尽量优先可视命令操作符
 {: #tip23}
