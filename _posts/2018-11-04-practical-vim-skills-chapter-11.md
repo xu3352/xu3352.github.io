@@ -2,7 +2,7 @@
 layout: post
 title: "Vim实用技巧进阶(第11章:宏指令) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,macros,实用技巧"
-description: "Practical.Vim.2nd.Edition 实用技巧进阶 第10章:宏指令"
+description: "Practical.Vim.2nd.Edition 实用技巧进阶 第11章:宏指令"
 tagline: "Tip 65~72"
 date: '2018-11-04 15:03:48 +0800'
 category: linux
@@ -10,7 +10,7 @@ tags: vim practical-vim linux
 ---
 > {{ page.description }}
 
-# 第10章 宏指令
+# 第11章 宏指令
 > Macros
 
 Vim 提供了多种方式来 重复一个变更操作. 例如最常用的 `.` 命令, 重复一次小的变更非常有用. 
