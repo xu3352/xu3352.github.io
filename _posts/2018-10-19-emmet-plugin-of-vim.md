@@ -50,7 +50,7 @@ autocmd FileType html,css,md,markdown EmmetInstall
 
 快速上手:
 
-按键:`ul#id>li*3>a`, `<Esc>`, `<C-y>,`
+按键:`ul#id>li*3>a` + `<Esc>` + `<C-y>,`
 ```html
 <ul id="id">
     <li><a href=""></a></li>
@@ -59,7 +59,7 @@ autocmd FileType html,css,md,markdown EmmetInstall
 </ul>
 ```
 
-按键:`table.datagrid>tr*3>td*4`, `<Esc>`, `<C-y>,`
+按键:`table.datagrid>tr*3>td*4` + `<Esc>` + `<C-y>,`
 ```html
 <table class="datagrid">
     <tr>
