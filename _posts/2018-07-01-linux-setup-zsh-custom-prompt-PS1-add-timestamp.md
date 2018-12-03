@@ -47,7 +47,7 @@ According to the zshmisc man page there are several % codes for date and time, e
 `%D{strftime-format}` 这里使用的 [Python time strftime()语法](http://www.runoob.com/python/att-time-strftime.html)
 
 # 最终效果
-![](http://p9fggfk3y.bkt.clouddn.com/20180701051805_zsh-agnoster-theme.png){:width="100%"}
+![](/assets/archives/20180701051805_zsh-agnoster-theme.png){:width="100%"}
 亮瞎你的双眼, 哈哈哈!!!
 
 ---

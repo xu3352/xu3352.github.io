@@ -23,7 +23,7 @@ tags: vim practical-vim linux
 - <kbd>a</kbd> <kbd>s</kbd> <kbd>d</kbd> <kbd>f</kbd> - 左手4指位置
 - <kbd>j</kbd> <kbd>k</kbd> <kbd>l</kbd> <kbd>;</kbd> - 右手4指位置
 
-![手指姿势安放](http://p9fggfk3y.bkt.clouddn.com/20181027072220_vim-fingers-on-keyboard.png){:width="100%"}
+![手指姿势安放](/assets/archives/20181027072220_vim-fingers-on-keyboard.png){:width="100%"}
 
 基础 `上/下/左/右` 移动:
 
@@ -50,7 +50,7 @@ noremap <Right> <Nop>
 - `真实行` - 通常情况下的一行文本 (行末为换行符)
 - `显示行` - 在 *vim* 编辑器 里看到的文本行, 一行文本显示不了会自动换行显示
 
-![真实行和显示行展示](http://p9fggfk3y.bkt.clouddn.com/20181028014318_vim-real-lines-and-display-lines.png)
+![真实行和显示行展示](/assets/archives/20181028014318_vim-real-lines-and-display-lines.png)
 
 在开启行号显示(`:set number`)之后就明显了, 上图的真实行数为: *3*, 显示行数为: *9*
 
@@ -94,7 +94,7 @@ nnoremap gj j
 `e`   | 移动到 当前/下一个词 的最后一个字母处
 `ge`  | 移动到 上一个词 的最后一个字母处
 
-![按词移动图解](http://p9fggfk3y.bkt.clouddn.com/20181028021452_vim-move-word-wise.png)
+![按词移动图解](/assets/archives/20181028021452_vim-move-word-wise.png)
 
 
 例如在一次单词后面追加字母:
@@ -304,7 +304,7 @@ var tpl = [
 ```
 这段代码包含了配对的中括号, 大括号, 大于小于符号, THML标签, 单引号, 双引号等字符
 
-![文本对象选择示例](http://p9fggfk3y.bkt.clouddn.com/20181029022118_vim-text-object-select.png)
+![文本对象选择示例](/assets/archives/20181029022118_vim-text-object-select.png)
 
 上面的操作都是在可视化模式下, 对不同文本对象的选取, 是不是方便?
 
@@ -323,7 +323,7 @@ var tpl = [
 
 在可视化模式中, 文本对象可以完美的展示出来, 而真正强大的却是修改文档的时候, 比如: `d{motion}` `c{motion}` `y{motion}`
 
-![文本对象修改文档示例](http://p9fggfk3y.bkt.clouddn.com/20181029025941_vim-text-object-operation.png)
+![文本对象修改文档示例](/assets/archives/20181029025941_vim-text-object-operation.png)
                                                                                                          
 **手册**:
 - *:h text-objects* - 查看更多的文本对象

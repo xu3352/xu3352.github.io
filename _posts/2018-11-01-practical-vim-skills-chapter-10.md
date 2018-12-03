@@ -365,7 +365,7 @@ Keystrokes       | Buffer Contents
 </table>
 ```
 
-![gP命令粘贴效果](http://p9fggfk3y.bkt.clouddn.com/20181103122707_vim-gP-command.png)
+![gP命令粘贴效果](/assets/archives/20181103122707_vim-gP-command.png)
 
 多行文本复制时, `gP` 命令非常好用; 虽然 `P` 和 `gP` 命令都能达到预期的复制文本效果, 不过最后光标停留的位置还是 `gP` 更实用一点(修改更方便点)
 

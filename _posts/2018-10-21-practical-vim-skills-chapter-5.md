@@ -130,7 +130,7 @@ Shopping list
 
 **复制行的语法** `:[range]copy {address}`
 
-![复制第6行到第二行后面](http://p9fggfk3y.bkt.clouddn.com/20181021124842_vim-duplicate-lines-with-t-command.png)
+![复制第6行到第二行后面](/assets/archives/20181021124842_vim-duplicate-lines-with-t-command.png)
 
 `:6copy.` 将第6行复制到当前行(第二行)下面
 
@@ -146,7 +146,7 @@ Command    | Effect
 
 **移动行的语法** `:[range]move {address}`
 
-![可视化选中的行移动](http://p9fggfk3y.bkt.clouddn.com/20181021132604_vim-moving-lines-with-m-command.png)
+![可视化选中的行移动](/assets/archives/20181021132604_vim-moving-lines-with-m-command.png)
 
 `Vjj` 使用可视化模式选中第2~4行之后, `:` 启动命令模式, 自动补齐可视化模式的区间 `:'<,'>` 然后输入 `m$` 回车, 即可把选中的行移动到文件最后
 

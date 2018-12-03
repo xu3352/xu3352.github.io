@@ -397,7 +397,7 @@ endif
 ➾ :first
 ```
 
-![Tip 70 宏录制](http://p9fggfk3y.bkt.clouddn.com/20181106135936_vim-macro-files-act.png)
+![Tip 70 宏录制](/assets/archives/20181106135936_vim-macro-files-act.png)
 
 **步骤**:
 - `qa` - 开始录制宏, 寄存器为 *a*
@@ -425,7 +425,7 @@ endif
 
 目前我们的宏可以在单个缓冲区很好的执行, 想要在多个缓冲区执行, 那么还需要在宏里追加命令 *:next*, 然后我们就可以使用 `3@a` 来应用到其他3个文件, 当然我们也可以使用 `22@a`, 因为 *:next* 执行失败时, 宏就会终止了
 
-![追加命令后串行执行其他文件](http://p9fggfk3y.bkt.clouddn.com/20181107014334_vim-macro-files-acts-series.png)
+![追加命令后串行执行其他文件](/assets/archives/20181107014334_vim-macro-files-acts-series.png)
 
 #### 保存所有文件变更
 
@@ -618,5 +618,5 @@ Keystrokes | Buffer Contents
 - *:h function-list* - Vim脚本函数列表
 
 ---
-- [Practical.Vim.2nd.Edition 源码包](http://p9fggfk3y.bkt.clouddn.com/20181106092815_dnvim2-code.zip)
+- [Practical.Vim.2nd.Edition 源码包](/assets/archives/20181106092815_dnvim2-code.zip)
 

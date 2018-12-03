@@ -9,7 +9,7 @@ tags: tmux iTerm2 linux
 ---
 > {{ page.description }}
 
-![](http://p9fggfk3y.bkt.clouddn.com/20180629060349_tmux.png){:width="100%"}
+![](/assets/archives/20180629060349_tmux.png){:width="100%"}
 先来张效果图, 最下面的一行为 `Tmux` 的会话
 
 # iTerm2

@@ -151,7 +151,7 @@ filetype plugin on
 ➾ $ vim .
 </pre>
 
-![netrw vim自带的文件浏览器](http://p9fggfk3y.bkt.clouddn.com/20181025082424_vim-netrw-plugin.png){:width="100%"}
+![netrw vim自带的文件浏览器](/assets/archives/20181025082424_vim-netrw-plugin.png){:width="100%"}
 
 **操作**:
 - `k` / `j` - 上下移动光标; 其他 `{motion}` 跟 *vim* 里的操作一样
@@ -180,7 +180,7 @@ Ex Command | Shorthand | Effect
 
 原因很简单: 它可以很好的与 *切分窗口* 结合起来使用
 
-![netrw 切分窗口文件管理器](http://p9fggfk3y.bkt.clouddn.com/20181025085628_vim-netrw-split-window.png){:width="100%"}
+![netrw 切分窗口文件管理器](/assets/archives/20181025085628_vim-netrw-split-window.png){:width="100%"}
 
 如上图所示, 上面的过程为: 
 - 图1 - C窗口 开启 文件管理器

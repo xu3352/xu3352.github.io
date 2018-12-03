@@ -453,5 +453,5 @@ Search items: [<code class="visual">http://vimdoc.net/search?q=/\\</code>][s]
 例如 `/vim/e<CR>` 将把光标放到高亮匹配位置的最后而不是前面. 更多参考: Tip 83
 
 ---
-- [Practical.Vim.2nd.Edition 源码包](http://p9fggfk3y.bkt.clouddn.com/20181106092815_dnvim2-code.zip)
+- [Practical.Vim.2nd.Edition 源码包](/assets/archives/20181106092815_dnvim2-code.zip)
 

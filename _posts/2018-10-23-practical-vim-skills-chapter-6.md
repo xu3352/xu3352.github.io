@@ -244,7 +244,7 @@ Vim 允许我们切分工作区来展示多个 *缓冲区*
 - `<C-w>s` - 水平(上下)切分
 - `<C-w>v` - 垂直(左右)切分
 
-![窗口切分](http://p9fggfk3y.bkt.clouddn.com/20181024022816_vim-split-windows.png){:width="80%"}
+![窗口切分](/assets/archives/20181024022816_vim-split-windows.png){:width="80%"}
 
 Command            | Effect
 ----               | ----
@@ -312,7 +312,7 @@ Keystrokes  | Buffer Contents
 
 但 *vim* 不是这样, 一个标签页是可以开启多个 *缓冲区* 列表的, 如下图所示:
 
-![Vim Tab页窗口](http://p9fggfk3y.bkt.clouddn.com/20181024044839_vim-tab-pages.png){:width="100%"}
+![Vim Tab页窗口](/assets/archives/20181024044839_vim-tab-pages.png){:width="100%"}
 
 **如何使用标签页**
 

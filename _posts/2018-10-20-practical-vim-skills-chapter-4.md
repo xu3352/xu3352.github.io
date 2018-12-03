@@ -107,7 +107,7 @@ Insert mode          31
 Visual mode          44
 </pre>
 
-![做成表格的样子](http://p9fggfk3y.bkt.clouddn.com/20181020155844_vim-edit-tabula-data-with-visual-mode.png)
+![做成表格的样子](/assets/archives/20181020155844_vim-edit-tabula-data-with-visual-mode.png)
 
 感受到竖向编辑的强大了没? (IDE里几乎必备的一个功能)
 
@@ -130,7 +130,7 @@ li.two   a{ background-image: url('/images/sprite.png');  }
 li.three a{ background-image: url('/images/sprite.png');  }
 </pre>
 
-![纵向编辑示例](http://p9fggfk3y.bkt.clouddn.com/20181020162507_vim-change-columns-of-text.png){:width="100%"}
+![纵向编辑示例](/assets/archives/20181020162507_vim-change-columns-of-text.png){:width="100%"}
 
 当我们选中区域, 按下 <kbd>c</kbd> 进入插入模式时, 这个时候只有 `第一行` 是正在进行修改的, 但我们编辑完成, 按 <kbd>Esc</kbd> 返回常规模式时, 会把变更应用到所有行
 

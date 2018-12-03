@@ -37,7 +37,7 @@ tags: vpn work
 
 ---
 最新的套餐: (2018.08.31更)
-![套餐](http://p9fggfk3y.bkt.clouddn.com/20180831085443_jiasudu.png){:width="100%"}
+![套餐](/assets/archives/20180831085443_jiasudu.png){:width="100%"}
 今天突然上加速度后台去看了看, 发现 `2元/15天` 加回来了, 看公告应该是 7.1 号之后就有了, 小伙伴们可以放心去体验了
 
 **另外** Iphone版的: `Shadowrocket` 我记得是我是使用 `PP助手` 安装的
