@@ -15,6 +15,9 @@ DIR=`pwd`
 FILE_NAME="$DATE-`echo $TITLE|sed 's/[ ][ ]*/-/g'`.md"
 echo "file name:" _posts/$FILE_NAME
 
+# system pasteboard
+echo _posts/$FILE_NAME | pbcopy
+
 # template content
 CONTENT=`cat $TEMPLATE`
 
