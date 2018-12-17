@@ -32,18 +32,5 @@ $(function(){
     	$('#donate_board').hide();
     	$('#donate_guide').show();
 	})
-
-    // 初始化图片插件
-    $('a.fancybox').abigimage({
-        bottomCSS: {
-            fontSize: '2em',
-            textAlign: 'center'
-        },
-        onopen: function (target) {
-            this.bottom.html(
-                $('img', target).attr('alt')
-            );
-        }
-    });
 })
 
