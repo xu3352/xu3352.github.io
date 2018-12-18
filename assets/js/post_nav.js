@@ -63,21 +63,31 @@ $(document).ready(function(){
 
         // h1 不处理
         var curr_level = $a.parent().attr("data-level");
-        if (curr_level <= 2) resetShow();
+        resetShow();
         if (curr_level <= 1) return;
-       
-        // 没有下一个 || 下一个是同级别的 不处理
+
+        $a.parent().attr("is-show", 1);
+
+        // 往前遍历
+        var $prev = $a.parent().prev("li");
+        while (true) {
+            if ($prev.length == 0) break;
+            if ($prev.attr("is-show") == 1) break;
+            var l = $prev.attr("data-level");
+            if (l <= curr_level) $prev.attr("is-show", 1);
+            $prev = $prev.prev("li");
+        }
+
+        // 往后遍历
         var $next = $a.parent().next("li");
-        if ($next.length == 0 || $next.attr("data-level") <= curr_level) return;
-
-        // 下级不是 h1 的情况
-        var cmp_level = $next.attr("data-level");
-
-        // 同一层级的展开
-        do {
-            $next.attr("is-show", 1);
+        var sub_level = $next.length == 0 ? 0 : $next.attr("data-level");
+        while (true) {
+            if ($next.length == 0) break;
+            if ($next.attr("is-show") == 1) break;
+            var l = $next.attr("data-level");
+            if (l == sub_level || l == curr_level) $next.attr("is-show", 1);
             $next = $next.next("li");
-        } while ($next.length > 0 && $next.attr("data-level") == cmp_level);
+        }
     })
 
     // H1~H6 标签名数组
