@@ -85,7 +85,7 @@ $(document).ready(function(){
             if ($next.length == 0) break;
             if ($next.attr("is-show") == 1) break;
             var l = $next.attr("data-level");
-            if (l == sub_level || l == curr_level) $next.attr("is-show", 1);
+            if (l <= sub_level || l == curr_level) $next.attr("is-show", 1);
             $next = $next.next("li");
         }
     })
