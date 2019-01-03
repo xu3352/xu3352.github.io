@@ -28,7 +28,7 @@ number: 5
 - [快乐的 Linux 命令行](http://billie66.github.io/TLCL/index.html) (《The Linux Command Line》 的中文版)
 - [鸟哥的私房菜](http://cn.linux.vbird.org/) (基础篇3版、服务器篇3版，非常详细和全面)
 - [Shell 程序设计教程](http://opus.konghy.cn/shell-tutorial/index.html)
-
+- [Bash Shell字符串操作小结](https://www.centos.bz/2013/08/bash-shell-string-operate-summary/)
 
 # Front-End 前端
 - [W3school中文](http://www.w3school.com.cn/)
