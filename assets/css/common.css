@@ -15,6 +15,12 @@ code.visual {
     -webkit-border-radius: inherit;
 } 
 
+code.vimhelp {
+    background-color:#f9ecf1;
+    padding: 0;
+    -webkit-border-radius: inherit;
+} 
+
 .highlighter-rouge pre code {
     padding: 0px;
 }
@@ -67,10 +73,6 @@ kbd {
 /* some class color */
 .red {
     color: #d43f3a;
-}
-
-.green {
-    color: #2e6da4;
 }
 
 .primary {
