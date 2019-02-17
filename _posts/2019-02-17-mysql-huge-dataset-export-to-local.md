@@ -16,7 +16,7 @@ Mysql 某表的数据量很大(几十个G), 直接用mysql客户端的工具没�
 所以干脆就写个脚本一批一批的导出, 就叫它: 蚂蚁搬家
 
 # 代码清单
-思路基本就有了, 假如每次查询10w条记录, 然后写入到本地的文件里, 直到数据全部导出
+思路基本就有了: 先查数据库, 假如每次查询10w条记录, 然后写入到本地的文件里, 直到数据全部导出
 
 直接上代码吧: `db_tablename_backup.py`
 
@@ -102,12 +102,16 @@ if __name__ == "__main__":
 还可以选择性的只备份重要的字段, 省网络流量, 省存储空间, 不过主键ID得是自增型的
 
 
-# 其他
+# 注意事项
 
-由于耗时较长, 本地网络可能不稳定, 建议放到找一台服务器跑: tmux 或 nohup 都是不错的选择, 可以无人值守
+- 由于耗时较长(几个小时), 本地网络可能不稳定, 建议放到找一台服务器跑: [tmux](https://xu3352.github.io/linux/2018/06/29/revisit-magical-tmux) 或 nohup 都是不错的选择, 可以无人值守
+- 磁盘空间要留足, 导出来也是几十个G
+- 如果执行过程中断了, 可以根据最后存的ID位置重新跑, 节省时间
+- 大文件不好传输(下载)的, 可以切分为多个小文件: [split 命令](https://xu3352.github.io/linux/2019/01/02/split-large-text-file-into-parts#split%E5%91%BD%E4%BB%A4)
 
 ---
 参考：
 - [Python3 Mysql连库及简单封装使用](https://xu3352.github.io/python/2018/05/22/python-mysql-usage)
 - [将线上大数据mysql备份到本地的好方法](http://www.dewen.net.cn/q/2876/%E5%B0%86%E7%BA%BF%E4%B8%8A%E5%A4%A7%E6%95%B0%E6%8D%AEmysql%E5%A4%87%E4%BB%BD%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9A%84%E5%A5%BD%E6%96%B9%E6%B3%95)
+- [将txt大文件切分成多个小文件](https://xu3352.github.io/linux/2019/01/02/split-large-text-file-into-parts#split%E5%91%BD%E4%BB%A4)
 
