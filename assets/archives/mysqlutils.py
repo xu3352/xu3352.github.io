@@ -1,29 +1,3 @@
----
-layout: post
-title: "Python3 Mysql连库及简单封装使用"
-tagline: ""
-description: "通过 `db_config.json` 加载数据库配置; 常规的增删改查进行封装"
-date: '2018-05-22 09:32:26 +0800'
-category: python
-tags: pymysql logger python mysql
----
-> {{ page.description }}
-
-# 代码
-连库配置: `db_config.json`
-```json
-{
-  "host": "192.168.7.251",
-  "user": "root",
-  "password": "123456",
-  "db": "mars",
-  "charset": "utf8",
-  "port": 3306
-}
-```
-
-封装工具类: `mysqlutils.py`
-```python
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 # author: xu3352<xu3352@gmail.com>
@@ -40,6 +14,8 @@ Python Mysql 工具包
 4. queryall 结果集只有一列的情况, 会自动转换为简单的列表 参考:simple_list()
 5. queryone 结果集只有一行一列的情况, 自动转为结果数据 参考:simple_value()
 6. insertone 插入一条数据, 返回数据ID
+7. *_process 重构方法, 方便支持批量数据处理
+8. connect_mysql 支持传字典参数
 """
 import os
 import json
@@ -59,12 +35,43 @@ def find(name, path):
             return os.path.join(root, name)
 
 
-def connect_mysql():
-    """ 创建链接 """
+def get_connect_cursor():
+    """ get connect and cursor """
     try:
-        config = find("db_config.json", os.path.abspath("."))
-        with open(config, "r") as file:
+        con = connect_mysql()
+        cur = con.cursor()
+        return con, cur
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        logger.error("cannot create mysql connect")
+
+
+def close_cursor_connect(cur, con):
+    """ close cursor and connect """
+    try:
+        cur.close()
+        con.close()
+        return True
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        logger.error("cannot close mysql connect or cusor")
+    return False
+
+
+def connect_mysql(config_dict=None):
+    """
+    创建链接
+    :param config_dict: 数据库配置字典; 可重置 host,user,password,db,port 等默认值 (间接支持多数据源)
+    """
+    try:
+        # print(__file__)
+        curr_dir = os.path.split(os.path.abspath(__file__))[0]
+        config_path = find("db_config.json", curr_dir)
+        with open(config_path, "r") as file:
             load_dict = json.load(file)
+        # 合并参数 (可重置 db_config 里面的参数)
+        if config_dict is not None and type(config_dict) is dict:
+            load_dict.update(config_dict)
         return pymysql.connect(cursorclass=pymysql.cursors.DictCursor, **load_dict)
     except Exception as e:
         logger.error(traceback.format_exc())
@@ -80,7 +87,14 @@ def queryone(sql, param=None):
     """
     con = connect_mysql()
     cur = con.cursor()
+    row = queryone_process(con, cur, sql, param)
+    cur.close()
+    con.close()
+    return row
 
+
+def queryone_process(con, cur, sql, param=None):
+    """" queryone:内部调用 """
     row = None
     try:
         cur.execute(sql, param)
@@ -89,9 +103,6 @@ def queryone(sql, param=None):
         con.rollback()
         logger.error(traceback.format_exc())
         logger.error("[sql]:{} [param]:{}".format(sql, param))
-
-    cur.close()
-    con.close()
     return simple_value(row)
 
 
@@ -104,7 +115,14 @@ def queryall(sql, param=None):
     """
     con = connect_mysql()
     cur = con.cursor()
+    rows = queryall_process(con, cur, sql, param)
+    cur.close()
+    con.close()
+    return rows
 
+
+def queryall_process(con, cur, sql, param=None):
+    """" queryall:内部调用 """
     rows = None
     try:
         cur.execute(sql, param)
@@ -113,34 +131,28 @@ def queryall(sql, param=None):
         con.rollback()
         logger.error(traceback.format_exc())
         logger.error("[sql]:{} [param]:{}".format(sql, param))
-
-    cur.close()
-    con.close()
     return simple_list(rows)
 
 
-def insertmany(sql, arrays=None):
+def insertmany(sql, arrays=None, batch_size=10000):
     """
     批量插入数据
     :param sql: sql语句
     :param arrays: list|tuple [(),(),()...]
+    :param batch_size: 每批入库数量, 超过自动多批入库
     :return: 入库数量
     """
     con = connect_mysql()
     cur = con.cursor()
-
-    cnt = 0
-    try:
-        cnt = cur.executemany(sql, arrays)
-        con.commit()
-    except Exception as e:
-        con.rollback()
-        logger.error(traceback.format_exc())
-        logger.error("[sql]:{} [param]:{}".format(sql, arrays))
-
+    cnt = insertmany_process(con, cur, sql, arrays, batch_size)
     cur.close()
     con.close()
     return cnt
+
+
+def insertmany_process(con, cur, sql, arrays=None, batch_size=10000):
+    """ 批量执行 """
+    return executemany_process(con, cur, sql, arrays, batch_size)
 
 
 def insertone(sql, param=None):
@@ -152,7 +164,14 @@ def insertone(sql, param=None):
     """
     con = connect_mysql()
     cur = con.cursor()
+    lastrowid = insertone_process(con, cur, sql, param)
+    cur.close()
+    con.close()
+    return lastrowid
 
+
+def insertone_process(con, cur, sql, param):
+    """ insertone:内部调用 """
     lastrowid = 0
     try:
         cur.execute(sql, param)
@@ -162,9 +181,6 @@ def insertone(sql, param=None):
         con.rollback()
         logger.error(traceback.format_exc())
         logger.error("[sql]:{} [param]:{}".format(sql, param))
-
-    cur.close()
-    con.close()
     return lastrowid
 
 
@@ -177,7 +193,14 @@ def execute(sql, param=None):
     """
     con = connect_mysql()
     cur = con.cursor()
+    cnt = execute_process(con, cur, sql, param)
+    cur.close()
+    con.close()
+    return cnt
 
+
+def execute_process(con, cur, sql, param=None):
+    """ execute:内部调用 """
     cnt = 0
     try:
         cnt = cur.execute(sql, param)
@@ -186,9 +209,23 @@ def execute(sql, param=None):
         con.rollback()
         logger.error(traceback.format_exc())
         logger.error("[sql]:{} [param]:{}".format(sql, param))
+    return cnt
 
-    cur.close()
-    con.close()
+
+def executemany_process(con, cur, sql, arrays=None, batch_size=10000):
+    """ execute批量:内部调用 """
+    cnt = 0
+    try:
+        batch_cnt = int(len(arrays) / batch_size) + 1
+        for i in range(batch_cnt):
+            sub_array = arrays[i * batch_size:(i + 1) * batch_size]
+            if sub_array:
+                cnt += cur.executemany(sql, sub_array)
+                con.commit()
+    except Exception as e:
+        con.rollback()
+        logger.error(traceback.format_exc())
+        logger.error("[sql]:{} [param]:{}".format(sql, arrays))
     return cnt
 
 
@@ -200,7 +237,6 @@ def simple_list(rows):
     """
     if not rows:
         return rows
-
     if len(rows[0].keys()) == 1:
         simple_list = []
         # print(rows[0].keys())
@@ -208,7 +244,6 @@ def simple_list(rows):
         for row in rows:
             simple_list.append(row[key])
         return simple_list
-
     return rows
 
 
@@ -220,20 +255,37 @@ def simple_value(row):
     """
     if not row:
         return None
-
     if len(row.keys()) == 1:
         # print(row.keys())
         key = list(row.keys())[0]
         return row[key]
-
     return row
 
 
-if __name__ == '__main__':
-    print("hello everyone!!!")
+def batch_job_example():
+    """ 批量任务示例:大体形式是这样 """
+    con = connect_mysql()
+    cur = con.cursor()
 
-    # print("删表:", execute('drop table test_users'))
+    # do something
+    # 这里适合做一些需要大量和数据库交互的任务 (比如:大批量数据的导入导出工作)
+    # 因为每次创建数据库链接也是有耗资源的, 小伙伴们可自行测试效果
+    sql = None
+    for i in 10000:
+        print(i)
+        break
+        queryone_process(con, cur, sql)
+        queryall_process(con, cur, sql)
+        insertmany_process(con, cur, sql)
+        execute_process(con, cur, sql)
 
+    cur.close()
+    con.close()
+    return cnt
+
+
+def run_test():
+    print("删表:", execute('drop table test_users'))
     sql = '''
             CREATE TABLE `test_users` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -255,7 +307,7 @@ if __name__ == '__main__':
     print("插入数据:", insertmany(sql_str, arrays))
 
     # 查询
-    print("只取一行:", queryone("select * from test_users limit %s,%s", (0, 1)))    #尽量使用limit
+    print("只取一行:", queryone("select * from test_users limit %s,%s", (0, 1)))  # 尽量使用limit
     print("查询全表:", queryall("select * from test_users"))
 
     # 条件查询
@@ -269,95 +321,17 @@ if __name__ == '__main__':
     # 查询
     print("再次查询全表:", queryall("select * from test_users"))
     print("数据总数:", queryone("select count(*) from test_users"))
-```
-
-# 运行结果
-```
-hello everyone!!!
-删表: 0
-建表: 0
-插入数据: 4
-只取一行: {'id': 1, 'password': '111111', 'email': 'aaa@126.com'}
-查询全表: [{'id': 1, 'password': '111111', 'email': 'aaa@126.com'}, {'id': 2, 'password': '222222', 'email': 'bbb@126.com'}, {'id': 3, 'password': '333333', 'email': 'ccc@126.com'}, {'id': 4, 'password': '444444', 'email': 'ddd@126.com'}]
-一列: ['aaa@126.com', 'bbb@126.com']
-多列: [{'id': 2, 'password': '222222', 'email': 'bbb@126.com'}]
-更新: 1
-删除: 1
-再次查询全表: [{'id': 1, 'password': '111111', 'email': 'new@126.com'}, {'id': 2, 'password': '222222', 'email': 'bbb@126.com'}, {'id': 3, 'password': '333333', 'email': 'ccc@126.com'}]
-数据总数: 3
-```
-
-# 使用方法
-`db_config.json` 是从当前执行的目录进行扫描的, 可以在子目录里
-
-数据库配置好了, 直接运行就能看到效果
-
-<span style="color:red">删表操作请先确认好了!!!</span> 这里先注释掉
-
-增删改查示例都有, 操作起来也算是比较方便了, 只需要写sql, 传参数, 就基本搞定
-
-默认多行的结果集都是 list[dict] 的, 即使只有一列也是! 所以加了个 simple_list 方法只取数据 list
-
-**工具类注意事项**:
-1. `%s` 为 `mysql` 占位符; 能用 `%s` 的地方就不要自己拼接 `sql` 了
-2. `sql` 里有一个占位符可使用 `string` 或 `number`; 有多个占位符可使用 `tuple|list`
-3. `insertmany` 的时候所有字段使用占位符 `%s` (预编译), 参数使用 `tuple|list`
-4. `queryall` 结果集如果只有一列的情况, 会自动转换为简单的列表 参考:`simple_list()`
-5. `queryone` 结果集如果只有一行一列的情况, 自动转为结果数据 参考:`simple_value()`
-6. `insertone` 插入一条数据, 返回数据ID
-
-# 其他
-`pymysql` 由于 sql 都是直接写的, 所以数据库操作非常灵活; 如果做 `ORM` 的话, 就需要自己手动进行转换; 类似于 `java` 的 `MyBatise` 
-
-如果你在找 `Python` 的 `ORM` 框架的话, `SQLAlchemy` 应该是个不错的选择; 类似于 `Java` 的 `Hibernate`
-
-# 日志
-`loggerutils.py`
-```python
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-# author: xu3352<xu3352@gmail.com>
-"""
-Python 日志工具包
-@see https://blog.csdn.net/chosen0ne/article/details/7319306
-"""
-import logging
-import logging.handlers
-
-log_file = 'output.log'
-fmt = '%(asctime)s - %(levelname)s - %(filename)s#%(funcName)s():%(lineno)s - %(name)s - %(message)s'
-
-# 实例化handler
-handler = logging.handlers.RotatingFileHandler(log_file, maxBytes=1024 * 1024, backupCount=5)
-formatter = logging.Formatter(fmt)  # 实例化formatter
-handler.setFormatter(formatter)     # 为handler添加formatter
-
-logger = logging.getLogger("main")  # 获取名为tst的logger
-logger.addHandler(handler)          # 为logger添加handler
-logger.setLevel(logging.DEBUG)      # 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+    print('run test complate ...')
 
 
 if __name__ == '__main__':
-    logger.debug("first message debug")
-    logger.info("first message info")
-    logger.warning("first message warning")
-    logger.error("first message error")
-    logger.critical("first message critical")
-```
-
-2018.05.28 更 
-- 增加 `logger` 把错误日志记录到指定的文件里 
-- `connect_mysql` 改造为 `kwargs` 形式传参(以后可以传入数据源字典)
-- 增加 `insertone` 方法, 返回主键ID
-
-2019.02.17 更
-- 增加 xx_process 重构方法, 方便支持批量数据处理
-
-最新的代码: [mysqlutils.py](/assets/archives/mysqlutils.py)
-
----
-参考：
-- [Github:PyMySQL](https://github.com/PyMySQL/PyMySQL)
-- [Python3 MySQL 数据库连接](http://www.runoob.com/python3/python3-mysql.html)
-- [有哪些比较好的在 Python 中访问 MySQL 的类库？](https://www.zhihu.com/question/19869186)
-- [Python笔记之SqlAlchemy使用](http://www.cnblogs.com/liu-yao/p/5342656.html)
+    print("hello everyone!!!")
+    # run_test()
+    con, cur = get_connect_cursor()
+    sql = """ update test_users set password = %s where id = %s """
+    arrays = []
+    arrays.append(["1111xx", 1])
+    arrays.append(["2222xx", 2])
+    arrays.append(["3333xx", 3])
+    executemany_process(con, cur, sql, arrays)
+    close_cursor_connect(cur, con)
