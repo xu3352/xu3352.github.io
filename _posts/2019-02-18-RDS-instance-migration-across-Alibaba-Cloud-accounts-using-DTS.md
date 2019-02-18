@@ -15,8 +15,8 @@ tags: mysql aliyun
 
 
 **场景**:
-- 源库RDS示例:   RDS-A
-- 目标库RDS示例: RDS-B
+- 源库RDS实例:   RDS-A
+- 目标库RDS实例: RDS-B
 
 目标就是: 把 RDS-A 的所有的库/表/数据等 全部都迁移到 RDS-B 里
 
