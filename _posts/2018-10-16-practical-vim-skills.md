@@ -113,10 +113,10 @@ Keystrokes    | Buffer Contents
 修改              | {edit}                  | `.`      | `u`
 行内搜索字符:往后 | `f{char}`/`t{char}`     | `;`      | `,`
 行内搜索字符:往前 | `F{char}`/`T{char}`     | `;`      | `,`
-文件匹配:往后     | `/patterm<CR>`          | `n`      | `N`
-文件匹配:往前     | `?patterm<CR>`          | `n`      | `N`
+文档搜索:往后     | `/patterm<CR>`          | `n`      | `N`
+文档搜索:往前     | `?patterm<CR>`          | `n`      | `N`
 替换操作          | `:s/target/replacement` | `&`      | `u`
-一些列动作(宏)    | `qx{changes}q`          | `@x`     | `u`
+一系列动作(宏)    | `qx{changes}q`          | `@x`     | `u`
 
 宏在某些时候非常好使!
 
@@ -131,7 +131,7 @@ Keystrokes    | Buffer Contents
 ...We'll launch as soon as we have the content...
 </pre>
 
-这里我们想把部分的 "content" 替换为 "copy", 当然可以使用:
+这里我们想把部分的 "content" 替换为 "copy" (第二行不替换), 当然可以使用:
 `:%s/content/copy/gc` 达到效果, 这里我们选择手动的方式  
 
 Keystrokes      | Buffer Contents
