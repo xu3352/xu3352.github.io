@@ -4,9 +4,11 @@ title: About
 header: About Me
 group: navigation
 tagline: About Me
-number: 7
+number: 8
 permalink: /about/
 ---
+
+{% include JB/setup %}
 
 > 程序猿
 > <br>JAVA后端

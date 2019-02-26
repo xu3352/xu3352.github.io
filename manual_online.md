@@ -4,9 +4,9 @@ title : "Manual"
 header : "Manual"
 group: navigation
 tagline: 新手入门
-number: 5
+number: 7
 ---
-[//]: # {% include JB/setup %}
+{% include JB/setup %}
 
 # 清单 
 各种在线手册或者书籍，有事没事多看看总是好的
