@@ -37,4 +37,8 @@ tags: intellij-idea mybatis ide
 
 ![插件信息](/assets/archives/jump2mybatis-plugin-snapshot-03.png){:width="100%"}
 
+# 安装包
+
+[下载安装包](/assets/archives/idea_plug_jump2mybatis_v1.4.jar)
+
 
