@@ -83,7 +83,8 @@ sudo sh $TMP_SH
 
 # 不足之处
 
-如果手动在桌面右键 [推出] 硬盘后, 桌面会保留硬盘对应的文件夹, 删除时一般还需要输入密码才行
+- 首先, 插入硬盘后, 系统会先以只读方式挂载; 需要等待系统挂载完成后, 再执行 `ntfs_mount.sh` 脚本才有效
+- 如果手动在桌面右键 [推出] 硬盘后, 桌面会保留硬盘对应的文件夹, 删除时一般还需要输入密码才行
 
 当然, 也是可以做成脚本的: `ntfs_umount.sh`
 ```bash
@@ -101,4 +102,6 @@ grep /Desktop/ $TMP_SH | xargs -n 1 rm -rf
 ---
 参考：
 - [Mac 挂载可读写 NTFS 硬盘](https://www.ouyangsong.com/posts/21620/)
+- [附件 ntfs_mount.sh](/assets/archives/ntfs_mount.sh)
+- [附件 ntfs_umount.sh](/assets/archives/ntfs_umount.sh)
 
