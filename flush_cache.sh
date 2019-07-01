@@ -4,7 +4,7 @@
 #       (if jekyll start with --incremental option)
 
 # file list
-list=(index.md archive.html categories.html tags.html)
+list=(index.md archive.html categories.html tags.html practical_vim.md)
 
 # for loop
 length=${#list[*]}

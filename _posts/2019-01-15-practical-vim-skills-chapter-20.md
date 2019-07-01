@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vim实用技巧进阶(第10章:拼写检查) - Practical.Vim.2nd.Edition"
+title: "Vim实用技巧进阶(第20章:拼写检查) - Practical.Vim.2nd.Edition"
 keywords: "vim,practical-vim,spell-checker,实用技巧"
 description: "Practical.Vim.2nd.Edition 实用技巧进阶 第19章:Vim拼写检查和修复错字"
 tagline: "Tip 120~123"
