@@ -251,4 +251,244 @@ ECMAScript通过RegExp类型来支持正则表达式
 
 `var expression = new RegExp(pattern, flags);`
 
+### 5.4.1 RegExp示例属性
+
+- `global` - 布尔值, 表示是否设置了 g 标志
+- `ignoreCase` - 布尔值, 表示是否设置了 i 标志
+- `lastIndex` - 整数, 表示开始搜索下一个匹配项的字符位置, 从0算起
+- `multiline` - 布尔值, 表示是否设置了 m 标志
+- `source` - 正则表达式的字符串表示, 按照字面量形式而非传入构造函数中的字符串
+
+```js
+// 等同于 new RegExp("\\[bc\\]at", "i");
+var pattern = /\[bc\]at/i;
+console.log( pattern.global  );      //false
+console.log( pattern.ignoreCase  );  //true
+console.log( pattern.multiline  );   //false
+console.log( pattern.lastIndex  );   //0
+console.log( pattern.source  );      //"\[bc\]at"
+```
+
+### 5.4.2 RegExp实例方法
+
+`exec()` - 专门为捕获组而设计的, 实例包含两个额外属性: index 和 input
+
+```js
+var text = "mom and dad and baby";
+var pattern = /mom( and dad( and baby )? )?/gi;
+
+var matches = pattern.exec(text);
+console.log(matches.index);     // 0
+console.log(matches.input);     // "mom and dad and baby"
+console.log(matches[0]);        // "mom and dad and baby"
+console.log(matches[1]);        // " and dad and baby"
+console.log(matches[2]);        // " and baby"
+```
+
+对于 `exec()` 方法而言，即使在模式中设置了全局标志（g），它每次也只会返回一个匹配项。在不设置全局标志的情况下，在同一个字符串上多次调用 `exec()` 将始终返回第一个匹配项的信息。而在设置全局标志的情况下，每次调用 `exec()` 则都会在字符串中继续查找新匹配项
+
+```js
+var text = "cat, bat, sat, fat";
+var pattern1 = /.at/;
+
+var matches = pattern1.exec(text);
+console.log(matches.index);         //0
+console.log(matches[0]);            //cat
+console.log(pattern1.lastIndex);    //0
+
+var matches = pattern1.exec(text);
+console.log(matches.index);         //0
+console.log(matches[0]);            //cat
+console.log(pattern1.lastIndex);    //0
+
+
+var pattern2 = /.at/g;
+
+var matches = pattern2.exec(text);
+console.log(matches.index);         //0
+console.log(matches[0]);            //cat
+console.log(pattern2.lastIndex);    //3
+
+var matches = pattern2.exec(text);
+console.log(matches.index);         //5
+console.log(matches[0]);            //bat
+console.log(pattern2.lastIndex);    //8
+```
+
+`test()` - 在模式与字符串参数匹配时返回 true, 否则返回 false; 通常放到 if 语句里
+
+```js
+var text = "123-45-6789";
+var pattern = /(\d{3})-(\d{2})-(\d{4})/;
+
+if (pattern.test(text)) {
+    console.log("pattern was matched.");
+    console.log(RegExp.$1); // "123"
+    console.log(RegExp.$2); // "45"
+    console.log(RegExp.$3); // "6789"
+}
+```
+
+注意, 如果 `test()` 为 `false` 时, 不能使用 `RegExp.$1` 取值 (全局的, 结果为最后保存的捕获组内容, 最多到 `RegExp.$9`)!!!
+
+## 5.5 Function类型
+
+说起来ECMAScript中什么最有意思，我想那莫过于函数了——而有意思的根源，则在于函数实际上是对象。每个函数都是Function类型的实例，而且都与其他引用类型一样具有属性和方法。由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定
+
+```javascript
+// 函数声明方式
+function sum(num1, num2) {
+    return num1 + num2;
+}
+
+// 变量方式定义, 注意最后有分号!
+var sum = function(num1, num2) {
+    return num1 + num2;
+};
+```
+
+### 5.5.1 没有重载(深入理解)
+将函数名想象为指针，也有助于理解为什么ECMAScript中没有函数重载的概念。
+
+```js
+function addSomeNumber(num) {
+    return num + 100;
+}
+
+function addSomeNumber(num) {
+    return num + 200;
+}
+
+var result = addSomeNumber(100);
+console.log(result);    // 300
+```
+
+### 5.5.4 函数内部属性
+
+在函数内部, 有两个特殊的对象: `arguments` 和 `this`. 
+
+`arguments` 为类数组对象, 包含传入函数中的所有参数; 此对象还有一个叫 `callee` 的属性, 该属性是一个指针, 执行拥有这个 `arguments` 对象的函数
+
+```js
+// 递归的阶层函数
+function factorial(num) {
+    if (num <= 1) {
+        return 1;
+    } else {
+        return num * factorial(num - 1);
+    }
+}
+
+// 解耦合的实现 arguments.callee
+function factorial(num) {
+    if (num <= 1) {
+        return 1;
+    } else {
+        return num * arguments.callee(num - 1);
+    }
+}
+```
+
+第一种方式可能的问题
+```js
+var trueFactorial = factorial;
+factorial = function() {
+    return 0;
+};
+
+console.log(trueFactorial(5));  // 120
+console.log(factorial(5));      // 0
+```
+
+`this` 函数内部的另一个特殊对象, 其行为与 Java 和 C# 中的 this 大致类似. 换句话说, this 引用的是函数据以执行的环境对象 ------ 或者也可以说是 this 值 (当在网页的全局作用域中调用函数时, this 对象引用的就是 `window`)
+
+```js
+window.color = "red";
+var o = { color: "blue"  };
+
+function sayColor() {
+    console.log(this.color);
+}
+
+sayColor();     // "red"
+o.sayColor = sayColor;
+o.sayColor();   // "blue"
+```
+
+在调用函数之前，this 的值并不确定，因此 this 可能会在代码执行过程中引用不同的对象
+
+### 5.5.5 函数属性和方法
+
+每个函数都包含两个属性：`length` 和 `prototype`
+
+- `length` - 表示函数希望接收的命名参数的个数
+- `prototype` - 对于 ECMAScript 中的引用类型而言, prototype 是保存它们所有实例方法的真正所在. 在创建自定义引用类型以及实现继承时, prototype 属性的作用是极为重要的
+
+每个函数都包含两个非继承而来的方法：`apply()` 和 `call()`. 这两个方法的用途都是在特定的作用域中调用函数, 实际上等于设置函数体内this对象的值.
+
+- `apply()` - 方法接收两个参数: 
+    - 运行函数的作用域
+    - 参数数组, 可以是Array示例, 也可以是 arguments 对象
+- `call()` - 参数的个数按函数定义的来
+    - 运行函数的作用域
+    - 其他参数则是函数定义定义好的挨个传
+
+```js
+function sum(num1, num2) {
+    return num1 + num2;
+}
+
+// apply 的两种传参
+function sum1(num1, num2) {
+    return sum.apply(this, arguments);
+}
+function sum2(num1, num2) {
+    return sum.apply(this, [num1, num2]);
+}
+// call 则具体传参
+function sum3(num1, num2) {
+    return sum.call(this, num1, num2);
+}
+
+console.log( sum1(10, 10)  );    // 20
+console.log( sum2(10, 10)  );    // 20
+console.log( sum3(10, 10)  );    // 20
+```
+
+两者的作用都相同, 区别就是参数的使用方式不同
+
+事实上，传递参数并非 `apply()` 和 `call()` 真正的用武之地；它们真正强大的地方是能够扩充函数赖以运行的作用域
+```js
+window.color = "red";
+var o = { color: "blue"  };
+
+function sayColor() {
+    console.log( this.color  );
+}
+
+sayColor();             // red
+sayColor.call(this);    // red
+sayColor.call(window);  // red
+sayColor.call(o);       // blue
+```
+
+ECMAScript5 还定义了一个方法：`bind()`。这个方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值
+```js
+window.color = "red";
+var o = { color: "blue"  };
+
+function sayColor() {
+    console.log( this.color  );
+}
+
+var objectSayColor = sayColor.bind(o);
+objectSayColor();   // blue
+```
+支持bind()方法的浏览器有IE9+、Firefox4+、Safari5.1+、Opera12+和Chrome
+
+
+
+
+
+
 
