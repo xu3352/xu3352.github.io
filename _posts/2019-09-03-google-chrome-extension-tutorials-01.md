@@ -224,11 +224,11 @@ function close_tab() {
 }
 
 function open_tab(url) {
-    chrome.runtime.sendMessage({type: "open_tab_url", data: url});
+    chrome.runtime.sendMessage({type: "open_tab_url", url: url});
 }
 
 function change_tab(url) {
-    chrome.runtime.sendMessage({type: "change_tab_url", data: url});
+    chrome.runtime.sendMessage({type: "change_tab_url", url: url});
 }
 ```
 
