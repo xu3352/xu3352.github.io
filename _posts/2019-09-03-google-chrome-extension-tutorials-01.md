@@ -184,9 +184,12 @@ function get_local_datas() {
     });
 }
 
-// 本地存值
-function set_local_data(key, value) {
-    chrome.storage.local.set({key: value});
+/**
+ * 本地存值
+ * dict = {key: value}
+ */
+function set_local_data(dict) {
+    chrome.storage.local.set(dict);
 }
 ```
 
