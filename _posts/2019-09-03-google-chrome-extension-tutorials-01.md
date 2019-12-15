@@ -113,7 +113,19 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 ```
 
-`content_scripts.js` 和 `background.js` 和 `popup.js` 之间消息通信的方式是一样的: 一端发送消息, 另一端监听并处理
+`content_scripts.js` / `popup.js` 向 `background.js` 后端之间消息通信的方式是一样
+
+而 `background.js` 后端 向 `content_scripts.js` 发送消息时, 需要指定具体的 `tabId`, 可以通过 `chrome.tabs.query` 的参数选项来过滤出目标 `tabId` 
+
+`background.js`
+```js
+chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    chrome.tabs.sendMessage(tabs[0].id, {type: "open_dialog_box", msg: "hello"}
+        , function(response) {});  
+});
+```
+
+接收消息的方式都是一样的, 参考 `background.js` 接收消息的方式, 更多示例可参考官方文档: [Chrome Extensions - Message Passing](https://developer.chrome.com/extensions/messaging)
 
 # 跨域请求
 
