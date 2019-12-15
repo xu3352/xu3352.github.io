@@ -115,13 +115,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 `content_scripts.js` / `popup.js` 向 `background.js` 后端之间消息通信的方式是一样
 
-而 `background.js` 后端 向 `content_scripts.js` 发送消息时, 需要指定具体的 `tabId`, 可以通过 `chrome.tabs.query` 的参数选项来过滤出目标 `tabId` 
+而 `background.js` 后端 向 `content_scripts.js` 发送消息时, 需要指定具体的 `tabId`, 可以通过 `chrome.tabs.query` 的 [参数选项](https://developer.chrome.com/extensions/tabs#method-query) 来过滤出目标 `tabId` 
 
 `background.js`
 ```js
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-    chrome.tabs.sendMessage(tabs[0].id, {type: "open_dialog_box", msg: "hello"}
-        , function(response) {});  
+    chrome.tabs.sendMessage(tabs[0].id, {type: "open_dialog_box", msg: "hello"}, function(response) {});  
+});
+
+// 如果想通过 url 来匹配过滤的话, 可以这样写
+chrome.tabs.query({url: "*://*.baidu.com/*"}, function(tabs){
+    chrome.tabs.sendMessage(tabs[0].id, {type: "open_dialog_box", msg: "hello"}, function(response) {});  
 });
 ```
 
@@ -301,4 +305,5 @@ function front_test(msg) {
 - [Blocked by CORS policy: The 'Access-Control-Allow-Origin' - Mean Stack](https://www.digitalocean.com/community/questions/blocked-by-cors-policy-the-access-control-allow-origin-mean-stack)
 - [Google Chrome Extension - Script Injections](https://stackoverflow.com/questions/10527625/google-chrome-extension-script-injections/10529675)
 - [How do I set response headers in Flask?](https://stackoverflow.com/questions/25860304/how-do-i-set-response-headers-in-flask)
+- [Chrome Extension 开发总结（二）：通信机制](https://www.ruphi.cn/archives/407/)
 
