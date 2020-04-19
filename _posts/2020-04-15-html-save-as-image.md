@@ -44,11 +44,13 @@ function copy_img(element) {
 }
 
 // 参数选项
-var h2c_option = {
-    scale: 1,                   // 可以理解为屏幕像素比例(图像大小比例), 例如Mac Retina高清屏, 默认为:2
-    scrollX: 0, 
-    scrollY: -window.scrollY,   // 网页上下滚动偏移量, 防止滚动后图像不全
-    useCORS: true,              // 跨域支持, 例如其他域名的图片
+function h2c_option() {
+    return {
+        scale: 1,                   // 可以理解为屏幕像素比例(图像大小比例), 例如Mac Retina高清屏, 默认为:2
+        scrollX: 0, 
+        scrollY: -window.scrollY,   // 网页上下滚动偏移量, 防止滚动后图像不全
+        useCORS: true,              // 跨域支持, 例如其他域名的图片
+    }
 };
 </script>
 ```
