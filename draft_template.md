@@ -23,6 +23,6 @@ $ ls -alh
 
 ---
 参考：
-- []()
-- []()
+- [](){:target='blank'}
+- [](){:target='blank'}
 

@@ -26,7 +26,7 @@ tags: javascript html2canvas
 <script>
 // 直接下载到本地
 function download_img(element, name) {
-    html2canvas(element, {scale:1, scrollX: 0, scrollY: -window.scrollY}).then(canvas => {
+    html2canvas(element, h2c_option).then(canvas => {
         a = document.createElement('a');
         document.body.appendChild(a);
         a.download = (name || 'download_img') + ".png";
@@ -38,24 +38,28 @@ function download_img(element, name) {
 
 // 拷贝到剪贴板
 function copy_img(element) {
-    html2canvas(element, {scale:1, scrollX: 0, scrollY: -window.scrollY}).then(canvas =>
+    html2canvas(element, h2c_option).then(canvas =>
         canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})]))
     );
 }
+
+// 参数选项
+var h2c_option = {
+    scale: 1,                   // 可以理解为屏幕像素比例(图像大小比例), 例如Mac Retina高清屏, 默认为:2
+    scrollX: 0, 
+    scrollY: -window.scrollY,   // 网页上下滚动偏移量, 防止滚动后图像不全
+    useCORS: true,              // 跨域支持, 例如其他域名的图片
+};
 </script>
 ```
 
-**配置详解**:
-- `scale` - 可以理解为清晰度比例, 例如 Mac Retina屏幕, 浏览器默认为: 2
-- `scrollY` - 网页上下滚动偏移量, 防止滚动后图像不全
-
-还有其他很多参数选项设置, 可以参考官方文档
+还有其他很多参数选项设置, 可以参考 [官方文档](https://html2canvas.hertzen.com/configuration){:target='blank'}
 
 ---
 参考：
-- [html to image js](https://stackoverflow.com/questions/10721884/render-html-to-an-image)
-- [copy image to clipboard](https://stackoverflow.com/questions/33175909/copy-image-to-clipboard)
-- [html2canvas scrolly](https://github.com/niklasvh/html2canvas/issues/1878)
-- [HTML2canvas generates Blurry images](https://stackoverflow.com/questions/22803825/html2canvas-generates-blurry-images)
-- [html2canvas 官方文档](https://html2canvas.hertzen.com/configuration)
+- [html to image js](https://stackoverflow.com/questions/10721884/render-html-to-an-image){:target='blank'}
+- [copy image to clipboard](https://stackoverflow.com/questions/33175909/copy-image-to-clipboard){:target='blank'}
+- [html2canvas scrolly](https://github.com/niklasvh/html2canvas/issues/1878){:target='blank'}
+- [HTML2canvas generates Blurry images](https://stackoverflow.com/questions/22803825/html2canvas-generates-blurry-images){:target='blank'}
+- [html2canvas 官方文档](https://html2canvas.hertzen.com/configuration){:target='blank'}
 
