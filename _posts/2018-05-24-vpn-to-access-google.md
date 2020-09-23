@@ -9,6 +9,8 @@ tags: vpn work
 ---
 > {{ page.description }}
 
+加速度已经被和谐了, 推荐: [发条云VPN](http://www.ftcloud.info/aff.php?aff=23009)
+
 # 说在前面
 话说我也没用过几个付费的VPN, 这是第二个, 之前用过1年多的 `鱼摆摆` 去年被和谐了(钱已退, 虽然没几块钱)
 
