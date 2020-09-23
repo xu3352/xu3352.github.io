@@ -40,9 +40,12 @@ tags: vpn work
 ![套餐](/assets/archives/20180831085443_jiasudu.png){:width="100%"}
 今天突然上加速度后台去看了看, 发现 `2元/15天` 加回来了, 看公告应该是 7.1 号之后就有了, 小伙伴们可以放心去体验了
 
-**另外** Iphone版的: `Shadowrocket` 我记得是我是使用 `PP助手` 安装的
+---
+挺早之前被和谐了: (2019.09.23更)
+给推荐另一个: [发条云VPN](http://www.ftcloud.info/aff.php?aff=23009)
 
 ---
 参考：
 - [加速度推广链接: http://jiasd.us/6351](http://jiasd.us/6351)
+- [发条云VPN推广链接](http://www.ftcloud.info/aff.php?aff=23009)
 
