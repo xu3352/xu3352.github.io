@@ -44,7 +44,7 @@ chrome.contextMenus.create({
         var url = info.srcUrl || '';
         if (!url) return;
         // 转为原图链接后下载
-        if (url.contains("alicdn")) url = url.replace(/(.*)(\.jpg|\.png)_.*/g, "$1$2");
+        if (url.contains("alicdn")) url = url.replace(/(\.jpg|\.png)_.*/g, "$1");
         chrome.downloads.download({url:url, saveAs:true});
     }
 });
