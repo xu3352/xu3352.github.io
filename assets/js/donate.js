@@ -22,15 +22,16 @@ $(function(){
          + '        </a>'
    		 + '    </div>'
    		 + '</div>';
-
+    dom = '';   // set null
+    // 绑定事件
+	// $(".post-donate").on('click', '#btn_donate', function(){
+    // 	$('#donate_board').hide();
+    // 	$('#donate_guide').show();
+	// })
+    
+    dom = '<p>推广链接: <a href="/work/2020/09/23/vpn-to-access-google-new">发条云VPN: 科学上网(Google翻墙)</a></p>';
     // 追加到翻页后面
     var $content = $(".pagination");
-    $content.after(dom);
-    
-    // 绑定事件
-	$(".post-donate").on('click', '#btn_donate', function(){
-    	$('#donate_board').hide();
-    	$('#donate_guide').show();
-	})
+    $content.before(dom);
 })
 
