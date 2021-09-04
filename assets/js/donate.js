@@ -32,6 +32,6 @@ $(function(){
     dom = '<p>推广链接: <a href="/work/2020/09/23/vpn-to-access-google-new">发条云VPN: 科学上网(Google翻墙)</a></p>';
     // 追加到翻页后面
     var $content = $(".pagination");
-    $content.before(dom);
+    // $content.before(dom);
 })
 
