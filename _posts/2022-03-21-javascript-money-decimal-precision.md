@@ -31,7 +31,8 @@ var money = function() {
     function toInteger(floatNum) {
         var ret = {
             times: 1,
-            num: 0
+            num: 0,
+            _o: floatNum,
         };
         if (isInteger(floatNum)) {
             ret.num = floatNum;
@@ -41,7 +42,8 @@ var money = function() {
         var dotPos = strfi.indexOf('.');
         var len = strfi.substr(dotPos + 1).length;
         var times = Math.pow(10, len);
-        var intNum = parseInt(floatNum * times + 0.5, 10);
+        // var intNum = parseInt(floatNum * times + 0.5, 10);  // 负数有问题
+        var intNum = parseInt((floatNum * times).toFixed(0) + "");
         ret.times = times;
         ret.num = intNum;
         return ret
@@ -129,6 +131,8 @@ var money = function() {
     }
 }();
 ```
+
+- 2022-04-15: 解决负数转换时的问题
 
 ---
 参考：
