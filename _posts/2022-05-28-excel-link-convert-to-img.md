@@ -25,6 +25,16 @@ tags: office
 - `height` 图片高50像素, 行高可以设置为一致的
 - `width` 图片宽度, 列宽
 
+# WPS的问题
+
+前面还能操作成功! 后面不知道为什么, 粘贴后图片隔一行展示一个....
+
+后来用JS做了一个小工具, 把图片链接用表格展示出来, 用浏览器加载出来, 然后拷贝图片, 再粘贴回Excel就没问题了
+
+# 自制小工具
+
+点击进入: [Excel图片链接转换-小工具](/assets/archives/excel-img-links-convert.html)
+
 ---
 参考：
 - [Excel技巧干货，如何批量快速将图片链接转换为图片](https://zhuanlan.zhihu.com/p/364053098){:target='blank'}
