@@ -33,7 +33,7 @@ tags: office
 
 # 自制小工具
 
-点击进入: [Excel图片链接转换-小工具](/assets/archives/excel-img-links-convert.html)
+点击进入: [Excel图片链接转换-小工具](/assets/archives/excel-img-links-convert.html.zip)
 
 ---
 参考：
