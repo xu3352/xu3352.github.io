@@ -12,6 +12,9 @@ tags: mac homebrew
 
 # 一键配置脚本
 自动配置脚本, 直接运行, 按提示进行操作即可
+
+`/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"`
+
 ```bash
 $ /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 
@@ -112,12 +115,6 @@ Your branch is up to date with 'origin/master'.
          https://zhuanlan.zhihu.com/p/111014448
 
  安装成功 但还需要重启终端 或者 运行 source /Users/xuyinglong/.zprofile   否则可能无法使用
-```
-
-# 代码清单
-行内代码应用 `code`
-```bash
-$ ls -alh
 ```
 
 按照提示进行操作即可, 成功后查询一下版本号: `brew -v`
